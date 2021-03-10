@@ -1,4 +1,4 @@
-# Mahjong-PointsCalc
+# Score-Visualizer
 
 手積みの麻雀にて，点数計算や点棒管理を便利にする
 
