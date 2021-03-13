@@ -1,7 +1,14 @@
 .player-name {
+  padding: 5px;
+  margin-bottom: 3px;
   background-color: chartreuse;
 }
 
 .player-score {
+  padding: 5px;
   background-color: gray;
+}
+
+.player-name-and-score {
+  margin: auto
 }
