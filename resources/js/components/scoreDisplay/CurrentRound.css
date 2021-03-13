@@ -1,0 +1,21 @@
+.display-round-hand-area {
+  margin: auto;
+  font-size: 30px;
+}
+
+.round {
+  text-align: center;
+}
+
+.text {
+  text-align: center;
+  font-size: 30px;
+  margin: auto;
+  writing-mode: vertical-rl;
+}
+
+.text-number {
+  text-align: center;
+  font-size: 30px;
+  margin: auto;
+}

@@ -5,6 +5,7 @@ import SplitPane from 'react-split-pane';
 import {Container, Row, Col, Button} from "react-bootstrap";
 import './scoreDisplay.css';
 import EachPlayerScore from './eachPlayerScore';
+import CurrentRound from './CurrentRound'
 
 const styles = {
   border: '3px solid green'
@@ -43,7 +44,7 @@ class ScoreDisplay extends React.Component {
           <EachPlayerScore />
           </Col>
           <Col className="area" xs={12} md={4}>
-          ここは東場，南場，供託などの情報を示す場所
+          <CurrentRound />
           </Col>
           <Col className="area" xs={12} md={4}>
           <EachPlayerScore />
