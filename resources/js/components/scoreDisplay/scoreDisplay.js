@@ -13,7 +13,7 @@ const styles = {
 class ScoreDisplay extends React.Component {
   render(){
     return (
-      <div>
+      <div className="score-display-area">
         点数表示画面
         <Link to="/oneResultDisplay">
           <button>
@@ -22,35 +22,34 @@ class ScoreDisplay extends React.Component {
         </Link>
         <Row>
           <Col className="area" xs={12} md={4}>
-          fugafuga
-          </Col>
-          <Col className="area" xs={12} md={4}>
-          hogehoge
-          </Col>
-          <Col className="area" xs={12} md={4}>
-          hogefuga
-          </Col>
-        </Row>
-        <Row>
-          <Col className="area" xs={12} md={4}>
-          fugafuga
           </Col>
           <Col className="area" xs={12} md={4}>
           <EachPlayerScore />
           </Col>
           <Col className="area" xs={12} md={4}>
-          hogefuga
+          ここは起家が誰かを示す場所
+          </Col>
+        </Row>
+        <Row className="tmp">
+          <Col className="area" xs={12} md={4}>
+          <EachPlayerScore />
+          </Col>
+          <Col className="area" xs={12} md={4}>
+          ここは東場，南場，供託などの情報を示す場所
+          </Col>
+          <Col className="area" xs={12} md={4}>
+          <EachPlayerScore />
           </Col>
         </Row>
         <Row>
           <Col className="area" xs={12} md={4}>
-          fugafuga
+            <button className="reset-score-button">１局前に戻る</button>
           </Col>
           <Col className="area" xs={12} md={4}>
-          hogehoge
+          <EachPlayerScore />
           </Col>
-          <Col className="area" xs={12} md={4}>
-          hogefuga
+          <Col className="update-score-button" xs={12} md={4}>
+            <button className="">局終了，点数更新</button>
           </Col>
         </Row>
       </div>

@@ -20,12 +20,12 @@ class ScoreOperation extends React.Component{
           </div>
         </Row>
         <Row>
-          <button>
+          <button className="plus-button">
             +
           </button>
         </Row>
         <Row>
-          <button>
+          <button className="minus-button">
             -
           </button>
         </Row>
