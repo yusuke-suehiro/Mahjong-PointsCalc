@@ -1,3 +1,7 @@
 .player-name {
   background-color: chartreuse;
 }
+
+.player-score {
+  background-color: gray;
+}
