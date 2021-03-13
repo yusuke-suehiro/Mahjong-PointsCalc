@@ -7307,7 +7307,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".display-round-hand-area {\n  margin: auto;\n  font-size: 30px;\n}\n\n.round {\n  text-align: center;\n}\n\n.text {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  -ms-writing-mode: tb-rl;\n      writing-mode: vertical-rl;\n}\n\n.text-number {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".display-round-hand-area {\n  margin: auto;\n  font-size: 30px;\n}\n\n.round {\n  text-align: center;\n  background-color: chartreuse;\n  margin-bottom: 3px;\n}\n\n.hand {\n  text-align: center;\n  background-color: cyan;\n}\n\n.text {\n  text-align: center;\n  font-size: 40px;\n  margin: auto;\n  -ms-writing-mode: tb-rl;\n      writing-mode: vertical-rl;\n}\n\n.text-number {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

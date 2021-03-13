@@ -5,11 +5,18 @@
 
 .round {
   text-align: center;
+  background-color: chartreuse;
+  margin-bottom: 3px;
+}
+
+.hand {
+  text-align: center;
+  background-color: cyan;
 }
 
 .text {
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
   margin: auto;
   writing-mode: vertical-rl;
 }
