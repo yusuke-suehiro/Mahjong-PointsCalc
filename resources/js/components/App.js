@@ -1,44 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
+import scoreDisplay from "./scoreDisplay/scoreDisplay"
 
-const PageOne = () => {
-  return (
-    <div>
-      画面１
-      <Link to="/pagetwo">
-        <button>
-          show PageTwo when you click this!!
-        </button>
-      </Link>
-    </div>
-  );
+class PageZero extends React.Component{
+  render(){
+    return (
+      <div>
+      画面0
+        <Link to="/scoredisplay">
+          <button>
+            show scoreDisplay when you click this!!
+          </button>
+        </Link>
+      </div>
+    );
+  }
 };
 
-const PageTwo = () => {
-  return (
-    <div>
-    画面２
-      <Link to="/">
-        <button>
-          show PageOne when you click this!!
-        </button>
-      </Link>
-    </div>
-  );
-};
 
-const App = () => {
-  return (
-    <div>
-      <BrowserRouter>
-        <div>
-          <Route path="/" exact component={PageOne} />
-          <Route path="/pagetwo"  component={PageTwo} />
-        </div>
-      </BrowserRouter>
-    </div>
-  );
+class App extends React.Component{
+  render(){
+    return (
+      <div>
+        <BrowserRouter>
+          <div>
+            <Route path="/" exact component={PageZero} />
+            <Route path="/scoredisplay" component={scoreDisplay}/>
+          </div>
+        </BrowserRouter>
+      </div>
+    );
+  }
 };
 
 export default App;
