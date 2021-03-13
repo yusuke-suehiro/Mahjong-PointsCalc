@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 
-class finishGame extends React.Component{
+class FinishGame extends React.Component{
   render(){
     return (
       <div>
@@ -18,4 +18,4 @@ class finishGame extends React.Component{
 }
 
 
-export default finishGame;
+export default FinishGame;

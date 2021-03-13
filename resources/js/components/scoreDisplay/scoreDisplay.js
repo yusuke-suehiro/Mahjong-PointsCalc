@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import SplitPane from 'react-split-pane';
 import {Container, Row, Col, Button} from "react-bootstrap";
 import './scoreDisplay.css';
+import EachPlayerScore from './eachPlayerScore';
 
 const styles = {
   border: '3px solid green'
 };
 
-class scoreDisplay extends React.Component {
+class ScoreDisplay extends React.Component {
   render(){
     return (
       <div>
@@ -35,7 +36,7 @@ class scoreDisplay extends React.Component {
           fugafuga
           </Col>
           <Col className="area" xs={12} md={4}>
-          hogehoge
+          <EachPlayerScore />
           </Col>
           <Col className="area" xs={12} md={4}>
           hogefuga
@@ -58,4 +59,4 @@ class scoreDisplay extends React.Component {
 };
 
 
-export default scoreDisplay;
+export default ScoreDisplay;
