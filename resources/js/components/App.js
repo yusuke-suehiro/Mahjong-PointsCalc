@@ -1,19 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
+import PageOne from "./scoreDisplay/scoreDisplay"
 
-const PageOne = () => {
-  return (
-    <div>
-      画面１
-      <Link to="/pagetwo">
-        <button>
-          show PageTwo when you click this!!
-        </button>
-      </Link>
-    </div>
-  );
-};
 
 const PageTwo = () => {
   return (
