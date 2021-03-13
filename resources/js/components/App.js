@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import scoreDisplay from "./scoreDisplay/scoreDisplay"
+import oneResultDisplay from "./oneResultDisplay/oneResultDisplay"
+import finishGame from "./finishGame/finishGame"
 
 class PageZero extends React.Component{
   render(){
@@ -27,6 +29,8 @@ class App extends React.Component{
           <div>
             <Route path="/" exact component={PageZero} />
             <Route path="/scoredisplay" component={scoreDisplay}/>
+            <Route path="/oneresultdisplay" component={oneResultDisplay}/>
+            <Route path="/finishgame" component={finishGame}/>
           </div>
         </BrowserRouter>
       </div>

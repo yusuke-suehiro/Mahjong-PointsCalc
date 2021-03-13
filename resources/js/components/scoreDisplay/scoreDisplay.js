@@ -14,9 +14,9 @@ class scoreDisplay extends React.Component {
     return (
       <div>
         点数表示画面
-        <Link to="/">
+        <Link to="/oneResultDisplay">
           <button>
-            show PageZero when you click this!!
+            show OneResultDisplay when you click this!!
           </button>
         </Link>
         <Row>
