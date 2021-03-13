@@ -1,5 +1,5 @@
 import React from 'react';
-import './eachPlayerScore.css'
+import './scoreOperation.css'
 import {Container, Row, Col, Button} from "react-bootstrap";
 
 class ScoreOperation extends React.Component{
@@ -13,15 +13,21 @@ class ScoreOperation extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className="score-operation-area">
         <Row>
-          <p>{this.state.name}</p>
+          <div className="score-operation-button-name">
+            {this.state.name}
+          </div>
         </Row>
         <Row>
-          <h1>＋</h1>
+          <button>
+            +
+          </button>
         </Row>
         <Row>
-          <h1>ー</h1>
+          <button>
+            -
+          </button>
         </Row>
       </div>
     );

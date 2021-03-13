@@ -8,7 +8,7 @@ class EachPlayerScore extends React.Component{
     return(
       <div>
         <Row>
-          <Col className="player-name-and-score" xs={12} md={10}>
+          <Col className="player-name-and-score" xs={12} md={8}>
             <div className="player-score-area">
               <div className="player-name">
                 <p>name</p>
@@ -18,10 +18,10 @@ class EachPlayerScore extends React.Component{
               </div>
             </div>
           </Col>
-          <Col className="score-operation" xs={12} md={1}>
+          <Col className="score-operation" xs={12} md={2}>
             <ScoreOperation name="千"/>
           </Col>
-          <Col className="score-operation" xs={12} md={1}>
+          <Col className="score-operation" xs={12} md={2}>
             <ScoreOperation name="百"/>
           </Col>
         </Row>
