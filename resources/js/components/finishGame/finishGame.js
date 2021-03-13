@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 
-class scoreDisplay extends React.Component{
+class finishGame extends React.Component{
   render(){
     return (
       <div>
-        点数表示画面
-        <Link to="/oneResultDisplay">
+        半荘終了，成績表示画面
+        <Link to="/scoredisplay">
           <button>
-            show OneResultDisplay when you click this!!
+            start new game when you click this!!
           </button>
         </Link>
       </div>
@@ -18,4 +18,4 @@ class scoreDisplay extends React.Component{
 }
 
 
-export default scoreDisplay;
+export default finishGame;
