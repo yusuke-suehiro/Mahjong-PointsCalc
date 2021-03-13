@@ -2454,10 +2454,16 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(ScoreDisplay);
 
-  function ScoreDisplay() {
+  function ScoreDisplay(props) {
+    var _this;
+
     _classCallCheck(this, ScoreDisplay);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      startingPlayer: "A"
+    };
+    return _this;
   }
 
   _createClass(ScoreDisplay, [{
@@ -2484,7 +2490,10 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
             className: "area",
             xs: 12,
             md: 4,
-            children: "\u3053\u3053\u306F\u8D77\u5BB6\u304C\u8AB0\u304B\u3092\u793A\u3059\u5834\u6240"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "display-starting-player",
+              children: ["\u8D77\u5BB6:", this.state.startingPlayer]
+            })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__.default, {
           className: "tmp",
@@ -2506,7 +2515,7 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__.default, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__.default, {
-            className: "area",
+            className: "reset-button-area",
             xs: 12,
             md: 4,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
@@ -2519,11 +2528,11 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
             md: 4,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__.default, {
-            className: "update-score-button",
+            className: "update-button-area",
             xs: 12,
             md: 4,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              className: "",
+              className: "update-score-button",
               children: "\u5C40\u7D42\u4E86\uFF0C\u70B9\u6570\u66F4\u65B0"
             })
           })]
@@ -7175,7 +7184,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "button{\n  width: 95%;\n  margin: 5px;\n}\n\n.area {\n  /* border: 3px solid black; */\n  padding-right: 10px;\n  text-align: center;\n  margin-bottom: 5px;\n  font-size: 20px;\n}\n\n.score-display-area {\n  width: 95%;\n  padding: 3px;\n  margin: auto;\n}\n\n.reset-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}\n\n.update-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "button{\n  width: 95%;\n  margin: 5px;\n}\n\n.area {\n  padding-right: 10px;\n  text-align: center;\n  margin-bottom: 5px;\n  font-size: 20px;\n}\n\n.score-display-area {\n  width: 95%;\n  padding: 3px;\n  margin: auto;\n}\n\n.display-starting-player {\n  margin: auto;\n  vertical-align: middle;\n  font-size: 30px;\n}\n\n\n.reset-button-area {\n  margin: auto;\n}\n\n.reset-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}\n\n.update-button-area {\n  margin: auto;\n}\n\n.update-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

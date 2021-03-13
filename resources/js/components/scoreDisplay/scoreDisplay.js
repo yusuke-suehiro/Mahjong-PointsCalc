@@ -11,6 +11,14 @@ const styles = {
 };
 
 class ScoreDisplay extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { 
+      startingPlayer: "A"
+    };
+  }
+
   render(){
     return (
       <div className="score-display-area">
@@ -27,7 +35,7 @@ class ScoreDisplay extends React.Component {
           <EachPlayerScore />
           </Col>
           <Col className="area" xs={12} md={4}>
-          ここは起家が誰かを示す場所
+          <div className="display-starting-player">起家:{this.state.startingPlayer}</div>
           </Col>
         </Row>
         <Row className="tmp">
@@ -42,14 +50,14 @@ class ScoreDisplay extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col className="area" xs={12} md={4}>
+          <Col className="reset-button-area" xs={12} md={4}>
             <button className="reset-score-button">１局前に戻る</button>
           </Col>
           <Col className="area" xs={12} md={4}>
           <EachPlayerScore />
           </Col>
-          <Col className="update-score-button" xs={12} md={4}>
-            <button className="">局終了，点数更新</button>
+          <Col className="update-button-area" xs={12} md={4}>
+            <button className="update-score-button">局終了，点数更新</button>
           </Col>
         </Row>
       </div>
