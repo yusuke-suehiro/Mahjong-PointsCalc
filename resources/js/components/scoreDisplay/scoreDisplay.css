@@ -1,0 +1,13 @@
+button{
+  width: 100%;
+  margin: 5px;
+}
+
+.area {
+  border: 3px solid black;
+  padding: 5px;
+  text-align: center;
+  margin-bottom: 5px;
+  padding: 20px;
+  font-size: 20px;
+}
