@@ -1,7 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import PageOne from "./scoreDisplay/scoreDisplay"
+import scoreDisplay from "./scoreDisplay/scoreDisplay"
+
+const PageZero = () => {
+  return (
+    <div>
+    画面0
+      <Link to="/scoredisplay">
+        <button>
+          show scoreDisplay when you click this!!
+        </button>
+      </Link>
+    </div>
+  );
+};
 
 
 const PageTwo = () => {
@@ -22,7 +35,8 @@ const App = () => {
     <div>
       <BrowserRouter>
         <div>
-          <Route path="/" exact component={PageOne} />
+          <Route path="/" exact component={PageZero} />
+          <Route path="/scoredisplay" component={scoreDisplay}/>
           <Route path="/pagetwo"  component={PageTwo} />
         </div>
       </BrowserRouter>

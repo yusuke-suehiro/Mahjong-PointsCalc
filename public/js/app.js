@@ -2027,6 +2027,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var PageZero = function PageZero() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: ["\u753B\u97620", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+      to: "/scoredisplay",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+        children: "show scoreDisplay when you click this!!"
+      })
+    })]
+  });
+};
+
 var PageTwo = function PageTwo() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     children: ["\u753B\u9762\uFF12", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
@@ -2045,6 +2056,9 @@ var App = function App() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
           path: "/",
           exact: true,
+          component: PageZero
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+          path: "/scoredisplay",
           component: _scoreDisplay_scoreDisplay__WEBPACK_IMPORTED_MODULE_2__.default
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
           path: "/pagetwo",
@@ -2086,18 +2100,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var PageOne = function PageOne() {
+var scoreDisplay = function scoreDisplay() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    children: ["\u753B\u9762\uFF11", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-      to: "/pagetwo",
+    children: ["\u70B9\u6570\u8868\u793A\u753B\u9762", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+      to: "/",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-        children: "show PageTwo when you click this!!"
+        children: "show PageZero when you click this!!"
       })
     })]
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PageOne);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (scoreDisplay);
 
 /***/ }),
 

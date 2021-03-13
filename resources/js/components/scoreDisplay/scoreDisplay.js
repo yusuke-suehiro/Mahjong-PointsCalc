@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import PageTwo from "../App"
 
-const PageOne = () => {
+const scoreDisplay = () => {
   return (
     <div>
-      画面１
-      <Link to="/pagetwo">
+      点数表示画面
+      <Link to="/">
         <button>
-          show PageTwo when you click this!!
+          show PageZero when you click this!!
         </button>
       </Link>
     </div>
@@ -17,4 +17,4 @@ const PageOne = () => {
 };
 
 
-export default PageOne;
+export default scoreDisplay;
