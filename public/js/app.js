@@ -2331,6 +2331,12 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var plusButtonClicked = function plusButtonClicked(e, props) {
+  console.log(props, e);
+};
+
+var initialState = 0;
+
 var CurrentRound = /*#__PURE__*/function (_React$Component) {
   _inherits(CurrentRound, _React$Component);
 
@@ -2344,9 +2350,9 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       round: "東",
-      handNumber: "1",
-      honnba: "1",
-      kyoutaku: "2"
+      handNumber: 0,
+      honnba: 0,
+      kyoutaku: 0
     };
     return _this;
   }
@@ -2354,6 +2360,13 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
   _createClass(CurrentRound, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      var _this$state = this.state,
+          round = _this$state.round,
+          handNumber = _this$state.handNumber,
+          honnba = _this$state.honnba,
+          kyoutaku = _this$state.kyoutaku;
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "display-round-hand-area",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -2383,11 +2396,21 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 className: "plus-button",
+                onClick: function onClick() {
+                  return _this2.setState({
+                    honnba: _this2.state.honnba + 1
+                  });
+                },
                 children: "+"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 className: "minus-button",
+                onClick: function onClick() {
+                  return _this2.setState({
+                    honnba: _this2.state.honnba - 1 >= 0 ? _this2.state.honnba - 1 : 0
+                  });
+                },
                 children: "-"
               })
             })]
@@ -2411,11 +2434,21 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 className: "plus-button",
+                onClick: function onClick() {
+                  return _this2.setState({
+                    kyoutaku: _this2.state.kyoutaku + 1
+                  });
+                },
                 children: "+"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 className: "minus-button",
+                onClick: function onClick() {
+                  return _this2.setState({
+                    kyoutaku: _this2.state.kyoutaku - 1 >= 0 ? _this2.state.kyoutaku - 1 : 0
+                  });
+                },
                 children: "-"
               })
             })]
