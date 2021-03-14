@@ -36,7 +36,8 @@ class CurrentRound extends React.Component{
           </Col>
           <Col xs={12} md={2}>
             <Row>
-              <button className="plus-button" onClick={() => this.setState({ honnba: this.state.honnba + 1 })}>
+              <button className="plus-button" 
+                onClick={() => this.setState({ honnba: this.state.honnba + 1 })}>
                 +
               </button>
             </Row>
@@ -56,7 +57,8 @@ class CurrentRound extends React.Component{
           </Col>
           <Col xs={12} md={2}>
             <Row>
-              <button className="plus-button" onClick={() => this.setState({ kyoutaku: this.state.kyoutaku + 1 })}>
+              <button className="plus-button" 
+                onClick={() => this.setState({ kyoutaku: this.state.kyoutaku + 1 })}>
                 +
               </button>
             </Row>
