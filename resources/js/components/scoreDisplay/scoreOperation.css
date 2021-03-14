@@ -1,0 +1,26 @@
+
+.score-operation-area {
+  text-align: center;
+  font-size: 30px;
+}
+
+.score-operation-button-name {
+  padding: 2px;
+  text-align: center;
+  font-size: 40px;
+  margin: auto;
+}
+
+.score-operation {
+  text-align: center;
+}
+
+.plus-button {
+  text-align: center;
+  font-size: 30px;
+}
+
+.minus-button {
+  text-align: center;
+  font-size: 30px;
+}
