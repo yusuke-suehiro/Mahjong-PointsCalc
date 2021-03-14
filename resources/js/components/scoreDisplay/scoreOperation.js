@@ -8,9 +8,11 @@ class ScoreOperation extends React.Component{
     super(props);
     this.state = { 
       name: props.name,
+      value: props.value,
       score: props.score
     };
   }
+
 
   render(){
 
@@ -23,7 +25,7 @@ class ScoreOperation extends React.Component{
         </Row>
         <Row>
           <button className="plus-button"
-            >
+            onClick={() => this.setState({ score: this.state.score + this.state.value })}>
             +
           </button>
         </Row>
@@ -35,12 +37,6 @@ class ScoreOperation extends React.Component{
       </div>
     );
   }
-
-  handleClickFunction = () => {
-    this.setState(prevState => {
-      return { count: prevState.count + 1 };
-    });
-  };
 }
 
 export default ScoreOperation;

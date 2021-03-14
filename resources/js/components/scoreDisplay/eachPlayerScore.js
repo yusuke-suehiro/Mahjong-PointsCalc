@@ -13,6 +13,7 @@ class EachPlayerScore extends React.Component{
     };
   }
 
+  
   render(){
     return(
       <div>
@@ -28,10 +29,12 @@ class EachPlayerScore extends React.Component{
             </div>
           </Col>
           <Col className="score-operation" xs={12} md={2}>
-            <ScoreOperation name="千" score={this.state.score} />
+            <ScoreOperation name="千" value={1000} score={this.state.score} 
+              />
           </Col>
           <Col className="score-operation" xs={12} md={2}>
-            <ScoreOperation name="百" score={this.state.score} />
+            <ScoreOperation name="百" value={100} score={this.state.score} 
+              />
           </Col>
         </Row>
       </div>
