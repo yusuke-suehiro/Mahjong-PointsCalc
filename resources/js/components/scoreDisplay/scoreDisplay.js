@@ -7,16 +7,16 @@ import './scoreDisplay.css';
 import EachPlayerScore from './eachPlayerScore';
 import CurrentRound from './CurrentRound'
 
-const styles = {
-  border: '3px solid green'
-};
-
 class ScoreDisplay extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = { 
-      startingPlayer: "A"
+      startingPlayer: "A",
+      player1: "player1",
+      player2: "player2",
+      player3: "player3",
+      player4: "player4",
     };
   }
 
@@ -33,7 +33,7 @@ class ScoreDisplay extends React.Component {
           <Col className="area" xs={12} md={4}>
           </Col>
           <Col className="area" xs={12} md={4}>
-          <EachPlayerScore />
+          <EachPlayerScore name={this.state.player1}/>
           </Col>
           <Col className="area" xs={12} md={4}>
           <div className="display-starting-player">起家:{this.state.startingPlayer}</div>
@@ -41,13 +41,13 @@ class ScoreDisplay extends React.Component {
         </Row>
         <Row className="tmp">
           <Col className="area" xs={12} md={4}>
-          <EachPlayerScore />
+          <EachPlayerScore name={this.state.player2} />
           </Col>
           <Col className="area" xs={12} md={4}>
           <CurrentRound />
           </Col>
           <Col className="area" xs={12} md={4}>
-          <EachPlayerScore />
+          <EachPlayerScore name={this.state.player4} />
           </Col>
         </Row>
         <Row>
@@ -55,7 +55,7 @@ class ScoreDisplay extends React.Component {
             <button className="reset-score-button">１局前に戻る</button>
           </Col>
           <Col className="area" xs={12} md={4}>
-          <EachPlayerScore />
+          <EachPlayerScore name={this.state.player3} />
           </Col>
           <Col className="update-button-area" xs={12} md={4}>
             <button className="update-score-button">局終了，点数更新</button>
