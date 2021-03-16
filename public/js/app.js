@@ -2207,10 +2207,10 @@ var FinishGame = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/oneResultDisplay/oneResultDisplay.js":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/oneResultDisplay/oneResultDisplay.js ***!
-  \**********************************************************************/
+/***/ "./resources/js/components/oneResultDisplay/ResultLayout.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/oneResultDisplay/ResultLayout.js ***!
+  \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2220,8 +2220,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _OneResultDisplay_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OneResultDisplay.css */ "./resources/js/components/oneResultDisplay/OneResultDisplay.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2250,6 +2250,375 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+var ResultLayout = /*#__PURE__*/function (_React$Component) {
+  _inherits(ResultLayout, _React$Component);
+
+  var _super = _createSuper(ResultLayout);
+
+  function ResultLayout(props) {
+    var _this;
+
+    _classCallCheck(this, ResultLayout);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      kind: "選択",
+      han: 1,
+      fu: 20,
+      hanError: "",
+      fuError: "",
+      playerFrom: "Player2",
+      playerTo: "Player1",
+      playerTsumo: "Player1",
+      playerTempai: ["", "", "", ""],
+      pointsParent: "",
+      pointsChild: ""
+    };
+    return _this;
+  }
+
+  _createClass(ResultLayout, [{
+    key: "render",
+    value: function render() {
+      function ShowMessage(whatKind) {
+        this.setState({
+          kind: whatKind
+        });
+      }
+
+      ;
+
+      function CalcHan(number) {
+        if (this.state.han == 1 && number == -1) {
+          this.setState({
+            hanError: "0翻以下は存在しません"
+          });
+        } else if (this.state.han == 13 && number == 1) {
+          this.setState({
+            hanError: "13翻以上の場合は13翻としてください"
+          });
+        } else {
+          this.setState({
+            hanError: ""
+          });
+          this.setState({
+            han: this.state.han + number
+          });
+        }
+      }
+
+      ;
+
+      function CalcFu(number) {
+        if (this.state.fu == 20 && number == -10) {
+          this.setState({
+            fuError: "20符未満は存在しません"
+          });
+        } else if (this.state.fu == 110 && number == 10) {
+          this.setState({
+            fuError: "110翻以上は存在しません"
+          });
+        } else if (this.state.fu == 20 && number == 10 || this.state.fu == 25 && number == 10) {
+          this.setState({
+            fuError: ""
+          });
+          this.setState({
+            fu: this.state.fu + number / 2
+          });
+        } else if (this.state.fu == 30 && number == -10 || this.state.fu == 25 && number == -10) {
+          this.setState({
+            fuError: ""
+          });
+          this.setState({
+            fu: this.state.fu + number / 2
+          });
+        } else {
+          this.setState({
+            fuError: ""
+          });
+          this.setState({
+            fu: this.state.fu + number
+          });
+        }
+      }
+
+      ;
+      var ChildPoints = pointsChild;
+      var ParentPoints = pointsParent;
+
+      function CalcPoints() {
+        var AnsNum = 0;
+
+        if (this.state.han > 4) {
+          for (var data = 0; data < ChildPoints.length; data++) {
+            if (ChildPoints[data][1] == this.state.han) {
+              AnsNum = data;
+            }
+          }
+        } else if (this.state.han == 4) {
+          if (this.state.fu > 40) {
+            var tmpFu = 40;
+          }
+
+          for (var _data = 0; _data < ChildPoints.length; _data++) {
+            if (ChildPoints[_data][1] == this.state.han) {
+              if (ChildPoints[_data][2] == this.state.fu) {
+                AnsNum = _data;
+              } else if (this.state.fu > 40) {
+                if (ChildPoints[_data][2] == 40) {
+                  AnsNum = _data;
+                }
+              }
+            }
+          }
+        } else {
+          for (var _data2 = 0; _data2 < ChildPoints.length; _data2++) {
+            if (ChildPoints[_data2][1] == this.state.han) {
+              if (ChildPoints[_data2][2] == this.state.fu) {
+                AnsNum = _data2;
+              }
+            }
+          }
+        }
+
+        if (this.state.kind == "ロン") {
+          this.setState({
+            pointsParent: "親：" + ParentPoints[AnsNum][3]
+          });
+          this.setState({
+            pointsChild: "子：" + ChildPoints[AnsNum][3]
+          });
+        } else if (this.state.kind == "ツモ") {
+          this.setState({
+            pointsParent: "親：" + ParentPoints[AnsNum][4] + "ALL"
+          });
+          this.setState({
+            pointsChild: "子：" + ChildPoints[AnsNum][4] + "-" + ChildPoints[AnsNum][5]
+          });
+        }
+      }
+
+      ;
+
+      function PlayerFrom(player) {
+        this.setState({
+          playerFrom: player
+        });
+      }
+
+      ;
+
+      function PlayerTo(player) {
+        this.setState({
+          playerTo: player
+        });
+      }
+
+      ;
+
+      function PlayerTsumo(player) {
+        this.setState({
+          playerTsumo: player
+        });
+      }
+
+      ;
+
+      function PlayerTempai(player) {
+        var player_copy = this.state.playerTempai.slice();
+        var tmp = "「" + player + "」";
+        var writeFlag = 0;
+
+        for (var num = 0; num < 4; num++) {
+          if (player_copy[num] == tmp) {
+            player_copy[num] = "";
+            writeFlag = 1;
+            break;
+          }
+        }
+
+        for (var _num = 0; _num < 4; _num++) {
+          if (player_copy[_num] == "" && writeFlag == 0) {
+            player_copy[_num] = tmp;
+            break;
+          }
+        }
+
+        this.setState({
+          playerTempai: player_copy
+        });
+      }
+
+      ;
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          children: ["\u5C40\u7D42\u4E86\u306E\u7A2E\u985E", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: ShowMessage.bind(this, "ロン"),
+            value: "\u30ED\u30F3"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: ShowMessage.bind(this, "ツモ"),
+            value: "\u30C4\u30E2"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: ShowMessage.bind(this, "流局"),
+            value: "\u6D41\u5C40"
+          }), this.state.kind]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: this.state.kind + "点数",
+          children: [this.state.han, "\u7FFB", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: CalcHan.bind(this, 1),
+            value: "\uFF0B"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: CalcHan.bind(this, -1),
+            value: "\u30FC"
+          }), this.state.hanError, this.state.fu, "\u7B26", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: CalcFu.bind(this, 10),
+            value: "\uFF0B"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: CalcFu.bind(this, -10),
+            value: "\u30FC"
+          }), this.state.fuError, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: CalcPoints.bind(this),
+            value: "\u8A08\u7B97"
+          }), this.state.pointsParent, this.state.pointsChild]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: this.state.kind + "FromTo",
+          children: ["\u300C", this.state.playerTo, "\u300D\u304C\u548C\u4E86", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerTo.bind(this, "Player1"),
+            value: "Player1"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerTo.bind(this, "Player2"),
+            value: "Player2"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerTo.bind(this, "Player3"),
+            value: "Player3"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerTo.bind(this, "Player4"),
+            value: "Player4"
+          }), "\u300C", this.state.playerFrom, "\u300D\u304C\u653E\u9283", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerFrom.bind(this, "Player1"),
+            value: "Player1"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerFrom.bind(this, "Player2"),
+            value: "Player2"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerFrom.bind(this, "Player3"),
+            value: "Player3"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerFrom.bind(this, "Player4"),
+            value: "Player4"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: this.state.kind + "Tsumo",
+          children: ["\u300C", this.state.playerTsumo, "\u300D\u304C\u548C\u4E86", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerTsumo.bind(this, "Player1"),
+            value: "Player1"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerTsumo.bind(this, "Player2"),
+            value: "Player2"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerTsumo.bind(this, "Player3"),
+            value: "Player3"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerTsumo.bind(this, "Player4"),
+            value: "Player4"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: this.state.kind + "Tempai",
+          children: ["\u30C6\u30F3\u30D1\u30A4\uFF1A", this.state.playerTempai, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerTempai.bind(this, "Player1"),
+            value: "Player1"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerTempai.bind(this, "Player2"),
+            value: "Player2"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerTempai.bind(this, "Player3"),
+            value: "Player3"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "button",
+            onClick: PlayerTempai.bind(this, "Player4"),
+            value: "Player4"
+          })]
+        })]
+      });
+    }
+  }]);
+
+  return ResultLayout;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ResultLayout);
+
+/***/ }),
+
+/***/ "./resources/js/components/oneResultDisplay/oneResultDisplay.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/oneResultDisplay/oneResultDisplay.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _ResultLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ResultLayout */ "./resources/js/components/oneResultDisplay/ResultLayout.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+
 var OneResultDisplay = /*#__PURE__*/function (_React$Component) {
   _inherits(OneResultDisplay, _React$Component);
 
@@ -2264,15 +2633,15 @@ var OneResultDisplay = /*#__PURE__*/function (_React$Component) {
   _createClass(OneResultDisplay, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        children: ["\u5C40\u7CBE\u7B97\u753B\u9762", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ResultLayout__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
           to: "/scoredisplay",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             children: "show scoreDisplay when you click this!!"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
           to: "/finishgame",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             children: "finish game when you click this!!"
           })
         })]
@@ -7286,6 +7655,30 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	} else {}
 }());
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/oneResultDisplay/OneResultDisplay.css":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/oneResultDisplay/OneResultDisplay.css ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".ロン点数 {\n  display:block\n}\n.ツモ点数 {\n  display:block\n}\n.流局点数 {\n  display:none\n}\n.選択点数 {\n  display:none\n}\n\n.ロンFromTo {\n  display:block\n}\n.ツモFromTo {\n  display:none\n}\n.流局FromTo {\n  display:none\n}\n.選択FromTo {\n  display:none\n}\n\n.ロンTsumo{\n  display:none\n}\n.ツモTsumo {\n  display:block\n}\n.流局Tsumo {\n  display:none\n}\n.選択Tsumo {\n  display:none\n}\n\n.ロンTempai{\n  display:none\n}\n.ツモTempai {\n  display:none\n}\n.流局Tempai {\n  display:block\n}\n.選択Tempai {\n  display:none\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
@@ -74380,6 +74773,36 @@ if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler-tracing.development.js */ "./node_modules/scheduler/cjs/scheduler-tracing.development.js");
 }
 
+
+/***/ }),
+
+/***/ "./resources/js/components/oneResultDisplay/OneResultDisplay.css":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/oneResultDisplay/OneResultDisplay.css ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_OneResultDisplay_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./OneResultDisplay.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/oneResultDisplay/OneResultDisplay.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_OneResultDisplay_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_OneResultDisplay_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 

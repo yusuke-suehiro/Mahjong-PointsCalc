@@ -14,13 +14,19 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-
+    <?php
+      include "../resources/views/DBget.php";
+    ?>
+    <script>
+      let pointsChild = <?php echo $json_Child?>;
+      let pointsParent = <?php echo $json_Parent?>;
+    </script>
         <main class="py-4">
             @yield('content')
         </main>
