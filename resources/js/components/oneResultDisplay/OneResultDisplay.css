@@ -1,0 +1,51 @@
+.ロン点数 {
+  display:block
+}
+.ツモ点数 {
+  display:block
+}
+.流局点数 {
+  display:none
+}
+.選択点数 {
+  display:none
+}
+
+.ロンFromTo {
+  display:block
+}
+.ツモFromTo {
+  display:none
+}
+.流局FromTo {
+  display:none
+}
+.選択FromTo {
+  display:none
+}
+
+.ロンTsumo{
+  display:none
+}
+.ツモTsumo {
+  display:block
+}
+.流局Tsumo {
+  display:none
+}
+.選択Tsumo {
+  display:none
+}
+
+.ロンTempai{
+  display:none
+}
+.ツモTempai {
+  display:none
+}
+.流局Tempai {
+  display:block
+}
+.選択Tempai {
+  display:none
+}
