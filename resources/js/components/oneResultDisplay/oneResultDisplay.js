@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
+import ResultLayout from "./ResultLayout"
 
 class OneResultDisplay extends React.Component{
   render(){
     return (
       <div>
-        局精算画面
+        <ResultLayout />
         <Link to="/scoredisplay">
           <button>
             show scoreDisplay when you click this!!
