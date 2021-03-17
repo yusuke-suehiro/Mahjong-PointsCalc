@@ -2890,13 +2890,13 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
       name: props.name,
       score: 25000
     };
-    _this.tmp = _this.tmp.bind(_assertThisInitialized(_this));
+    _this.pointsUpdate = _this.pointsUpdate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(EachPlayerScore, [{
-    key: "tmp",
-    value: function tmp(newScore) {
+    key: "pointsUpdate",
+    value: function pointsUpdate(newScore) {
       console.log("newScore:", newScore); // var tmp = childState.score
 
       this.setState({
@@ -2941,7 +2941,7 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               name: "\u5343",
               value: 1000,
               score: this.state.score,
-              myTmp: this.tmp
+              myTmp: this.pointsUpdate
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
             className: "score-operation",
@@ -2951,7 +2951,7 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               name: "\u767E",
               value: 100,
               score: this.state.score,
-              myTmp: this.tmp
+              myTmp: this.pointsUpdate
             })
           })]
         })
