@@ -6,16 +6,25 @@ class ScoreOperation extends React.Component{
 
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       name: props.name,
       value: props.value,
       score: props.score
     };
     this.addPoints = this.addPoints.bind(this)
+    this.subtractPoints = this.subtractPoints.bind(this)
   }
 
   addPoints(){
     var newScore = this.props.score + this.props.value
+    console.log("newScore:",newScore);
+    this.setState({ score: newScore});
+    console.log("child tmp:",this.state.score);
+    this.props.pointsUpdate(newScore);
+  };
+
+  subtractPoints(){
+    var newScore = this.props.score - this.props.value
     console.log("newScore:",newScore);
     this.setState({ score: newScore});
     console.log("child tmp:",this.state.score);
@@ -27,7 +36,6 @@ class ScoreOperation extends React.Component{
     // console.log(state)
     // console.log("child after:",this.state.score);
   }
-
 
   render(){
 
@@ -45,7 +53,8 @@ class ScoreOperation extends React.Component{
           </button>
         </Row>
         <Row>
-          <button className="minus-button">
+          <button className="minus-button"
+            onClick={this.subtractPoints}>
             -
           </button>
         </Row>

@@ -3195,6 +3195,7 @@ var ScoreOperation = /*#__PURE__*/function (_React$Component) {
       score: props.score
     };
     _this.addPoints = _this.addPoints.bind(_assertThisInitialized(_this));
+    _this.subtractPoints = _this.subtractPoints.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -3202,6 +3203,17 @@ var ScoreOperation = /*#__PURE__*/function (_React$Component) {
     key: "addPoints",
     value: function addPoints() {
       var newScore = this.props.score + this.props.value;
+      console.log("newScore:", newScore);
+      this.setState({
+        score: newScore
+      });
+      console.log("child tmp:", this.state.score);
+      this.props.pointsUpdate(newScore);
+    }
+  }, {
+    key: "subtractPoints",
+    value: function subtractPoints() {
+      var newScore = this.props.score - this.props.value;
       console.log("newScore:", newScore);
       this.setState({
         score: newScore
@@ -3234,6 +3246,7 @@ var ScoreOperation = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "minus-button",
+            onClick: this.subtractPoints,
             children: "-"
           })
         })]
