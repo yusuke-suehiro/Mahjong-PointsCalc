@@ -2897,18 +2897,16 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
   _createClass(EachPlayerScore, [{
     key: "pointsUpdate",
     value: function pointsUpdate(newScore) {
-      console.log("newScore:", newScore); // var tmp = childState.score
-
+      // console.log("newScore:",newScore);
+      // var tmp = childState.score
       this.setState({
         score: newScore
       }); // console.log("parent:",this.state.score);
-
-      console.log("parent:", this.state.score);
+      // console.log("parent:",this.state.score);
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      console.log("parent after:", this.state.score);
+    value: function componentDidUpdate() {// console.log("parent after:",this.state.score);
     }
   }, {
     key: "render",
@@ -3202,23 +3200,23 @@ var ScoreOperation = /*#__PURE__*/function (_React$Component) {
   _createClass(ScoreOperation, [{
     key: "addPoints",
     value: function addPoints() {
-      var newScore = this.props.score + this.props.value;
-      console.log("newScore:", newScore);
+      var newScore = this.props.score + this.props.value; // console.log("newScore:",newScore);
+
       this.setState({
         score: newScore
-      });
-      console.log("child tmp:", this.state.score);
+      }); // console.log("child tmp:",this.state.score);
+
       this.props.pointsUpdate(newScore);
     }
   }, {
     key: "subtractPoints",
     value: function subtractPoints() {
-      var newScore = this.props.score - this.props.value;
-      console.log("newScore:", newScore);
+      var newScore = this.props.score - this.props.value; // console.log("newScore:",newScore);
+
       this.setState({
         score: newScore
-      });
-      console.log("child tmp:", this.state.score);
+      }); // console.log("child tmp:",this.state.score);
+
       this.props.pointsUpdate(newScore);
     }
   }, {

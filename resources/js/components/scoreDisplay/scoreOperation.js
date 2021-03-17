@@ -17,17 +17,17 @@ class ScoreOperation extends React.Component{
 
   addPoints(){
     var newScore = this.props.score + this.props.value
-    console.log("newScore:",newScore);
+    // console.log("newScore:",newScore);
     this.setState({ score: newScore});
-    console.log("child tmp:",this.state.score);
+    // console.log("child tmp:",this.state.score);
     this.props.pointsUpdate(newScore);
   };
 
   subtractPoints(){
     var newScore = this.props.score - this.props.value
-    console.log("newScore:",newScore);
+    // console.log("newScore:",newScore);
     this.setState({ score: newScore});
-    console.log("child tmp:",this.state.score);
+    // console.log("child tmp:",this.state.score);
     this.props.pointsUpdate(newScore);
   };
 

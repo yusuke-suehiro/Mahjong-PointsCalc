@@ -15,15 +15,15 @@ class EachPlayerScore extends React.Component{
   }
 
   pointsUpdate(newScore){
-    console.log("newScore:",newScore);
+    // console.log("newScore:",newScore);
     // var tmp = childState.score
     this.setState({ score: newScore });
     // console.log("parent:",this.state.score);
-    console.log("parent:",this.state.score);
+    // console.log("parent:",this.state.score);
   };
   
   componentDidUpdate(){
-    console.log("parent after:",this.state.score);
+    // console.log("parent after:",this.state.score);
   }
 
   render(){
