@@ -3194,13 +3194,13 @@ var ScoreOperation = /*#__PURE__*/function (_React$Component) {
       value: props.value,
       score: props.score
     };
-    _this.tmp = _this.tmp.bind(_assertThisInitialized(_this));
+    _this.addPoints = _this.addPoints.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ScoreOperation, [{
-    key: "tmp",
-    value: function tmp() {
+    key: "addPoints",
+    value: function addPoints() {
       var newScore = this.props.score + this.props.value;
       console.log("newScore:", newScore);
       this.setState({
@@ -3228,7 +3228,7 @@ var ScoreOperation = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "plus-button",
-            onClick: this.tmp,
+            onClick: this.addPoints,
             children: "+"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {

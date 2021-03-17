@@ -11,10 +11,10 @@ class ScoreOperation extends React.Component{
       value: props.value,
       score: props.score
     };
-    this.tmp = this.tmp.bind(this)
+    this.addPoints = this.addPoints.bind(this)
   }
 
-  tmp(){
+  addPoints(){
     var newScore = this.props.score + this.props.value
     console.log("newScore:",newScore);
     this.setState({ score: newScore});
@@ -40,7 +40,7 @@ class ScoreOperation extends React.Component{
         </Row>
         <Row>
           <button className="plus-button"
-            onClick={this.tmp}>
+            onClick={this.addPoints}>
             +
           </button>
         </Row>
