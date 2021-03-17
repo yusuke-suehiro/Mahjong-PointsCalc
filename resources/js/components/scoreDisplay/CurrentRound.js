@@ -21,7 +21,6 @@ class CurrentRound extends React.Component{
   }
 
   render(){
-    const {round, handNumber, honnba, kyoutaku} = this.state;
 
     return(
       <div className="display-round-hand-area">

@@ -11,10 +11,23 @@ class EachPlayerScore extends React.Component{
       name: props.name,
       score: 25000
     };
+    this.tmp = this.tmp.bind(this)
   }
 
+  tmp(newScore){
+    console.log("newScore:",newScore);
+    // var tmp = childState.score
+    this.setState({ score: newScore });
+    // console.log("parent:",this.state.score);
+    console.log("parent:",this.state.score);
+  };
   
+  componentDidUpdate(){
+    console.log("parent after:",this.state.score);
+  }
+
   render(){
+
     return(
       <div>
         <Row>
@@ -30,11 +43,11 @@ class EachPlayerScore extends React.Component{
           </Col>
           <Col className="score-operation" xs={12} md={2}>
             <ScoreOperation name="千" value={1000} score={this.state.score} 
-              />
+              myTmp={this.tmp}/>
           </Col>
           <Col className="score-operation" xs={12} md={2}>
             <ScoreOperation name="百" value={100} score={this.state.score} 
-              />
+              myTmp={this.tmp}/>
           </Col>
         </Row>
       </div>

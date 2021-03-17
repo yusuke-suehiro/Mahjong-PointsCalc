@@ -1,7 +1,7 @@
 import React from 'react';
 import './scoreOperation.css'
 import {Container, Row, Col, Button} from "react-bootstrap";
-
+import PropTypes from 'prop-types';
 class ScoreOperation extends React.Component{
 
   constructor(props) {
@@ -11,6 +11,21 @@ class ScoreOperation extends React.Component{
       value: props.value,
       score: props.score
     };
+    this.tmp = this.tmp.bind(this)
+  }
+
+  tmp(){
+    var newScore = this.props.score + this.props.value
+    console.log("newScore:",newScore);
+    this.setState({ score: newScore});
+    console.log("child tmp:",this.state.score);
+    this.props.myTmp(newScore);
+  };
+
+  componentDidUpdate(props, state){
+    // console.log(props)
+    // console.log(state)
+    // console.log("child after:",this.state.score);
   }
 
 
@@ -25,7 +40,7 @@ class ScoreOperation extends React.Component{
         </Row>
         <Row>
           <button className="plus-button"
-            onClick={() => this.setState({ score: this.state.score + this.state.value })}>
+            onClick={this.tmp}>
             +
           </button>
         </Row>
@@ -38,5 +53,7 @@ class ScoreOperation extends React.Component{
     );
   }
 }
+
+
 
 export default ScoreOperation;

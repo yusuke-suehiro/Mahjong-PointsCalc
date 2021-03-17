@@ -21,6 +21,7 @@
         "lodash": "^4.17.19",
         "popper.js": "^1.12",
         "postcss": "^8.1.14",
+        "prop-types": "^15.7.2",
         "react": "^16.2.0",
         "react-bootstrap": "^1.5.2",
         "react-dom": "^16.2.0",

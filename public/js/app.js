@@ -2731,11 +2731,6 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var _this$state = this.state,
-          round = _this$state.round,
-          handNumber = _this$state.handNumber,
-          honnba = _this$state.honnba,
-          kyoutaku = _this$state.kyoutaku;
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "display-round-hand-area",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -2895,10 +2890,27 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
       name: props.name,
       score: 25000
     };
+    _this.tmp = _this.tmp.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(EachPlayerScore, [{
+    key: "tmp",
+    value: function tmp(newScore) {
+      console.log("newScore:", newScore); // var tmp = childState.score
+
+      this.setState({
+        score: newScore
+      }); // console.log("parent:",this.state.score);
+
+      console.log("parent:", this.state.score);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      console.log("parent after:", this.state.score);
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -2928,7 +2940,8 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_scoreOperation__WEBPACK_IMPORTED_MODULE_2__.default, {
               name: "\u5343",
               value: 1000,
-              score: this.state.score
+              score: this.state.score,
+              myTmp: this.tmp
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
             className: "score-operation",
@@ -2937,7 +2950,8 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_scoreOperation__WEBPACK_IMPORTED_MODULE_2__.default, {
               name: "\u767E",
               value: 100,
-              score: this.state.score
+              score: this.state.score,
+              myTmp: this.tmp
             })
           })]
         })
@@ -3131,8 +3145,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _scoreOperation_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scoreOperation.css */ "./resources/js/components/scoreDisplay/scoreOperation.css");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3161,6 +3177,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var ScoreOperation = /*#__PURE__*/function (_React$Component) {
   _inherits(ScoreOperation, _React$Component);
 
@@ -3177,33 +3194,45 @@ var ScoreOperation = /*#__PURE__*/function (_React$Component) {
       value: props.value,
       score: props.score
     };
+    _this.tmp = _this.tmp.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ScoreOperation, [{
+    key: "tmp",
+    value: function tmp() {
+      var newScore = this.props.score + this.props.value;
+      console.log("newScore:", newScore);
+      this.setState({
+        score: newScore
+      });
+      console.log("child tmp:", this.state.score);
+      this.props.myTmp(newScore);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(props, state) {// console.log(props)
+      // console.log(state)
+      // console.log("child after:",this.state.score);
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "score-operation-area",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "score-operation-button-name",
             children: this.state.name
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "plus-button",
-            onClick: function onClick() {
-              return _this2.setState({
-                score: _this2.state.score + _this2.state.value
-              });
-            },
+            onClick: this.tmp,
             children: "+"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "minus-button",
             children: "-"
           })
