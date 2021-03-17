@@ -19,7 +19,7 @@ class ScoreOperation extends React.Component{
     console.log("newScore:",newScore);
     this.setState({ score: newScore});
     console.log("child tmp:",this.state.score);
-    this.props.myTmp(newScore);
+    this.props.pointsUpdate(newScore);
   };
 
   componentDidUpdate(props, state){

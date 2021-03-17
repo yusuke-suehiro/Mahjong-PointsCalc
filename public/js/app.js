@@ -2941,7 +2941,7 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               name: "\u5343",
               value: 1000,
               score: this.state.score,
-              myTmp: this.pointsUpdate
+              pointsUpdate: this.pointsUpdate
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
             className: "score-operation",
@@ -2951,7 +2951,7 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               name: "\u767E",
               value: 100,
               score: this.state.score,
-              myTmp: this.pointsUpdate
+              pointsUpdate: this.pointsUpdate
             })
           })]
         })
@@ -3207,7 +3207,7 @@ var ScoreOperation = /*#__PURE__*/function (_React$Component) {
         score: newScore
       });
       console.log("child tmp:", this.state.score);
-      this.props.myTmp(newScore);
+      this.props.pointsUpdate(newScore);
     }
   }, {
     key: "componentDidUpdate",

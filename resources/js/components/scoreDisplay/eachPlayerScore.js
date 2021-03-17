@@ -43,11 +43,11 @@ class EachPlayerScore extends React.Component{
           </Col>
           <Col className="score-operation" xs={12} md={2}>
             <ScoreOperation name="千" value={1000} score={this.state.score} 
-              myTmp={this.pointsUpdate}/>
+              pointsUpdate={this.pointsUpdate}/>
           </Col>
           <Col className="score-operation" xs={12} md={2}>
             <ScoreOperation name="百" value={100} score={this.state.score} 
-              myTmp={this.pointsUpdate}/>
+              pointsUpdate={this.pointsUpdate}/>
           </Col>
         </Row>
       </div>
