@@ -5,6 +5,7 @@ import ScoreDisplay from "./scoreDisplay/scoreDisplay"
 import OneResultDisplay from "./oneResultDisplay/oneResultDisplay"
 import FinishGame from "./finishGame/finishGame"
 import PropTypes from 'prop-types';
+import inputName from './inputNameScreen/inputName';
 
 class PageZero extends React.Component{
   render(){
@@ -48,7 +49,7 @@ class App extends React.Component{
       <div>
         <BrowserRouter>
           <div>
-            <Route path="/" exact component={PageZero} />
+            <Route path="/" exact component={inputName} />
             <Route path="/scoredisplay" render={() => <ScoreDisplay pointInfo={this.state.pointInfo}/>}/>
             <Route path="/oneresultdisplay" render={() => <OneResultDisplay dataPoint={(point) => { this.pointFromTo(point); }}/>}/>
             <Route path="/finishgame" component={FinishGame}/>
