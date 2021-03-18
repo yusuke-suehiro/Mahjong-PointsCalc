@@ -2303,10 +2303,10 @@ var inputName = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       playerNames: {
-        player1: '',
-        player2: '',
-        player3: '',
-        player4: ''
+        East: '',
+        South: '',
+        West: '',
+        North: ''
       }
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
@@ -2321,6 +2321,7 @@ var inputName = /*#__PURE__*/function (_React$Component) {
       var eachPlayerName = e.target.name; // フォームのname属性を取得 
 
       data[eachPlayerName] = e.target.value;
+      console.log(data);
       this.setState({
         playerNames: data
       }); // name属性 = stateのkey名なのでstateに保存
@@ -2331,29 +2332,29 @@ var inputName = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         children: ["\u30D7\u30EC\u30A4\u30E4\u30FC\u540D\u5165\u529B\u753B\u9762", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "player-name",
-          children: ["\u30D7\u30EC\u30A4\u30E4\u30FC1\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            name: "player1",
+          children: ["\u6771\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            name: "East",
             value: this.state.value,
             onChange: this.handleChange
           })]
         }), this.state.playerNames.player1, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "player-name",
-          children: ["\u30D7\u30EC\u30A4\u30E4\u30FC2\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            name: "player2",
+          children: ["\u5357\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            name: "South",
             value: this.state.value,
             onChange: this.handleChange
           })]
         }), this.state.playerNames.player2, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "player-name",
-          children: ["\u30D7\u30EC\u30A4\u30E4\u30FC3\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            name: "player3",
+          children: ["\u897F\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            name: "West",
             value: this.state.value,
             onChange: this.handleChange
           })]
         }), this.state.playerNames.player3, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "player-name",
-          children: ["\u30D7\u30EC\u30A4\u30E4\u30FC4\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            name: "player4",
+          children: ["\u5317\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            name: "North",
             value: this.state.value,
             onChange: this.handleChange
           })]

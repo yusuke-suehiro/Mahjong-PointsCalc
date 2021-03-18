@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 class inputName extends React.Component{
 
   constructor(props) {
     super(props);
     this.state = {
       playerNames: {
-        player1: '',
-        player2: '',
-        player3: '',
-        player4: '',
+        East: '',
+        South: '',
+        West: '',
+        North: '',
       },
     }
     this.handleChange = this.handleChange.bind(this)
@@ -20,8 +19,8 @@ class inputName extends React.Component{
     var data = this.state.playerNames//現在の値を予め取得しておく
     let eachPlayerName = e.target.name; // フォームのname属性を取得 
     data[eachPlayerName] = e.target.value;
+    console.log(data)
     this.setState({playerNames: data}) // name属性 = stateのkey名なのでstateに保存
-
   }
 
   render(){
@@ -29,23 +28,23 @@ class inputName extends React.Component{
       <div>
         プレイヤー名入力画面
         <div className="player-name">
-          プレイヤー1：
-          <input name="player1" value={this.state.value} onChange={this.handleChange} />
+          東：
+          <input name="East" value={this.state.value} onChange={this.handleChange} />
         </div>
         {this.state.playerNames.player1}
         <div className="player-name">
-          プレイヤー2：
-          <input name="player2" value={this.state.value} onChange={this.handleChange} />
+          南：
+          <input name="South" value={this.state.value} onChange={this.handleChange} />
         </div>
         {this.state.playerNames.player2}
         <div className="player-name">
-          プレイヤー3：
-          <input name="player3" value={this.state.value} onChange={this.handleChange} />
+          西：
+          <input name="West" value={this.state.value} onChange={this.handleChange} />
         </div>
         {this.state.playerNames.player3}
         <div className="player-name">
-          プレイヤー4：
-          <input name="player4" value={this.state.value} onChange={this.handleChange} />
+          北：
+          <input name="North" value={this.state.value} onChange={this.handleChange} />
         </div>
         {this.state.playerNames.player4}
         <Link to="/scoredisplay">
