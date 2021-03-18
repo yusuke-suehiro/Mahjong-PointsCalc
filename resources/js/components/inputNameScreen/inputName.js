@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link , withRouter } from 'react-router-dom';
+
 class inputName extends React.Component{
 
   constructor(props) {
@@ -13,14 +14,23 @@ class inputName extends React.Component{
       },
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleChange (e) {
     var data = this.state.playerNames//現在の値を予め取得しておく
     let eachPlayerName = e.target.name; // フォームのname属性を取得 
     data[eachPlayerName] = e.target.value;
-    console.log(data)
     this.setState({playerNames: data}) // name属性 = stateのkey名なのでstateに保存
+  }
+
+  handleClick(){
+    console.log("te")
+    console.log(this.props)
+    this.props.history.push({
+      pathname: "/scoredisplay",
+      state: { playerNames: this.state.playerNames }
+    });
   }
 
   render(){
@@ -47,14 +57,14 @@ class inputName extends React.Component{
           <input name="North" value={this.state.value} onChange={this.handleChange} />
         </div>
         {this.state.playerNames.player4}
-        <Link to="/scoredisplay">
-          <button >
+        {/* <Link to="/scoredisplay"> */}
+          <button onClick={this.handleClick}>
             ゲーム開始！
-        </button>
-        </Link>
+          </button>
+        {/* </Link> */}
       </div>
     );
   }
 }
 
-export default inputName;
+export default withRouter(inputName);

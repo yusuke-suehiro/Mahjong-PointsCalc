@@ -2261,7 +2261,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -2310,6 +2310,7 @@ var inputName = /*#__PURE__*/function (_React$Component) {
       }
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2321,10 +2322,21 @@ var inputName = /*#__PURE__*/function (_React$Component) {
       var eachPlayerName = e.target.name; // フォームのname属性を取得 
 
       data[eachPlayerName] = e.target.value;
-      console.log(data);
       this.setState({
         playerNames: data
       }); // name属性 = stateのkey名なのでstateに保存
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick() {
+      console.log("te");
+      console.log(this.props);
+      this.props.history.push({
+        pathname: "/scoredisplay",
+        state: {
+          playerNames: this.state.playerNames
+        }
+      });
     }
   }, {
     key: "render",
@@ -2358,11 +2370,9 @@ var inputName = /*#__PURE__*/function (_React$Component) {
             value: this.state.value,
             onChange: this.handleChange
           })]
-        }), this.state.playerNames.player4, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-          to: "/scoredisplay",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            children: "\u30B2\u30FC\u30E0\u958B\u59CB\uFF01"
-          })
+        }), this.state.playerNames.player4, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          onClick: this.handleClick,
+          children: "\u30B2\u30FC\u30E0\u958B\u59CB\uFF01"
         })]
       });
     }
@@ -2371,7 +2381,7 @@ var inputName = /*#__PURE__*/function (_React$Component) {
   return inputName;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (inputName);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.withRouter)(inputName));
 
 /***/ }),
 
@@ -2909,9 +2919,6 @@ var OneResultDisplay = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
           to: "/scoredisplay",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            onClick: function onClick() {
-              _this2.clickButton(_this2.state.pointInfo);
-            },
             children: "show scoreDisplay when you click this!!"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
@@ -3311,7 +3318,9 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ScoreDisplay);
 
     _this = _super.call(this, props);
+    console.log(_this.props.history);
     _this.state = {
+      playerName: props.playerNames,
       startingPlayer: "A",
       player1: "player1",
       player2: "player2",
@@ -3326,7 +3335,7 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "score-display-area",
-        children: ["\u70B9\u6570\u8868\u793A\u753B\u9762", this.props.pointInfo.kind, this.props.pointInfo.ronFrom, this.props.pointInfo.ronTo, this.props.pointInfo.tsumoWho, this.props.pointInfo.ronParent, this.props.pointInfo.ronChild, this.props.pointInfo.tsumoALL, this.props.pointInfo.tsumoParent, this.props.pointInfo.tsumoChild, this.props.pointInfo.tempaiWho, this.props.pointInfo.tempaiNum, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+        children: ["\u70B9\u6570\u8868\u793A\u753B\u9762", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), "aaa:", this.state.player1, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
           to: "/oneResultDisplay",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
             children: "show OneResultDisplay when you click this!!"
