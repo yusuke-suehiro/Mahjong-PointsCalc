@@ -1,6 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './CurrentRound.css'
 import {Container, Row, Col, Button} from "react-bootstrap";
+
+const plusButtonClicked =(e,props)=> {
+  console.log(props,e);
+}
+
+const initialState = 0;
 
 class CurrentRound extends React.Component{
 
@@ -8,13 +14,14 @@ class CurrentRound extends React.Component{
     super(props);
     this.state = { 
       round : "東",
-      handNumber: "1",
-      honnba: "1",
-      kyoutaku: "2"
+      handNumber: 0,
+      honnba: 0,
+      kyoutaku: 0
     };
   }
 
   render(){
+
     return(
       <div className="display-round-hand-area">
         <div className="round">{this.state.round}</div>
@@ -28,12 +35,14 @@ class CurrentRound extends React.Component{
           </Col>
           <Col xs={12} md={2}>
             <Row>
-              <button className="plus-button">
+              <button className="plus-button" 
+                onClick={() => this.setState({ honnba: this.state.honnba + 1 })}>
                 +
               </button>
             </Row>
             <Row>
-              <button className="minus-button">
+              <button className="minus-button" 
+                onClick={() => this.setState({ honnba: this.state.honnba - 1 >= 0 ? this.state.honnba - 1 : 0})}>
                 -
               </button>
             </Row>
@@ -47,12 +56,14 @@ class CurrentRound extends React.Component{
           </Col>
           <Col xs={12} md={2}>
             <Row>
-              <button className="plus-button">
+              <button className="plus-button" 
+                onClick={() => this.setState({ kyoutaku: this.state.kyoutaku + 1 })}>
                 +
               </button>
             </Row>
             <Row>
-              <button className="minus-button">
+              <button className="minus-button"
+                onClick={() => this.setState({ kyoutaku: this.state.kyoutaku - 1 >= 0 ? this.state.kyoutaku - 1 : 0})}>
                 -
               </button>
             </Row>

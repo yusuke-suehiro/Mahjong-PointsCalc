@@ -2700,6 +2700,12 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var plusButtonClicked = function plusButtonClicked(e, props) {
+  console.log(props, e);
+};
+
+var initialState = 0;
+
 var CurrentRound = /*#__PURE__*/function (_React$Component) {
   _inherits(CurrentRound, _React$Component);
 
@@ -2713,9 +2719,9 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       round: "東",
-      handNumber: "1",
-      honnba: "1",
-      kyoutaku: "2"
+      handNumber: 0,
+      honnba: 0,
+      kyoutaku: 0
     };
     return _this;
   }
@@ -2723,6 +2729,8 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
   _createClass(CurrentRound, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "display-round-hand-area",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -2752,11 +2760,21 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 className: "plus-button",
+                onClick: function onClick() {
+                  return _this2.setState({
+                    honnba: _this2.state.honnba + 1
+                  });
+                },
                 children: "+"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 className: "minus-button",
+                onClick: function onClick() {
+                  return _this2.setState({
+                    honnba: _this2.state.honnba - 1 >= 0 ? _this2.state.honnba - 1 : 0
+                  });
+                },
                 children: "-"
               })
             })]
@@ -2780,11 +2798,21 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 className: "plus-button",
+                onClick: function onClick() {
+                  return _this2.setState({
+                    kyoutaku: _this2.state.kyoutaku + 1
+                  });
+                },
                 children: "+"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 className: "minus-button",
+                onClick: function onClick() {
+                  return _this2.setState({
+                    kyoutaku: _this2.state.kyoutaku - 1 >= 0 ? _this2.state.kyoutaku - 1 : 0
+                  });
+                },
                 children: "-"
               })
             })]
@@ -2852,13 +2880,35 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(EachPlayerScore);
 
-  function EachPlayerScore() {
+  function EachPlayerScore(props) {
+    var _this;
+
     _classCallCheck(this, EachPlayerScore);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      name: props.name,
+      score: 25000
+    };
+    _this.pointsUpdate = _this.pointsUpdate.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(EachPlayerScore, [{
+    key: "pointsUpdate",
+    value: function pointsUpdate(newScore) {
+      // console.log("newScore:",newScore);
+      // var tmp = childState.score
+      this.setState({
+        score: newScore
+      }); // console.log("parent:",this.state.score);
+      // console.log("parent:",this.state.score);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {// console.log("parent after:",this.state.score);
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -2872,12 +2922,12 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                 className: "player-name",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-                  children: "name"
+                  children: this.state.name
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                 className: "player-score",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-                  children: "score"
+                  children: this.state.score
                 })
               })]
             })
@@ -2886,14 +2936,20 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
             xs: 12,
             md: 2,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_scoreOperation__WEBPACK_IMPORTED_MODULE_2__.default, {
-              name: "\u5343"
+              name: "\u5343",
+              value: 1000,
+              score: this.state.score,
+              pointsUpdate: this.pointsUpdate
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
             className: "score-operation",
             xs: 12,
             md: 2,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_scoreOperation__WEBPACK_IMPORTED_MODULE_2__.default, {
-              name: "\u767E"
+              name: "\u767E",
+              value: 100,
+              score: this.state.score,
+              pointsUpdate: this.pointsUpdate
             })
           })]
         })
@@ -2961,9 +3017,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var styles = {
-  border: '3px solid green'
-};
 
 var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
   _inherits(ScoreDisplay, _React$Component);
@@ -2977,7 +3030,11 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      startingPlayer: "A"
+      startingPlayer: "A",
+      player1: "player1",
+      player2: "player2",
+      player3: "player3",
+      player4: "player4"
     };
     return _this;
   }
@@ -3001,7 +3058,9 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
             className: "area",
             xs: 12,
             md: 4,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__.default, {
+              name: this.state.player1
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
             className: "area",
             xs: 12,
@@ -3017,7 +3076,9 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
             className: "area",
             xs: 12,
             md: 4,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__.default, {
+              name: this.state.player2
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
             className: "area",
             xs: 12,
@@ -3027,7 +3088,9 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
             className: "area",
             xs: 12,
             md: 4,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__.default, {
+              name: this.state.player4
+            })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__.default, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
@@ -3042,7 +3105,9 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
             className: "area",
             xs: 12,
             md: 4,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__.default, {
+              name: this.state.player3
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
             className: "update-button-area",
             xs: 12,
@@ -3078,8 +3143,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _scoreOperation_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scoreOperation.css */ "./resources/js/components/scoreDisplay/scoreOperation.css");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3108,6 +3175,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var ScoreOperation = /*#__PURE__*/function (_React$Component) {
   _inherits(ScoreOperation, _React$Component);
 
@@ -3120,29 +3188,63 @@ var ScoreOperation = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      name: props.name
+      name: props.name,
+      value: props.value,
+      score: props.score
     };
+    _this.addPoints = _this.addPoints.bind(_assertThisInitialized(_this));
+    _this.subtractPoints = _this.subtractPoints.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ScoreOperation, [{
+    key: "addPoints",
+    value: function addPoints() {
+      var newScore = this.props.score + this.props.value; // console.log("newScore:",newScore);
+
+      this.setState({
+        score: newScore
+      }); // console.log("child tmp:",this.state.score);
+
+      this.props.pointsUpdate(newScore);
+    }
+  }, {
+    key: "subtractPoints",
+    value: function subtractPoints() {
+      var newScore = this.props.score - this.props.value; // console.log("newScore:",newScore);
+
+      this.setState({
+        score: newScore
+      }); // console.log("child tmp:",this.state.score);
+
+      this.props.pointsUpdate(newScore);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(props, state) {// console.log(props)
+      // console.log(state)
+      // console.log("child after:",this.state.score);
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "score-operation-area",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "score-operation-button-name",
             children: this.state.name
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "plus-button",
+            onClick: this.addPoints,
             children: "+"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "minus-button",
+            onClick: this.subtractPoints,
             children: "-"
           })
         })]
