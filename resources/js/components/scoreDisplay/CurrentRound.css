@@ -1,0 +1,28 @@
+.display-round-hand-area {
+  margin: auto;
+  font-size: 30px;
+}
+
+.round {
+  text-align: center;
+  background-color: chartreuse;
+  margin-bottom: 3px;
+}
+
+.hand {
+  text-align: center;
+  background-color: cyan;
+}
+
+.text {
+  text-align: center;
+  font-size: 40px;
+  margin: auto;
+  writing-mode: vertical-rl;
+}
+
+.text-number {
+  text-align: center;
+  font-size: 30px;
+  margin: auto;
+}

@@ -1,0 +1,46 @@
+button{
+  width: 95%;
+  margin: 5px;
+}
+
+.area {
+  padding-right: 10px;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.score-display-area {
+  width: 95%;
+  padding: 3px;
+  margin: auto;
+}
+
+.display-starting-player {
+  margin: auto;
+  vertical-align: middle;
+  font-size: 30px;
+}
+
+
+.reset-button-area {
+  margin: auto;
+}
+
+.reset-score-button {
+  text-align: center;
+  font-size: 30px;
+  margin: auto;
+  padding: 5px;
+}
+
+.update-button-area {
+  margin: auto;
+}
+
+.update-score-button {
+  text-align: center;
+  font-size: 30px;
+  margin: auto;
+  padding: 5px;
+}
