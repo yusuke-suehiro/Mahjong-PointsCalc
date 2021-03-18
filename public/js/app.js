@@ -2265,8 +2265,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -2318,13 +2316,13 @@ var inputName = /*#__PURE__*/function (_React$Component) {
   _createClass(inputName, [{
     key: "handleChange",
     value: function handleChange(e) {
-      // console.log(e.target.name)
-      // console.log(e.target.value)
-      var eachPlayerName = e.target.name; // フォームのname属性を取得 
-      // console.log({playerName:{[name]: e.target.value}})
+      var data = this.state.playerName; //現在の値を予め取得しておく
 
+      var eachPlayerName = e.target.name; // フォームのname属性を取得 
+
+      data[eachPlayerName] = e.target.value;
       this.setState({
-        playerName: _defineProperty({}, eachPlayerName, e.target.value)
+        playerName: data
       }); // name属性 = stateのkey名なのでstateに保存
     }
   }, {
@@ -2345,21 +2343,21 @@ var inputName = /*#__PURE__*/function (_React$Component) {
             value: this.state.value,
             onChange: this.handleChange
           })]
-        }), this.state.player2, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        }), this.state.playerName.player2, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "player-name",
           children: ["\u30D7\u30EC\u30A4\u30E4\u30FC3\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             name: "player3",
             value: this.state.value,
             onChange: this.handleChange
           })]
-        }), this.state.player3, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        }), this.state.playerName.player3, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "player-name",
           children: ["\u30D7\u30EC\u30A4\u30E4\u30FC4\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             name: "player4",
             value: this.state.value,
             onChange: this.handleChange
           })]
-        }), this.state.player4, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+        }), this.state.playerName.player4, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
           to: "/scoredisplay",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
             children: "\u30B2\u30FC\u30E0\u958B\u59CB\uFF01"

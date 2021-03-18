@@ -17,11 +17,10 @@ class inputName extends React.Component{
   }
 
   handleChange (e) {
-    // console.log(e.target.name)
-    // console.log(e.target.value)
+    var data = this.state.playerName//現在の値を予め取得しておく
     let eachPlayerName = e.target.name; // フォームのname属性を取得 
-    // console.log({playerName:{[name]: e.target.value}})
-    this.setState({playerName:{[eachPlayerName]: e.target.value}}) // name属性 = stateのkey名なのでstateに保存
+    data[eachPlayerName] = e.target.value;
+    this.setState({playerName: data}) // name属性 = stateのkey名なのでstateに保存
   }
 
   render(){
@@ -37,17 +36,17 @@ class inputName extends React.Component{
           プレイヤー2：
           <input name="player2" value={this.state.value} onChange={this.handleChange} />
         </div>
-        {this.state.player2}
+        {this.state.playerName.player2}
         <div className="player-name">
           プレイヤー3：
           <input name="player3" value={this.state.value} onChange={this.handleChange} />
         </div>
-        {this.state.player3}
+        {this.state.playerName.player3}
         <div className="player-name">
           プレイヤー4：
           <input name="player4" value={this.state.value} onChange={this.handleChange} />
         </div>
-        {this.state.player4}
+        {this.state.playerName.player4}
         <Link to="/scoredisplay">
           <button >
             ゲーム開始！
