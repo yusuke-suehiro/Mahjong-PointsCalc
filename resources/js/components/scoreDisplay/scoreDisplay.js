@@ -11,7 +11,7 @@ class ScoreDisplay extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       startingPlayer: "A",
       player1: "player1",
       player2: "player2",
@@ -24,6 +24,18 @@ class ScoreDisplay extends React.Component {
     return (
       <div className="score-display-area">
         点数表示画面
+        {this.props.pointInfo.kind}
+        {this.props.pointInfo.ronFrom}
+        {this.props.pointInfo.ronTo}
+        {this.props.pointInfo.tsumoWho}
+        {this.props.pointInfo.ronParent}
+        {this.props.pointInfo.ronChild}
+        {this.props.pointInfo.tsumoALL}
+        {this.props.pointInfo.tsumoParent}
+        {this.props.pointInfo.tsumoChild}
+        {this.props.pointInfo.tempaiWho}
+        {this.props.pointInfo.tempaiNum}
+
         <Link to="/oneResultDisplay">
           <button>
             show OneResultDisplay when you click this!!

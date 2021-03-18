@@ -2016,12 +2016,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _scoreDisplay_scoreDisplay__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scoreDisplay/scoreDisplay */ "./resources/js/components/scoreDisplay/scoreDisplay.js");
 /* harmony import */ var _oneResultDisplay_oneResultDisplay__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./oneResultDisplay/oneResultDisplay */ "./resources/js/components/oneResultDisplay/oneResultDisplay.js");
 /* harmony import */ var _finishGame_finishGame__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./finishGame/finishGame */ "./resources/js/components/finishGame/finishGame.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2053,6 +2055,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var PageZero = /*#__PURE__*/function (_React$Component) {
   _inherits(PageZero, _React$Component);
 
@@ -2067,10 +2070,10 @@ var PageZero = /*#__PURE__*/function (_React$Component) {
   _createClass(PageZero, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        children: ["\u753B\u97620", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        children: ["\u753B\u97620", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
           to: "/scoredisplay",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
             children: "show scoreDisplay when you click this!!"
           })
         })]
@@ -2088,29 +2091,66 @@ var App = /*#__PURE__*/function (_React$Component2) {
 
   var _super2 = _createSuper(App);
 
-  function App() {
+  function App(props) {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _super2.apply(this, arguments);
+    _this = _super2.call(this, props);
+    _this.state = {
+      pointInfo: {
+        kind: '',
+        ronFrom: '',
+        ronTo: '',
+        tsumoWho: '',
+        ronParent: '',
+        ronChild: '',
+        tsumoALL: '',
+        tsumoParent: '',
+        tsumoChild: '',
+        tempaiWho: '',
+        tempaiNum: ''
+      }
+    };
+    return _this;
   }
 
   _createClass(App, [{
+    key: "pointFromTo",
+    value: function pointFromTo(point) {
+      this.setState({
+        pointInfo: point
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.BrowserRouter, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+      var _this2 = this;
+
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.BrowserRouter, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
               path: "/",
               exact: true,
               component: PageZero
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
               path: "/scoredisplay",
-              component: _scoreDisplay_scoreDisplay__WEBPACK_IMPORTED_MODULE_2__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+              render: function render() {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_scoreDisplay_scoreDisplay__WEBPACK_IMPORTED_MODULE_2__.default, {
+                  pointInfo: _this2.state.pointInfo
+                });
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
               path: "/oneresultdisplay",
-              component: _oneResultDisplay_oneResultDisplay__WEBPACK_IMPORTED_MODULE_3__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+              render: function render() {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_oneResultDisplay_oneResultDisplay__WEBPACK_IMPORTED_MODULE_3__.default, {
+                  dataPoint: function dataPoint(point) {
+                    _this2.pointFromTo(point);
+                  }
+                });
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
               path: "/finishgame",
               component: _finishGame_finishGame__WEBPACK_IMPORTED_MODULE_4__.default
             })]
@@ -2127,7 +2167,7 @@ var App = /*#__PURE__*/function (_React$Component2) {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
 if (document.getElementById('app')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(App, {}), document.getElementById('app'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(App, {}), document.getElementById('app'));
 }
 
 /***/ }),
@@ -2221,7 +2261,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _OneResultDisplay_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OneResultDisplay.css */ "./resources/js/components/oneResultDisplay/OneResultDisplay.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2251,6 +2293,10 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var propTypes = {
+  dataPoint: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func)
+};
+
 var ResultLayout = /*#__PURE__*/function (_React$Component) {
   _inherits(ResultLayout, _React$Component);
 
@@ -2272,6 +2318,7 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
       playerTo: "Player1",
       playerTsumo: "Player1",
       playerTempai: ["", "", "", ""],
+      numTempai: 0,
       pointsParent: "",
       pointsChild: ""
     };
@@ -2279,6 +2326,11 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(ResultLayout, [{
+    key: "clickButton",
+    value: function clickButton() {
+      return this.props.dataHoge();
+    }
+  }, {
     key: "render",
     value: function render() {
       function ShowMessage(whatKind) {
@@ -2346,6 +2398,19 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
       ;
       var ChildPoints = pointsChild;
       var ParentPoints = pointsParent;
+      var pointArray = {
+        kind: '',
+        ronFrom: '',
+        ronTo: '',
+        tsumoWho: '',
+        ronParent: '',
+        ronChild: '',
+        tsumoALL: '',
+        tsumoParent: '',
+        tsumoChild: '',
+        tempaiWho: '',
+        tempaiNum: ''
+      };
 
       function CalcPoints() {
         var AnsNum = 0;
@@ -2389,6 +2454,11 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
           this.setState({
             pointsChild: "子：" + ChildPoints[AnsNum][3]
           });
+          pointArray.kind = this.state.kind;
+          pointArray.ronTo = this.state.playerTo;
+          pointArray.ronFrom = this.state.playerFrom;
+          pointArray.ronParent = ParentPoints[AnsNum][3];
+          pointArray.ronChild = ChildPoints[AnsNum][3];
         } else if (this.state.kind == "ツモ") {
           this.setState({
             pointsParent: "親：" + ParentPoints[AnsNum][4] + "ALL"
@@ -2396,7 +2466,29 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
           this.setState({
             pointsChild: "子：" + ChildPoints[AnsNum][4] + "-" + ChildPoints[AnsNum][5]
           });
+          pointArray.kind = this.state.kind;
+          pointArray.tsumoWho = this.state.playerTsumo;
+          pointArray.tsumoALL = ParentPoints[AnsNum][4];
+          pointArray.tsumoParent = ChildPoints[AnsNum][4];
+          pointArray.tsumoChild = ChildPoints[AnsNum][5];
+        } else {
+          pointArray.kind = this.state.kind;
+          pointArray.tempaiWho = this.state.playerTempai;
+          var count = 0;
+
+          for (var num = 0; num < 4; num++) {
+            if (this.state.playerTempai[num] != "") {
+              count = count + 1;
+            }
+          }
+
+          this.setState({
+            numTempai: count
+          });
+          pointArray.tempaiNum = count;
         }
+
+        return this.props.dataPoint(pointArray);
       }
 
       ;
@@ -2451,116 +2543,125 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
       }
 
       ;
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          children: ["\u5C40\u7D42\u4E86\u306E\u7A2E\u985E", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+
+      function clickButton(point) {
+        return this.props.dataPoint(point);
+      }
+
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          children: ["\u5C40\u7D42\u4E86\u306E\u7A2E\u985E", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: ShowMessage.bind(this, "ロン"),
             value: "\u30ED\u30F3"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: ShowMessage.bind(this, "ツモ"),
             value: "\u30C4\u30E2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: ShowMessage.bind(this, "流局"),
             value: "\u6D41\u5C40"
           }), this.state.kind]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: this.state.kind + "点数",
-          children: [this.state.han, "\u7FFB", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          children: [this.state.han, "\u7FFB", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: CalcHan.bind(this, 1),
             value: "\uFF0B"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: CalcHan.bind(this, -1),
             value: "\u30FC"
-          }), this.state.hanError, this.state.fu, "\u7B26", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), this.state.hanError, this.state.fu, "\u7B26", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: CalcFu.bind(this, 10),
             value: "\uFF0B"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: CalcFu.bind(this, -10),
             value: "\u30FC"
-          }), this.state.fuError, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), this.state.fuError, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: CalcPoints.bind(this),
             value: "\u8A08\u7B97"
           }), this.state.pointsParent, this.state.pointsChild]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: this.state.kind + "FromTo",
-          children: ["\u300C", this.state.playerTo, "\u300D\u304C\u548C\u4E86", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          children: ["\u300C", this.state.playerTo, "\u300D\u304C\u548C\u4E86", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerTo.bind(this, "Player1"),
             value: "Player1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerTo.bind(this, "Player2"),
             value: "Player2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerTo.bind(this, "Player3"),
             value: "Player3"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerTo.bind(this, "Player4"),
             value: "Player4"
-          }), "\u300C", this.state.playerFrom, "\u300D\u304C\u653E\u9283", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), "\u300C", this.state.playerFrom, "\u300D\u304C\u653E\u9283", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerFrom.bind(this, "Player1"),
             value: "Player1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerFrom.bind(this, "Player2"),
             value: "Player2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerFrom.bind(this, "Player3"),
             value: "Player3"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerFrom.bind(this, "Player4"),
             value: "Player4"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: this.state.kind + "Tsumo",
-          children: ["\u300C", this.state.playerTsumo, "\u300D\u304C\u548C\u4E86", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          children: ["\u300C", this.state.playerTsumo, "\u300D\u304C\u548C\u4E86", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerTsumo.bind(this, "Player1"),
             value: "Player1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerTsumo.bind(this, "Player2"),
             value: "Player2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerTsumo.bind(this, "Player3"),
             value: "Player3"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerTsumo.bind(this, "Player4"),
             value: "Player4"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: this.state.kind + "Tempai",
-          children: ["\u30C6\u30F3\u30D1\u30A4\uFF1A", this.state.playerTempai, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          children: ["\u30C6\u30F3\u30D1\u30A4\uFF1A", this.state.playerTempai, ",", this.state.numTempai, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerTempai.bind(this, "Player1"),
             value: "Player1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerTempai.bind(this, "Player2"),
             value: "Player2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerTempai.bind(this, "Player3"),
             value: "Player3"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             type: "button",
             onClick: PlayerTempai.bind(this, "Player4"),
             value: "Player4"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            type: "button",
+            onClick: CalcPoints.bind(this),
+            value: "\u8A08\u7B97"
           })]
         })]
       });
@@ -2570,6 +2671,7 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
   return ResultLayout;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
+ResultLayout.propTypes = propTypes;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ResultLayout);
 
 /***/ }),
@@ -2587,9 +2689,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _ResultLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ResultLayout */ "./resources/js/components/oneResultDisplay/ResultLayout.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2619,29 +2723,75 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var propTypes = {
+  dataPoint: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func)
+};
+
 var OneResultDisplay = /*#__PURE__*/function (_React$Component) {
   _inherits(OneResultDisplay, _React$Component);
 
   var _super = _createSuper(OneResultDisplay);
 
-  function OneResultDisplay() {
+  function OneResultDisplay(props) {
+    var _this;
+
     _classCallCheck(this, OneResultDisplay);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      pointInfo: {
+        kind: '',
+        ronFrom: '',
+        ronTo: '',
+        tsumoWho: '',
+        ronParent: '',
+        ronChild: '',
+        tsumoALL: '',
+        tsumoParent: '',
+        tsumoChild: '',
+        tempaiWho: '',
+        tempaiNum: ''
+      }
+    };
+    return _this;
   }
 
   _createClass(OneResultDisplay, [{
+    key: "clickButton",
+    value: function clickButton(point) {
+      return this.props.dataPoint(point);
+    }
+  }, {
+    key: "pointFromTo",
+    value: function pointFromTo(point) {
+      this.setState({
+        pointInfo: point
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ResultLayout__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+      var _this2 = this;
+
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ResultLayout__WEBPACK_IMPORTED_MODULE_2__.default, {
+          dataPoint: function dataPoint(point) {
+            _this2.pointFromTo(point);
+          }
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
           to: "/scoredisplay",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            onClick: function onClick() {
+              _this2.clickButton(_this2.state.pointInfo);
+            },
             children: "show scoreDisplay when you click this!!"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
           to: "/finishgame",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            onClick: function onClick() {
+              _this2.clickButton(_this2.state.pointInfo);
+            },
             children: "finish game when you click this!!"
           })
         })]
@@ -2652,6 +2802,7 @@ var OneResultDisplay = /*#__PURE__*/function (_React$Component) {
   return OneResultDisplay;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
+OneResultDisplay.propTypes = propTypes;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OneResultDisplay);
 
 /***/ }),
@@ -3044,7 +3195,7 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "score-display-area",
-        children: ["\u70B9\u6570\u8868\u793A\u753B\u9762", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+        children: ["\u70B9\u6570\u8868\u793A\u753B\u9762", this.props.pointInfo.kind, this.props.pointInfo.ronFrom, this.props.pointInfo.ronTo, this.props.pointInfo.tsumoWho, this.props.pointInfo.ronParent, this.props.pointInfo.ronChild, this.props.pointInfo.tsumoALL, this.props.pointInfo.tsumoParent, this.props.pointInfo.tsumoChild, this.props.pointInfo.tempaiWho, this.props.pointInfo.tempaiNum, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
           to: "/oneResultDisplay",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
             children: "show OneResultDisplay when you click this!!"

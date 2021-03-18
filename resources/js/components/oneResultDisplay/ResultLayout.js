@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import './OneResultDisplay.css';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  dataPoint: PropTypes.func,
+};
 
 class ResultLayout extends React.Component{
 
@@ -17,10 +22,15 @@ class ResultLayout extends React.Component{
       playerTo: "Player1",
       playerTsumo: "Player1",
       playerTempai: ["", "", "", ""],
+      numTempai: 0,
       pointsParent: "",
       pointsChild: "",
     };
   }
+  clickButton() {
+    return this.props.dataHoge();
+  }
+
 
   render(){
 
@@ -62,9 +72,21 @@ class ResultLayout extends React.Component{
 
     const ChildPoints=pointsChild;
     const ParentPoints=pointsParent;
-
+    var pointArray={kind:'',
+      ronFrom:'',
+      ronTo:'',
+      tsumoWho:'',
+      ronParent:'',
+      ronChild:'',
+      tsumoALL:'',
+      tsumoParent:'',
+      tsumoChild:'',
+      tempaiWho:'',
+      tempaiNum:''
+    };
     function CalcPoints() {
       var AnsNum=0;
+
       if (this.state.han > 4) {
           for (let data=0;data<ChildPoints.length;data++) {
             if (ChildPoints[data][1] == this.state.han) {
@@ -101,11 +123,34 @@ class ResultLayout extends React.Component{
       if (this.state.kind == "ロン") {
         this.setState({ pointsParent: "親：" + ParentPoints[AnsNum][3]});
         this.setState({ pointsChild: "子：" + ChildPoints[AnsNum][3]});
+        pointArray.kind=this.state.kind;
+        pointArray.ronTo=this.state.playerTo;
+        pointArray.ronFrom=this.state.playerFrom;
+        pointArray.ronParent=ParentPoints[AnsNum][3];
+        pointArray.ronChild=ChildPoints[AnsNum][3];
       }
       else if (this.state.kind == "ツモ") {
         this.setState({ pointsParent: "親：" + ParentPoints[AnsNum][4] + "ALL"});
         this.setState({ pointsChild: "子：" + ChildPoints[AnsNum][4] + "-" +ChildPoints[AnsNum][5]});
+        pointArray.kind=this.state.kind;
+        pointArray.tsumoWho=this.state.playerTsumo;
+        pointArray.tsumoALL=ParentPoints[AnsNum][4];
+        pointArray.tsumoParent=ChildPoints[AnsNum][4];
+        pointArray.tsumoChild=ChildPoints[AnsNum][5];
       }
+      else {
+        pointArray.kind=this.state.kind;
+        pointArray.tempaiWho=this.state.playerTempai;
+        var count=0;
+        for (let num=0;num<4;num++) {
+          if (this.state.playerTempai[num] != "") {
+            count=count+1;
+          }
+        }
+        this.setState({ numTempai: count });
+        pointArray.tempaiNum=count;
+      }
+      return this.props.dataPoint(pointArray);
     };
 
 
@@ -137,8 +182,9 @@ class ResultLayout extends React.Component{
       }
       this.setState({playerTempai: player_copy});
     };
-
-
+    function clickButton(point) {
+      return this.props.dataPoint(point);
+    }
     return (
       <div>
         <div>
@@ -181,11 +227,12 @@ class ResultLayout extends React.Component{
           <input type="button" onClick={PlayerTsumo.bind(this, "Player4")} value="Player4"></input>
         </div>
         <div className={this.state.kind + "Tempai"}>
-          テンパイ：{this.state.playerTempai}
+          テンパイ：{this.state.playerTempai},{this.state.numTempai}
           <input type="button" onClick={PlayerTempai.bind(this, "Player1")} value="Player1"></input>
           <input type="button" onClick={PlayerTempai.bind(this, "Player2")} value="Player2"></input>
           <input type="button" onClick={PlayerTempai.bind(this, "Player3")} value="Player3"></input>
           <input type="button" onClick={PlayerTempai.bind(this, "Player4")} value="Player4"></input>
+          <input type="button" onClick={CalcPoints.bind(this)} value="計算"></input>
         </div>
 
 
@@ -194,5 +241,5 @@ class ResultLayout extends React.Component{
   }
 }
 
-
+ResultLayout.propTypes = propTypes;
 export default ResultLayout;
