@@ -6,6 +6,8 @@ import {Container, Row, Col, Button} from "react-bootstrap";
 import './scoreDisplay.css';
 import EachPlayerScore from './eachPlayerScore';
 import CurrentRound from './CurrentRound'
+import PropTypes from 'prop-types';
+
 
 class ScoreDisplay extends React.Component {
 
