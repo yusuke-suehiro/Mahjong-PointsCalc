@@ -2304,10 +2304,12 @@ var inputName = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      player1: '',
-      player2: '',
-      player3: '',
-      player4: ''
+      playerName: {
+        player1: '',
+        player2: '',
+        player3: '',
+        player4: ''
+      }
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
@@ -2316,9 +2318,14 @@ var inputName = /*#__PURE__*/function (_React$Component) {
   _createClass(inputName, [{
     key: "handleChange",
     value: function handleChange(e) {
-      var name = e.target.name; // フォームのname属性を取得 
+      // console.log(e.target.name)
+      // console.log(e.target.value)
+      var eachPlayerName = e.target.name; // フォームのname属性を取得 
+      // console.log({playerName:{[name]: e.target.value}})
 
-      this.setState(_defineProperty({}, name, e.target.value)); // name属性 = stateのkey名なのでstateに保存
+      this.setState({
+        playerName: _defineProperty({}, eachPlayerName, e.target.value)
+      }); // name属性 = stateのkey名なのでstateに保存
     }
   }, {
     key: "render",
@@ -2331,7 +2338,7 @@ var inputName = /*#__PURE__*/function (_React$Component) {
             value: this.state.value,
             onChange: this.handleChange
           })]
-        }), this.state.player1, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        }), this.state.playerName.player1, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "player-name",
           children: ["\u30D7\u30EC\u30A4\u30E4\u30FC2\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             name: "player2",
