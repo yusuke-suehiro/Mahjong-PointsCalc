@@ -39,7 +39,8 @@ class OneResultDisplay extends React.Component{
         <div>
       </div>
         <Link to="/scoredisplay">
-          <button onClick={() => { this.clickButton(this.state.pointInfo); }}>
+          {/* <button onClick={() => { this.clickButton(this.state.pointInfo); }}> */}
+          <button>
             show scoreDisplay when you click this!!
           </button>
         </Link>
