@@ -1,3 +1,28 @@
+.FirstSelect {
+  margin-top: 0.5em;
+  text-align:center;
+  font-size:2em;
+}
+.FirstInput {
+  text-align:center;
+  font-size:2em;
+  padding:1em;
+}
+.SelectResult{
+    text-align:center;
+    font-size:2em;
+    padding: 0.5em 1em;
+}
+.PlusMinus{
+    text-align:center;
+    font-size:2em;
+    padding: 0.5em 1em;
+    display:block;
+}
+
+
+
+
 .ロン点数 {
   display:block
 }
@@ -7,11 +32,14 @@
 .流局点数 {
   display:none
 }
-.選択点数 {
+.点数 {
   display:none
 }
 
 .ロンFromTo {
+  text-align:center;
+  font-size:2em;
+  padding: 0.5em 1em;
   display:block
 }
 .ツモFromTo {
@@ -20,7 +48,7 @@
 .流局FromTo {
   display:none
 }
-.選択FromTo {
+.FromTo {
   display:none
 }
 
@@ -28,12 +56,15 @@
   display:none
 }
 .ツモTsumo {
+  text-align:center;
+  font-size:2em;
+  padding: 0.5em 1em;
   display:block
 }
 .流局Tsumo {
   display:none
 }
-.選択Tsumo {
+.Tsumo {
   display:none
 }
 
@@ -44,8 +75,11 @@
   display:none
 }
 .流局Tempai {
+  text-align:center;
+  font-size:2em;
+  padding: 0.5em 1em;
   display:block
 }
-.選択Tempai {
+.Tempai {
   display:none
 }
