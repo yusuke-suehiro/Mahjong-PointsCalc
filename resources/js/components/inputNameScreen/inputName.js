@@ -18,11 +18,16 @@ class InputName extends React.Component{
   }
 
   handleChange (e) {
+    // console.log(e.target.name)
+    // console.log(e.target.value)
     var data = this.state.playerNames//現在の値を予め取得しておく
     let eachPlayerName = e.target.name; // フォームのname属性を取得 
+    // console.log({playerName:{[name]: e.target.value}})
+    this.setState({playerNames:{[eachPlayerName]: e.target.value}}) // name属性 = stateのkey名なのでstateに保存
     data[eachPlayerName] = e.target.value;
     this.setState({playerNames: data}) // name属性 = stateのkey名なのでstateに保存
   }
+
 
   handleClick(){
     // console.log("te")
@@ -41,22 +46,22 @@ class InputName extends React.Component{
           東：
           <input name="East" value={this.state.value} onChange={this.handleChange} />
         </div>
-        {this.state.playerNames.player1}
+        {this.state.playerNames.East}
         <div className="player-name">
           南：
           <input name="South" value={this.state.value} onChange={this.handleChange} />
         </div>
-        {this.state.playerNames.player2}
+        {this.state.playerNames.South}
         <div className="player-name">
           西：
           <input name="West" value={this.state.value} onChange={this.handleChange} />
         </div>
-        {this.state.playerNames.player3}
+        {this.state.playerNames.West}
         <div className="player-name">
           北：
           <input name="North" value={this.state.value} onChange={this.handleChange} />
         </div>
-        {this.state.playerNames.player4}
+        {this.state.playerNames.North}
         {/* <Link to="/scoredisplay">
           <button>
             ゲーム開始！
