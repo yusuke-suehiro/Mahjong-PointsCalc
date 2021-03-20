@@ -40,8 +40,6 @@ class FinishGame extends React.Component{
         }
       }
     }
-    console.log(score);
-    console.log(player);
     this.setState({ player1: player[3]});
     this.setState({ player2: player[2]});
     this.setState({ player3: player[1]});
@@ -50,6 +48,15 @@ class FinishGame extends React.Component{
     this.setState({ score2: score[2]});
     this.setState({ score3: score[1]});
     this.setState({ score4: score[0]});
+  }
+
+  resetScore() {
+    console.log(this.state.score1);
+    this.setState({ score1: 25000});
+    console.log(this.state.score1);
+    this.setState({ score2: 25000});
+    this.setState({ score3: 25000});
+    this.setState({ score4: 25000});
   }
 
   render(){
@@ -82,7 +89,7 @@ class FinishGame extends React.Component{
 
         <div className="LinkButton">
         <Link to="/">
-          <button>
+          <button onClick={() => { this.resetScore(); }}>
             新しい半荘を始める
           </button>
         </Link>
