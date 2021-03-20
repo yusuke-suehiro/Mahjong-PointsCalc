@@ -2119,10 +2119,10 @@ var App = /*#__PURE__*/function (_React$Component2) {
         West: '',
         North: ''
       },
-      score1: '1',
-      score2: '1',
-      score3: '1',
-      score4: '1'
+      score1: 25000,
+      score2: 25000,
+      score3: 25000,
+      score4: 25000
     };
     return _this;
   }
@@ -2132,6 +2132,22 @@ var App = /*#__PURE__*/function (_React$Component2) {
     value: function pointFromTo(point) {
       this.setState({
         pointInfo: point
+      });
+    }
+  }, {
+    key: "havingpointFromTo",
+    value: function havingpointFromTo(point1, point2, point3, point4) {
+      this.setState({
+        score1: point1
+      });
+      this.setState({
+        score2: point2
+      });
+      this.setState({
+        score3: point3
+      });
+      this.setState({
+        score4: point4
       });
     }
   }, {
@@ -2147,11 +2163,12 @@ var App = /*#__PURE__*/function (_React$Component2) {
     value: function render() {
       var _this2 = this;
 
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        children: ["Appjs\u306E\u5024", this.state.score1, this.state.score2, this.state.score3, this.state.score4, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
               path: "/",
+              exact: true,
               render: function render() {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_inputNameScreen_inputName__WEBPACK_IMPORTED_MODULE_6__.default, {
                   dataPoint: function dataPoint(names) {
@@ -2164,7 +2181,14 @@ var App = /*#__PURE__*/function (_React$Component2) {
               render: function render() {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scoreDisplay_scoreDisplay__WEBPACK_IMPORTED_MODULE_2__.default, {
                   pointInfo: _this2.state.pointInfo,
-                  playerNames: _this2.state.playerNames
+                  playerNames: _this2.state.playerNames,
+                  havingPoint: function havingPoint(point1, point2, point3, point4) {
+                    _this2.havingpointFromTo(point1, point2, point3, point4);
+                  },
+                  score1: _this2.state.score1,
+                  score2: _this2.state.score2,
+                  score3: _this2.state.score3,
+                  score4: _this2.state.score4
                 });
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
@@ -2179,10 +2203,18 @@ var App = /*#__PURE__*/function (_React$Component2) {
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
               path: "/finishgame",
-              component: _finishGame_finishGame__WEBPACK_IMPORTED_MODULE_4__.default
+              render: function render() {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_finishGame_finishGame__WEBPACK_IMPORTED_MODULE_4__.default, {
+                  playerNames: _this2.state.playerNames,
+                  score1: _this2.state.score1,
+                  score2: _this2.state.score2,
+                  score3: _this2.state.score3,
+                  score4: _this2.state.score4
+                });
+              }
             })]
           })
-        })
+        })]
       });
     }
   }]);
@@ -2251,43 +2283,116 @@ var FinishGame = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(FinishGame);
 
-  function FinishGame() {
+  function FinishGame(props) {
+    var _this;
+
     _classCallCheck(this, FinishGame);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    console.log(props.score1);
+    _this.state = {
+      playerNames: props.playerNames,
+      startingPlayer: props.playerNames.East,
+      parent: props.playerNames.East,
+      score1: "",
+      score2: "",
+      score3: "",
+      score4: "",
+      player1: "",
+      player2: "",
+      player3: "",
+      player4: ""
+    };
+    return _this;
   }
 
   _createClass(FinishGame, [{
+    key: "clickButton",
+    value: function clickButton(props) {
+      var player = [this.props.playerNames.East, this.props.playerNames.South, this.props.playerNames.West, this.props.playerNames.North];
+      var score = [this.props.score1, this.props.score2, this.props.score3, this.props.score4];
+
+      for (var outer = 0; outer < score.length - 1; outer++) {
+        for (var i = score.length - 1; i > outer; i--) {
+          if (score[i] < score[i - 1]) {
+            var tmp = score[i];
+            var tmp_play = player[i];
+            score[i] = score[i - 1];
+            score[i - 1] = tmp;
+            player[i] = player[i - 1];
+            player[i - 1] = tmp_play;
+          }
+        }
+      }
+
+      console.log(score);
+      console.log(player);
+      this.setState({
+        player1: player[3]
+      });
+      this.setState({
+        player2: player[2]
+      });
+      this.setState({
+        player3: player[1]
+      });
+      this.setState({
+        player4: player[0]
+      });
+      this.setState({
+        score1: score[3]
+      });
+      this.setState({
+        score2: score[2]
+      });
+      this.setState({
+        score3: score[1]
+      });
+      this.setState({
+        score4: score[0]
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: ["\u534A\u8358\u7D42\u4E86\uFF0C\u6210\u7E3E\u8868\u793A\u753B\u9762", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
+        children: ["\u534A\u8358\u7D42\u4E86\uFF0C\u6210\u7E3E\u8868\u793A\u753B\u9762", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "LinkButton",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            onClick: function onClick() {
+              _this2.clickButton();
+            },
+            children: "\u6700\u7D42\u7D50\u679C\u3092\u8868\u793A\u3059\u308B"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
           className: "FinalResult",
           width: "30%",
           cellpadding: "10",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-              children: "Player1"
+              children: this.state.player1
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-              children: "40000\u70B9"
+              children: this.state.score1
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-              children: "Player2"
+              children: this.state.player2
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-              children: "30000\u70B9"
+              children: this.state.score2
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-              children: "Player3"
+              children: this.state.player3
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-              children: "20000\u70B9"
+              children: this.state.score3
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-              children: "Player4"
+              children: this.state.player4
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-              children: "10000\u70B9"
+              children: this.state.score4
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -3276,7 +3381,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 var propTypes = {
-  dataPoint: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func)
+  dataPoint: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func),
+  havingPoint: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func)
 };
 
 var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
@@ -3317,6 +3423,8 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "pointInfoUpdate",
     value: function pointInfoUpdate() {
+      var _this2 = this;
+
       if (this.state.updateFlag == false) {
         if (this.props.pointInfo.kind == "ロン") {
           if (this.props.pointInfo.ronFrom == this.state.name) {
@@ -3324,11 +3432,15 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               var newScore = this.state.score - this.props.pointInfo.ronParent;
               this.setState({
                 score: newScore
+              }, function () {
+                return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
               });
             } else {
               var newScore = this.state.score - this.props.pointInfo.ronChild;
               this.setState({
                 score: newScore
+              }, function () {
+                return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
               });
             }
           }
@@ -3338,11 +3450,15 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               var newScore = this.state.score + this.props.pointInfo.ronParent;
               this.setState({
                 score: newScore
+              }, function () {
+                return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
               });
             } else {
               var newScore = this.state.score + this.props.pointInfo.ronChild;
               this.setState({
                 score: newScore
+              }, function () {
+                return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
               });
             }
           }
@@ -3352,11 +3468,15 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               var newScore = this.state.score + 3 * this.props.pointInfo.tsumoALL;
               this.setState({
                 score: newScore
+              }, function () {
+                return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
               });
             } else {
               var newScore = this.state.score + 2 * this.props.pointInfo.tsumoChild + this.props.pointInfo.tsumoParent;
               this.setState({
                 score: newScore
+              }, function () {
+                return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
               });
             }
           } else {
@@ -3364,17 +3484,23 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               var newScore = this.state.score - this.props.pointInfo.tsumoALL;
               this.setState({
                 score: newScore
+              }, function () {
+                return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
               });
             } else {
               if (this.state.name == this.props.parent) {
                 var newScore = this.state.score - this.props.pointInfo.tsumoParent;
                 this.setState({
                   score: newScore
+                }, function () {
+                  return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
                 });
               } else {
                 var newScore = this.state.score - this.props.pointInfo.tsumoChild;
                 this.setState({
                   score: newScore
+                }, function () {
+                  return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
                 });
               }
             }
@@ -3390,10 +3516,14 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
                 if (this.props.pointInfo.tempaiWho[player] == "「" + this.state.name + "」") {
                   this.setState({
                     score: this.state.score + 3000
+                  }, function () {
+                    return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
                   });
                 } else {
                   this.setState({
                     score: this.state.score - 1000
+                  }, function () {
+                    return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
                   });
                 }
               }
@@ -3412,10 +3542,14 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               if (TempaiFlag == true) {
                 this.setState({
                   score: this.state.score + 1500
+                }, function () {
+                  return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
                 });
               } else {
                 this.setState({
                   score: this.state.score - 1500
+                }, function () {
+                  return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
                 });
               }
 
@@ -3433,10 +3567,14 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               if (TempaiFlag == true) {
                 this.setState({
                   score: this.state.score + 1000
+                }, function () {
+                  return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
                 });
               } else {
                 this.setState({
                   score: this.state.score - 3000
+                }, function () {
+                  return _this2.props.havingPoint(_this2.state.score, _this2.state.name);
                 });
               }
 
@@ -3446,25 +3584,19 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               console.log("点棒やり取りなし");
               break;
           }
-        } else if (this.props.pointInfo.kind == "") {
-          var newScore = 25000;
-          this.setState({
-            score: newScore
-          });
-        }
+        } else if (this.props.pointInfo.kind == "") {}
 
         this.setState({
           updateFlag: true
         });
         console.log(this.state.score);
-      }
+      } //return this.props.havingPoint(this.state.score, this.state.name);
 
-      return this.props.dataPoint(this.state.score, this.state.name);
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
@@ -3477,7 +3609,7 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
                 className: "update-pointInfo-button",
                 onClick: function onClick() {
-                  _this2.pointInfoUpdate();
+                  _this3.pointInfoUpdate();
                 },
                 children: "\u66F4\u65B0"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -3539,10 +3671,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_split_pane__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-split-pane */ "./node_modules/react-split-pane/dist/index.esm.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
 /* harmony import */ var _scoreDisplay_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scoreDisplay.css */ "./resources/js/components/scoreDisplay/scoreDisplay.css");
 /* harmony import */ var _eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./eachPlayerScore */ "./resources/js/components/scoreDisplay/eachPlayerScore.js");
 /* harmony import */ var _CurrentRound__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CurrentRound */ "./resources/js/components/scoreDisplay/CurrentRound.js");
@@ -3602,10 +3734,10 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
       playerNames: props.playerNames,
       startingPlayer: props.playerNames.East,
       parent: props.playerNames.East,
-      score1: 25000,
-      score2: 25000,
-      score3: 25000,
-      score4: 25000
+      score1: props.score1,
+      score2: props.score2,
+      score3: props.score3,
+      score4: props.score4
     };
     _this.ChildRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
     _this.doClick = _this.AllUpdateScore.bind(_assertThisInitialized(_this));
@@ -3631,33 +3763,35 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "pointFromTo",
     value: function pointFromTo(point, name) {
+      console.log(point);
+      console.log(name);
+
       switch (name) {
-        case this.state.player1:
+        case this.state.playerNames.East:
           this.setState({
             score1: point
           });
           break;
 
-        case this.state.player2:
+        case this.state.playerNames.South:
           this.setState({
             score2: point
           });
           break;
 
-        case this.state.player3:
+        case this.state.playerNames.West:
           this.setState({
             score3: point
           });
           break;
 
-        case this.state.player4:
+        case this.state.playerNames.North:
           this.setState({
             score4: point
           });
           break;
-      }
+      } //return this.props.havingPoint(this.state.score1, this.state.score2, this.state.score3, this.state.score4);
 
-      return this.props.havingPoint(this.state.score1, this.state.score2, this.state.score3, this.state.score4);
     }
   }, {
     key: "render",
@@ -3666,17 +3800,12 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "score-display-area",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), "aaa:", this.state.player1, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
-          to: "/oneResultDisplay",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-            children: "show OneResultDisplay when you click this!!"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__.default, {
+        children: ["scoredisplay\u306E\u5024", this.state.score1, this.state.score2, this.state.score3, this.state.score4, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
             className: "area",
             xs: 12,
             md: 4
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
             className: "area",
             xs: 12,
             md: 4,
@@ -3684,12 +3813,12 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
               name: this.state.playerNames.East,
               pointInfo: this.props.pointInfo,
               parent: this.state.parent,
-              dataPoint: function dataPoint(point, name) {
+              havingPoint: function havingPoint(point, name) {
                 _this2.pointFromTo(point, name);
               },
               score: this.state.score1
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
             className: "area",
             xs: 12,
             md: 4,
@@ -3698,9 +3827,9 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
               children: ["\u8D77\u5BB6:", this.state.startingPlayer]
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__.default, {
           className: "tmp",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
             className: "area",
             xs: 12,
             md: 4,
@@ -3708,17 +3837,17 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
               name: this.state.playerNames.South,
               pointInfo: this.props.pointInfo,
               parent: this.state.parent,
-              dataPoint: function dataPoint(point, name) {
+              havingPoint: function havingPoint(point, name) {
                 _this2.pointFromTo(point, name);
               },
               score: this.state.score2
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
             className: "area",
             xs: 12,
             md: 4,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CurrentRound__WEBPACK_IMPORTED_MODULE_5__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
             className: "area",
             xs: 12,
             md: 4,
@@ -3726,14 +3855,14 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
               name: this.state.playerNames.North,
               pointInfo: this.props.pointInfo,
               parent: this.state.parent,
-              dataPoint: function dataPoint(point, name) {
+              havingPoint: function havingPoint(point, name) {
                 _this2.pointFromTo(point, name);
               },
               score: this.state.score4
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
             className: "reset-button-area",
             xs: 12,
             md: 4,
@@ -3741,7 +3870,7 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
               className: "reset-score-button",
               children: "\uFF11\u5C40\u524D\u306B\u623B\u308B"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
             className: "area",
             xs: 12,
             md: 4,
@@ -3749,18 +3878,24 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
               name: this.state.playerNames.West,
               pointInfo: this.props.pointInfo,
               parent: this.state.parent,
-              dataPoint: function dataPoint(point, name) {
+              havingPoint: function havingPoint(point, name) {
                 _this2.pointFromTo(point, name);
               },
               score: this.state.score3
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
             className: "update-button-area",
             xs: 12,
             md: 4,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-              className: "update-score-button",
-              children: "\u5C40\u7D42\u4E86"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, {
+              to: "/oneResultDisplay",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+                className: "update-score-button",
+                onClick: function onClick() {
+                  _this2.clickButton(_this2.state.score1, _this2.state.score2, _this2.state.score3, _this2.state.score4);
+                },
+                children: "\u5C40\u7D42\u4E86"
+              })
             })
           })]
         })]
