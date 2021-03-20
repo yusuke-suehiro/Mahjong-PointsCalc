@@ -83,7 +83,9 @@ class ResultLayout extends React.Component{
       tsumoParent:'',
       tsumoChild:'',
       tempaiWho:'',
-      tempaiNum:''
+      tempaiNum:'',
+      honnba:this.props.honnba,
+      kyoutaku:this.props.kyoutaku,
     };
     function CalcPoints() {
       var AnsNum=0;
@@ -188,6 +190,9 @@ class ResultLayout extends React.Component{
     }
     return (
       <div>
+        <div className="FirstSelect">
+          {this.props.honnba}本場&emsp;供託{this.props.kyoutaku}本
+        </div>
         <div className="FirstSelect">
           局終了の種類
         </div>

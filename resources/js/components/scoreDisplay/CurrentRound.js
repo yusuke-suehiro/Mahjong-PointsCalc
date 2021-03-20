@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
 import './CurrentRound.css'
 import {Container, Row, Col, Button} from "react-bootstrap";
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  honbaAndkyoutaku: PropTypes.func,
+};
 
 const plusButtonClicked =(e,props)=> {
   console.log(props,e);
@@ -12,12 +17,32 @@ class CurrentRound extends React.Component{
 
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       round : "東",
       handNumber: 0,
       honnba: 0,
       kyoutaku: 0
     };
+  }
+  upHonba() {
+    this.setState({ honnba: this.state.honnba + 1 }, () => {
+      return this.props.honbaAndkyoutaku(this.state.honnba, this.state.kyoutaku);
+    } );
+  }
+  downHonba() {
+    this.setState({ honnba: this.state.honnba - 1 >= 0 ? this.state.honnba - 1 : 0}, () => {
+      return this.props.honbaAndkyoutaku(this.state.honnba, this.state.kyoutaku);
+    } );
+  }
+  upKyoutaku() {
+    this.setState({ kyoutaku: this.state.kyoutaku + 1 }, () => {
+      return this.props.honbaAndkyoutaku(this.state.honnba, this.state.kyoutaku);
+    } );
+  }
+  downKyoutaku() {
+    this.setState({ kyoutaku: this.state.kyoutaku - 1 >= 0 ? this.state.kyoutaku - 1 : 0 }, () => {
+      return this.props.honbaAndkyoutaku(this.state.honnba, this.state.kyoutaku);
+    } );
   }
 
   render(){
@@ -35,14 +60,14 @@ class CurrentRound extends React.Component{
           </Col>
           <Col xs={12} md={2}>
             <Row>
-              <button className="plus-button" 
-                onClick={() => this.setState({ honnba: this.state.honnba + 1 })}>
+              <button className="plus-button"
+                onClick={() => { this.upHonba(); }}>
                 +
               </button>
             </Row>
             <Row>
-              <button className="minus-button" 
-                onClick={() => this.setState({ honnba: this.state.honnba - 1 >= 0 ? this.state.honnba - 1 : 0})}>
+              <button className="minus-button"
+                onClick={() => { this.downHonba(); }}>
                 -
               </button>
             </Row>
@@ -56,14 +81,14 @@ class CurrentRound extends React.Component{
           </Col>
           <Col xs={12} md={2}>
             <Row>
-              <button className="plus-button" 
-                onClick={() => this.setState({ kyoutaku: this.state.kyoutaku + 1 })}>
+              <button className="plus-button"
+                onClick={() => { this.upKyoutaku(); }}>
                 +
               </button>
             </Row>
             <Row>
               <button className="minus-button"
-                onClick={() => this.setState({ kyoutaku: this.state.kyoutaku - 1 >= 0 ? this.state.kyoutaku - 1 : 0})}>
+                onClick={() => { this.downKyoutaku(); }}>
                 -
               </button>
             </Row>
@@ -74,6 +99,5 @@ class CurrentRound extends React.Component{
   }
 }
 
+CurrentRound.propTypes = propTypes;
 export default CurrentRound;
-
-

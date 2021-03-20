@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   havingPoint: PropTypes.func,
+  honbaAndkyoutaku:PropTypes.func
 };
 
 class ScoreDisplay extends React.Component {
@@ -25,7 +26,9 @@ class ScoreDisplay extends React.Component {
       score1: props.score1,
       score2: props.score2,
       score3: props.score3,
-      score4: props.score4
+      score4: props.score4,
+      honnba:0,
+      kyoutaku:0
     };
     this.ChildRef = React.createRef();
     this.doClick = this.AllUpdateScore.bind(this);
@@ -38,9 +41,9 @@ class ScoreDisplay extends React.Component {
     this.ChildRef.current.pointInfoUpdate(this.state.player4);
     */
   }
-  clickButton(point1, point2, point3, point4) {
+  clickButton(point1, point2, point3, point4, honnba, kyoutaku) {
     console.log(point1);
-    return this.props.havingPoint(point1, point2, point3, point4);
+    return this.props.havingPoint(point1, point2, point3, point4, honnba, kyoutaku);
   }
   pointFromTo(point, name) {
     console.log(point);
@@ -61,13 +64,17 @@ class ScoreDisplay extends React.Component {
     }
     //return this.props.havingPoint(this.state.score1, this.state.score2, this.state.score3, this.state.score4);
   }
+  honnbaKyoutaku(honba, kyotaku) {
+    this.setState({ honnba: honba });
+    this.setState({ kyoutaku: kyotaku });
+  }
 
 
   render(){
     return (
       <div className="score-display-area">
         scoredisplayの値
-        {this.state.score1}{this.state.score2}{this.state.score3}{this.state.score4}
+        {this.state.score1}{this.state.score2}{this.state.score3}{this.state.score4},{this.state.honnba},{this.state.kyoutaku}
         {/*
         {this.state.parent}
         {this.props.pointInfo.kind}
@@ -101,7 +108,7 @@ class ScoreDisplay extends React.Component {
           <EachPlayerScore name={this.state.playerNames.South} pointInfo={this.props.pointInfo} parent={this.state.parent} havingPoint={(point, name) => { this.pointFromTo(point, name); }} score={this.state.score2}/>
           </Col>
           <Col className="area" xs={12} md={4}>
-          <CurrentRound />
+          <CurrentRound honbaAndkyoutaku={(honnba, kyoutaku) => { this.honnbaKyoutaku(honnba, kyoutaku); }}/>
           </Col>
           <Col className="area" xs={12} md={4}>
 
@@ -110,7 +117,7 @@ class ScoreDisplay extends React.Component {
         </Row>
         <Row>
           <Col className="reset-button-area" xs={12} md={4}>
-            <button className="reset-score-button">１局前に戻る</button>
+
           </Col>
           <Col className="area" xs={12} md={4}>
 
@@ -119,7 +126,7 @@ class ScoreDisplay extends React.Component {
           </Col>
           <Col className="update-button-area" xs={12} md={4}>
             <Link to="/oneResultDisplay">
-            <button className="update-score-button" onClick={() => { this.clickButton(this.state.score1, this.state.score2, this.state.score3, this.state.score4); }}>局終了</button>
+            <button className="update-score-button" onClick={() => { this.clickButton(this.state.score1, this.state.score2, this.state.score3, this.state.score4, this.state.honnba,this.state.kyoutaku); }}>局終了</button>
             </Link>
           </Col>
         </Row>
