@@ -2,13 +2,14 @@
   font-size:2em;
   text-align:center;
   display: inline;
+  font-size: 30px;
 }
 .LinkButton button {
-  width:40%;
-  margin-top:2em;
-  margin-left:30%;
-  margin-right:30%;
+  width: 40%;
+  margin-top: 10px;
+  margin-left: 30%;
+  margin-right :30%;
 }
 .result-screen-button {
-  font-size: 30px;
+  font-size: 25px;
 }
