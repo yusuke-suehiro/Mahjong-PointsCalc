@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link , withRouter } from 'react-router-dom';
-
+import './inputName.css'
 class InputName extends React.Component{
 
   constructor(props) {
@@ -36,31 +36,40 @@ class InputName extends React.Component{
 
   render(){
     return (
-      <div>
+      <div className="input-name-area">
         プレイヤー名入力画面
-        <div className="player-name">
-          東：
-          <input name="East" value={this.state.value} onChange={this.handleChange} />
+        <div className="each-player">
+          <div className="player-name-wind">
+            東：<input name="East" value={this.state.value} onChange={this.handleChange} />
+          </div>
         </div>
-        <div className="player-name">
-          南：
-          <input name="South" value={this.state.value} onChange={this.handleChange} />
+        <div className="each-player">
+          <div className="player-name-wind">
+            南：
+            <input name="South" value={this.state.value} onChange={this.handleChange} />
+          </div>
         </div>
-        <div className="player-name">
-          西：
-          <input name="West" value={this.state.value} onChange={this.handleChange} />
+        <div className="each-player">
+          <div className="player-name-wind">
+            西：
+            <input name="West" value={this.state.value} onChange={this.handleChange} />
+          </div>
         </div>
-        <div className="player-name">
-          北：
-          <input name="North" value={this.state.value} onChange={this.handleChange} />
+        <div className="each-player">
+          <div className="player-name-wind">
+            北：
+            <input name="North" value={this.state.value} onChange={this.handleChange} />
+          </div>
         </div>
         <Link
           to={{
             pathname: "/scoredisplay",
           }}> 
-          <button onClick={this.handleClick}>
-            ゲーム開始！
-          </button>
+          <div className="button-area">
+            <button className="game-start-button" onClick={this.handleClick}>
+              ゲーム開始！
+            </button>
+          </div>
         </Link>
       </div>
     );

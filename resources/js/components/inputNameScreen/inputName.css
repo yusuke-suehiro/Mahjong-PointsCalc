@@ -1,0 +1,78 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;/*rem算出をしやすくするために*/
+}
+
+.btn,
+a.btn,
+button.btn {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+}
+
+.player-name-wind {
+  margin: auto;
+  width: 70%;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+  margin-bottom: 10px;
+  background-color: chartreuse;
+  font-size: 30px;
+}
+
+.button-area {
+  text-align:center;
+}
+
+.game-start-button {
+  width: 70%;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 2px;
+  padding : 10px 0px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: black;
+  background: white;
+  transition: .4s;
+  border-radius: 4px;
+  border-bottom: 4px solid #43413e;
+}
+
+.game-start-button:hover {
+  background: black;
+  color: white;
+}
+
+.input-name-area {
+  vertical-align: middle;
+}
