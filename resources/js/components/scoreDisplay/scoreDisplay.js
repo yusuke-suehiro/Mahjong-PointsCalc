@@ -13,7 +13,7 @@ class ScoreDisplay extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props.history)
+    console.log(this.props)
     this.state = {
       playerName: props.playerNames,
       startingPlayer: "A",

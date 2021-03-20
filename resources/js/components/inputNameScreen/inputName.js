@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link , withRouter } from 'react-router-dom';
 
-class inputName extends React.Component{
+class InputName extends React.Component{
 
   constructor(props) {
     super(props);
@@ -25,8 +25,8 @@ class inputName extends React.Component{
   }
 
   handleClick(){
-    console.log("te")
-    console.log(this.props)
+    // console.log("te")
+    // console.log(this.props)
     this.props.history.push({
       pathname: "/scoredisplay",
       state: { playerNames: this.state.playerNames }
@@ -57,14 +57,22 @@ class inputName extends React.Component{
           <input name="North" value={this.state.value} onChange={this.handleChange} />
         </div>
         {this.state.playerNames.player4}
-        {/* <Link to="/scoredisplay"> */}
-          <button onClick={this.handleClick}>
+        {/* <Link to="/scoredisplay">
+          <button>
             ゲーム開始！
           </button>
-        {/* </Link> */}
+        </Link> */}
+        <Link
+          to={{
+            pathname: "/scoredisplay",
+          }}> 
+          <button>
+            ゲーム開始！
+          </button>
+        </Link>
       </div>
     );
   }
 }
 
-export default inputName;
+export default InputName;

@@ -5,7 +5,7 @@ import ScoreDisplay from "./scoreDisplay/scoreDisplay"
 import OneResultDisplay from "./oneResultDisplay/oneResultDisplay"
 import FinishGame from "./finishGame/finishGame"
 import PropTypes from 'prop-types';
-import inputName from './inputNameScreen/inputName';
+import InputName from './inputNameScreen/inputName';
 
 class PageZero extends React.Component{
   render(){
@@ -27,7 +27,8 @@ class App extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      pointInfo: {kind:'',
+      pointInfo: {
+        kind:'',
         ronFrom:'',
         ronTo:'',
         tsumoWho:'',
@@ -38,6 +39,12 @@ class App extends React.Component{
         tsumoChild:'',
         tempaiWho:'',
         tempaiNum:''
+      },
+      playerNames: {
+        East: '',
+        South: '',
+        West: '',
+        North: '',
       },
     };
   }
@@ -54,7 +61,8 @@ class App extends React.Component{
       <div>
         <BrowserRouter>
           <div>
-            <Route path="/" exact component={inputName} />
+            {/* <Route path="/" exact component={inputName} /> */}
+            <Route path="/" render={() => <InputName dataPoint={(names) => { this.nameFromTo(names); }}/>}/>
             <Route path="/scoredisplay" render={() => <ScoreDisplay pointInfo={this.state.pointInfo}/>}/>
             <Route path="/oneresultdisplay" render={() => <OneResultDisplay dataPoint={(point) => { this.pointFromTo(point); }}/>}/>
             <Route path="/finishgame" component={FinishGame}/>
