@@ -44,6 +44,11 @@ class App extends React.Component{
   pointFromTo(point) {
       this.setState({ pointInfo: point });
   }
+
+  nameFromTo(names) {
+    this.setState({ playerNames: names });
+  }
+
   render(){
     return (
       <div>

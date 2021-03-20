@@ -67,4 +67,4 @@ class inputName extends React.Component{
   }
 }
 
-export default withRouter(inputName);
+export default inputName;
