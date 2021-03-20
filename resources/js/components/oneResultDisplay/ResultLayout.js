@@ -197,11 +197,11 @@ class ResultLayout extends React.Component{
           局終了の種類
         </div>
         <div className="FirstInput">
-          <input type="button" onClick={ShowMessage.bind(this, "ロン")} value="ロン"></input>
+          <input className="result-screen-button" type="button" onClick={ShowMessage.bind(this, "ロン")} value="ロン"></input>
           &emsp;
-          <input type="button" onClick={ShowMessage.bind(this, "ツモ")} value="ツモ"></input>
+          <input className="result-screen-button" type="button" onClick={ShowMessage.bind(this, "ツモ")} value="ツモ"></input>
           &emsp;
-          <input type="button" onClick={ShowMessage.bind(this, "流局")} value="流局"></input>
+          <input className="result-screen-button" type="button" onClick={ShowMessage.bind(this, "流局")} value="流局"></input>
         </div>
         <div className="SelectResult" align="center">
           {this.state.kind}

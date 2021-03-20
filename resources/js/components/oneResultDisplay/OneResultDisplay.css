@@ -1,8 +1,10 @@
 .FirstSelect {
   margin-top: 0.5em;
-  text-align:center;
-  font-size:2em;
+  text-align: center;
+  font-size: 2em;
+  font-size: 30px;
 }
+
 .FirstInput {
   text-align:center;
   font-size:2em;

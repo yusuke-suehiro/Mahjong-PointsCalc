@@ -40,27 +40,15 @@ button{
   margin: auto;
 }
 
-/* .update-score-button {
-  text-align: center;
-  font-size: 30px;
-  margin: auto;
-  padding: 5px;
-} */
-
 .update-score-button {
-  /* width: 70%; */
   text-align: center;
   font-size: 30px;
   margin: auto;
   padding: 5px;
-  /* text-align: center; */
-  /* font-size: 30px; */
   border-radius: 2px;
-  /* padding : 10px 0px; */
   position: relative;
   display: inline-block;
   font-weight: bold;
-  /* padding: 0.25em 0.5em; */
   text-decoration: none;
   color: black;
   background: white;
