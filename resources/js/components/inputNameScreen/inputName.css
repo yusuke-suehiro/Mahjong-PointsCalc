@@ -41,8 +41,9 @@ button.btn {
   text-align: center;
   vertical-align: middle;
   padding: 5px;
+  padding-top: 10px;
   margin-bottom: 10px;
-  background-color: chartreuse;
+  background-color: white;
   font-size: 30px;
 }
 

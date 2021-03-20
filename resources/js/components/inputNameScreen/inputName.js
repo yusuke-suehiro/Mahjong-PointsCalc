@@ -45,26 +45,23 @@ class InputName extends React.Component{
         </div>
         <div className="each-player">
           <div className="player-name-wind">
-            南：
-            <input name="South" value={this.state.value} onChange={this.handleChange} />
+            南：<input name="South" value={this.state.value} onChange={this.handleChange} />
           </div>
         </div>
         <div className="each-player">
           <div className="player-name-wind">
-            西：
-            <input name="West" value={this.state.value} onChange={this.handleChange} />
+            西：<input name="West" value={this.state.value} onChange={this.handleChange} />
           </div>
         </div>
         <div className="each-player">
           <div className="player-name-wind">
-            北：
-            <input name="North" value={this.state.value} onChange={this.handleChange} />
+            北：<input name="North" value={this.state.value} onChange={this.handleChange} />
           </div>
         </div>
         <Link
           to={{
             pathname: "/scoredisplay",
-          }}> 
+          }}>
           <div className="button-area">
             <button className="game-start-button" onClick={this.handleClick}>
               ゲーム開始！
