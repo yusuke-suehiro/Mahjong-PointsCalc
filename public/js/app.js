@@ -2323,7 +2323,14 @@ var FinishGame = /*#__PURE__*/function (_React$Component) {
       player1: "",
       player2: "",
       player3: "",
-      player4: ""
+      player4: "",
+      oka: 30000,
+      umaFrom3To2: 10000,
+      umaFrom4To1: 20000,
+      score1Result: "",
+      score2Result: "",
+      score3Result: "",
+      score4Result: ""
     };
     return _this;
   }
@@ -2348,28 +2355,78 @@ var FinishGame = /*#__PURE__*/function (_React$Component) {
       }
 
       this.setState({
-        player1: player[3]
+        player1: "１位：" + player[3]
       });
       this.setState({
-        player2: player[2]
+        player2: "２位：" + player[2]
       });
       this.setState({
-        player3: player[1]
+        player3: "３位：" + player[1]
       });
       this.setState({
-        player4: player[0]
+        player4: "４位：" + player[0]
       });
       this.setState({
-        score1: score[3]
+        score1: score[3] + "点"
       });
       this.setState({
-        score2: score[2]
+        score2: score[2] + "点"
       });
       this.setState({
-        score3: score[1]
+        score3: score[1] + "点"
       });
       this.setState({
-        score4: score[0]
+        score4: score[0] + "点"
+      });
+
+      if (score[2] - this.state.oka + this.state.umaFrom3To2 == 0) {
+        var tmp_score2 = 0;
+      } else {
+        var tmp_score2 = (score[2] - this.state.oka + this.state.umaFrom3To2) / 1000;
+      }
+
+      if (score[1] - this.state.oka - this.state.umaFrom3To2 == 0) {
+        var tmp_score3 = 0;
+      } else {
+        var tmp_score3 = (score[1] - this.state.oka - this.state.umaFrom3To2) / 1000;
+      }
+
+      if (score[0] - this.state.oka - this.state.umaFrom4To1 == 0) {
+        var tmp_score4 = 0;
+      } else {
+        var tmp_score4 = (score[0] - this.state.oka - this.state.umaFrom4To1) / 1000;
+      }
+
+      var tmp_score1 = (tmp_score4 + tmp_score3 + tmp_score2) * -1;
+
+      if (tmp_score1 > 0) {
+        tmp_score1 = "+" + tmp_score1;
+      }
+
+      if (tmp_score2 > 0) {
+        tmp_score2 = "+" + tmp_score2;
+      }
+
+      if (tmp_score3 > 0) {
+        tmp_score3 = "+" + tmp_score3;
+      }
+
+      if (tmp_score4 > 0) {
+        tmp_score4 = "+" + tmp_score4;
+      }
+
+      console.log(tmp_score2);
+      this.setState({
+        score1Result: tmp_score1
+      });
+      this.setState({
+        score2Result: tmp_score2
+      });
+      this.setState({
+        score3Result: tmp_score3
+      });
+      this.setState({
+        score4Result: tmp_score4
       });
     }
   }, {
@@ -2396,7 +2453,13 @@ var FinishGame = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: ["\u534A\u8358\u7D42\u4E86\uFF0C\u6210\u7E3E\u8868\u793A\u753B\u9762", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: ["\u534A\u8358\u7D42\u4E86\uFF0C\u6210\u7E3E\u8868\u793A\u753B\u9762", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "OkaUmaSelect",
+          children: ["\u30AA\u30AB\u3000", this.state.oka, "\u70B9\u8FD4\u3057"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "OkaUmaSelect",
+          children: ["\u30A6\u30DE\u3000", this.state.umaFrom3To2, "-", this.state.umaFrom4To1]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "LinkButton",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
             onClick: function onClick() {
@@ -2413,24 +2476,32 @@ var FinishGame = /*#__PURE__*/function (_React$Component) {
               children: this.state.player1
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
               children: this.state.score1
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+              children: this.state.score1Result
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
               children: this.state.player2
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
               children: this.state.score2
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+              children: this.state.score2Result
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
               children: this.state.player3
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
               children: this.state.score3
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+              children: this.state.score3Result
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
               children: this.state.player4
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
               children: this.state.score4
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+              children: this.state.score4Result
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -8687,7 +8758,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".FinalResult {\n  font-size:2em;\n  margin: 0px auto;\n  text-align: center;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".FinalResult {\n  font-size:2em;\n  margin: 0px auto;\n  text-align: center;\n}\n.OkaUmaSelect {\n  font-size:30px;\n  text-align: center;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
