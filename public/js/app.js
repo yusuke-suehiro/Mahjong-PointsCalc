@@ -3722,11 +3722,13 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                 className: "player-name",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                  className: "player-name-display",
                   children: this.state.name
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                 className: "player-score",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                  className: "player-score-display",
                   children: this.state.score
                 })
               })]
@@ -3944,7 +3946,7 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
             md: 4,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
               className: "display-starting-player",
-              children: ["\u8D77\u5BB6:", this.state.startingPlayer]
+              children: ["\u8D77\u5BB6:", this.state.playerNames.East]
             })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__.default, {
@@ -8776,7 +8778,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".display-round-hand-area {\n  margin: auto;\n  font-size: 30px;\n}\n\n.round {\n  text-align: center;\n  background-color: chartreuse;\n  margin-bottom: 3px;\n}\n\n.hand {\n  text-align: center;\n  background-color: cyan;\n}\n\n.text {\n  text-align: center;\n  font-size: 40px;\n  margin: auto;\n  -ms-writing-mode: tb-rl;\n      writing-mode: vertical-rl;\n}\n\n.text-number {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".display-round-hand-area {\n  margin: auto;\n  font-size: 30px;\n}\n\n.round {\n  text-align: center;\n  background-color: lightgray;\n  margin-bottom: 5px;\n}\n\n.hand {\n  text-align: center;\n  background-color: lightgray;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n\n.text {\n  text-align: center;\n  font-size: 40px;\n  margin: auto;\n  -ms-writing-mode: tb-rl;\n      writing-mode: vertical-rl;\n}\n\n.text-number {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8800,7 +8802,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".player-name {\n  padding: 5px;\n  margin-bottom: 10px;\n  background-color: chartreuse;\n  font-size: 30px;\n}\n\n.player-score {\n  padding: 5px;\n  background-color: gray;\n  font-size: 30px;\n}\n\n.player-name-and-score {\n  margin: auto\n}\n\n.update-pointInfo-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".player-name {\n  padding-top: 5px;\n  margin-bottom: 10px;\n  margin-top: 10px;\n  background-color: white;\n  font-size: 30px;\n  font-weight: bold;\n  text-decoration: none;\n  color: black;\n  background-color: lightgray;\n}\n\n.player-score {\n  padding-top: 5px;\n  margin-bottom: 10px;\n  margin-top: 10px;\n  background-color: white;\n  font-size: 30px;\n  font-weight: bold;\n  text-decoration: none;\n  color: black;\n  background-color: lightgray;\n}\n\n.player-name-and-score {\n  margin: auto\n}\n\n.update-pointInfo-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding-top: 5px;\n}\n\n\n.update-pointInfo-button {\n  text-align: center;\n  font-size: 25px;\n  margin: auto;\n  padding-top: 5px;\n  border-radius: 2px;\n  position: relative;\n  display: inline-block;\n  /* font-weight: bold; */\n  text-decoration: none;\n  color: black;\n  background: white;\n  transition: .4s;\n  border-radius: 4px;\n  border-bottom: 4px solid #43413e;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8824,7 +8826,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "button{\n  width: 95%;\n  margin: 5px;\n}\n\n.area {\n  padding-right: 10px;\n  text-align: center;\n  margin-bottom: 5px;\n  font-size: 20px;\n}\n\n.score-display-area {\n  width: 95%;\n  padding: 3px;\n  margin: auto;\n}\n\n.display-starting-player {\n  margin: auto;\n  vertical-align: middle;\n  font-size: 30px;\n}\n\n\n.reset-button-area {\n  margin: auto;\n}\n\n.reset-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}\n\n.update-button-area {\n  margin: auto;\n}\n\n.update-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "button{\n  width: 95%;\n  margin: 5px;\n}\n\n.area {\n  padding-right: 10px;\n  text-align: center;\n  margin-bottom: 5px;\n  font-size: 20px;\n}\n\n.score-display-area {\n  width: 95%;\n  padding: 3px;\n  margin: auto;\n}\n\n.display-starting-player {\n  margin: auto;\n  vertical-align: middle;\n  font-size: 30px;\n  background-color: lightgray;\n  width: 70%;\n}\n\n\n.reset-button-area {\n  margin: auto;\n}\n\n.reset-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}\n\n.update-button-area {\n  margin: auto;\n}\n\n/* .update-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n} */\n\n.update-score-button {\n  /* width: 70%; */\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n  /* text-align: center; */\n  /* font-size: 30px; */\n  border-radius: 2px;\n  /* padding : 10px 0px; */\n  position: relative;\n  display: inline-block;\n  font-weight: bold;\n  /* padding: 0.25em 0.5em; */\n  text-decoration: none;\n  color: black;\n  background: white;\n  transition: .4s;\n  border-radius: 4px;\n  border-bottom: 4px solid #43413e;\n}\n\n.update-score-button:hover {\n  background: black;\n  color: white;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
