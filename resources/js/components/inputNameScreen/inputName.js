@@ -29,18 +29,9 @@ class InputName extends React.Component{
   }
 
 
-  handleClick(e){
-    // console.log("te")
-    // console.log(this.props)
+  handleClick(){
     var updatedName = this.state.playerNames
-    // console.log(updatedName)
     this.props.dataPoint(updatedName)
-    // this.setState({playerNames : this.state.playerNames})
-    // this.props.history.push({
-    //   pathname: "/scoredisplay",
-    //   state: { playerNames: this.state.playerNames }
-    // });
-
   }
 
   render(){
@@ -51,27 +42,18 @@ class InputName extends React.Component{
           東：
           <input name="East" value={this.state.value} onChange={this.handleChange} />
         </div>
-        {this.state.playerNames.East}
         <div className="player-name">
           南：
           <input name="South" value={this.state.value} onChange={this.handleChange} />
         </div>
-        {this.state.playerNames.South}
         <div className="player-name">
           西：
           <input name="West" value={this.state.value} onChange={this.handleChange} />
         </div>
-        {this.state.playerNames.West}
         <div className="player-name">
           北：
           <input name="North" value={this.state.value} onChange={this.handleChange} />
         </div>
-        {this.state.playerNames.North}
-        {/* <Link to="/scoredisplay">
-          <button>
-            ゲーム開始！
-          </button>
-        </Link> */}
         <Link
           to={{
             pathname: "/scoredisplay",

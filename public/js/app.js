@@ -2503,16 +2503,9 @@ var InputName = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleClick",
-    value: function handleClick(e) {
-      // console.log("te")
-      // console.log(this.props)
-      var updatedName = this.state.playerNames; // console.log(updatedName)
-
-      this.props.dataPoint(updatedName); // this.setState({playerNames : this.state.playerNames})
-      // this.props.history.push({
-      //   pathname: "/scoredisplay",
-      //   state: { playerNames: this.state.playerNames }
-      // });
+    value: function handleClick() {
+      var updatedName = this.state.playerNames;
+      this.props.dataPoint(updatedName);
     }
   }, {
     key: "render",
@@ -2525,28 +2518,28 @@ var InputName = /*#__PURE__*/function (_React$Component) {
             value: this.state.value,
             onChange: this.handleChange
           })]
-        }), this.state.playerNames.East, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "player-name",
           children: ["\u5357\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             name: "South",
             value: this.state.value,
             onChange: this.handleChange
           })]
-        }), this.state.playerNames.South, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "player-name",
           children: ["\u897F\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             name: "West",
             value: this.state.value,
             onChange: this.handleChange
           })]
-        }), this.state.playerNames.West, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "player-name",
           children: ["\u5317\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             name: "North",
             value: this.state.value,
             onChange: this.handleChange
           })]
-        }), this.state.playerNames.North, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
           to: {
             pathname: "/scoredisplay"
           },
