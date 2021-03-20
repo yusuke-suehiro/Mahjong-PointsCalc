@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 import ScoreDisplay from "./scoreDisplay/scoreDisplay"
 import OneResultDisplay from "./oneResultDisplay/oneResultDisplay"
 import FinishGame from "./finishGame/finishGame"
+import PropTypes from 'prop-types';
+import InputName from './inputNameScreen/inputName';
 
 class PageZero extends React.Component{
   render(){
@@ -22,15 +24,64 @@ class PageZero extends React.Component{
 
 
 class App extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      pointInfo: {
+        kind:'',
+        ronFrom:'',
+        ronTo:'',
+        tsumoWho:'',
+        ronParent:'',
+        ronChild:'',
+        tsumoALL:'',
+        tsumoParent:'',
+        tsumoChild:'',
+        tempaiWho:'',
+        tempaiNum:''
+      },
+      playerNames: {
+        East: '',
+        South: '',
+        West: '',
+        North: '',
+      },
+        score1:25000,
+        score2:25000,
+        score3:25000,
+        score4:25000,
+    };
+  }
+  pointFromTo(point) {
+      this.setState({ pointInfo: point });
+  }
+  havingpointFromTo(point1, point2, point3, point4) {
+      this.setState({ score1: point1 });
+      this.setState({ score2: point2 });
+      this.setState({ score3: point3 });
+      this.setState({ score4: point4 });
+  }
+
+  nameFromTo(names) {
+    var newName = names;
+    this.setState({ playerNames: names });
+  }
+
   render(){
     return (
       <div>
+      Appjsの値
+      {this.state.score1}
+      {this.state.score2}
+      {this.state.score3}
+      {this.state.score4}
         <BrowserRouter>
           <div>
-            <Route path="/" exact component={PageZero} />
-            <Route path="/scoredisplay" component={ScoreDisplay}/>
-            <Route path="/oneresultdisplay" component={OneResultDisplay}/>
-            <Route path="/finishgame" component={FinishGame}/>
+            {/* <Route path="/" exact component={inputName} /> */}
+            <Route path="/" exact render={() => <InputName dataPoint={(names) => { this.nameFromTo(names); }}/>}/>
+            <Route path="/scoredisplay" render={() => <ScoreDisplay pointInfo={this.state.pointInfo} playerNames={this.state.playerNames} havingPoint={(point1, point2, point3, point4) => { this.havingpointFromTo(point1, point2, point3, point4); }} score1={this.state.score1} score2={this.state.score2} score3={this.state.score3} score4={this.state.score4}/>}/>
+            <Route path="/oneresultdisplay" render={() => <OneResultDisplay playerNames={this.state.playerNames} dataPoint={(point) => { this.pointFromTo(point); }}/>}/>
+            <Route path="/finishgame" render={() => <FinishGame playerNames={this.state.playerNames} score1={this.state.score1} score2={this.state.score2} score3={this.state.score3} score4={this.state.score4}/>}/>
           </div>
         </BrowserRouter>
       </div>

@@ -14,3 +14,10 @@
 .player-name-and-score {
   margin: auto
 }
+
+.update-pointInfo-button {
+  text-align: center;
+  font-size: 30px;
+  margin: auto;
+  padding: 5px;
+}

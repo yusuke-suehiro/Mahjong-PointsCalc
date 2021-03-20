@@ -6,34 +6,90 @@ import {Container, Row, Col, Button} from "react-bootstrap";
 import './scoreDisplay.css';
 import EachPlayerScore from './eachPlayerScore';
 import CurrentRound from './CurrentRound'
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  havingPoint: PropTypes.func,
+};
 
 class ScoreDisplay extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { 
-      startingPlayer: "A",
-      player1: "player1",
-      player2: "player2",
-      player3: "player3",
-      player4: "player4",
+    console.log(this.props.playerNames)
+    this.state = {
+
+      playerNames: props.playerNames,
+      startingPlayer: props.playerNames.East,
+      parent: props.playerNames.East,
+      score1: props.score1,
+      score2: props.score2,
+      score3: props.score3,
+      score4: props.score4
     };
+    this.ChildRef = React.createRef();
+    this.doClick = this.AllUpdateScore.bind(this);
   }
+  AllUpdateScore() {
+    /*
+    this.ChildRef.current.pointInfoUpdate(this.state.player1); // this.ref名.currentで実体にアクセス
+    this.ChildRef.current.pointInfoUpdate(this.state.player2);
+    this.ChildRef.current.pointInfoUpdate(this.state.player3);
+    this.ChildRef.current.pointInfoUpdate(this.state.player4);
+    */
+  }
+  clickButton(point1, point2, point3, point4) {
+    console.log(point1);
+    return this.props.havingPoint(point1, point2, point3, point4);
+  }
+  pointFromTo(point, name) {
+    console.log(point);
+    console.log(name);
+    switch (name) {
+      case this.state.playerNames.East:
+          this.setState({ score1: point });
+          break;
+      case this.state.playerNames.South:
+          this.setState({ score2: point });
+          break;
+      case this.state.playerNames.West:
+          this.setState({ score3: point });
+          break;
+      case this.state.playerNames.North:
+          this.setState({ score4: point });
+          break;
+    }
+    //return this.props.havingPoint(this.state.score1, this.state.score2, this.state.score3, this.state.score4);
+  }
+
 
   render(){
     return (
       <div className="score-display-area">
-        点数表示画面
-        <Link to="/oneResultDisplay">
-          <button>
-            show OneResultDisplay when you click this!!
-          </button>
-        </Link>
+        scoredisplayの値
+        {this.state.score1}{this.state.score2}{this.state.score3}{this.state.score4}
+        {/*
+        {this.state.parent}
+        {this.props.pointInfo.kind}
+        {this.props.pointInfo.ronFrom}
+        {this.props.pointInfo.ronTo}
+        {this.props.pointInfo.tsumoWho}
+        {this.props.pointInfo.ronParent}
+        {this.props.pointInfo.ronChild}
+        {this.props.pointInfo.tsumoALL}
+        {this.props.pointInfo.tsumoParent}
+        {this.props.pointInfo.tsumoChild}
+        {this.props.pointInfo.tempaiWho}
+        {this.props.pointInfo.tempaiNum}
+      */}
+        <br></br>
         <Row>
           <Col className="area" xs={12} md={4}>
           </Col>
           <Col className="area" xs={12} md={4}>
-          <EachPlayerScore name={this.state.player1}/>
+
+          <EachPlayerScore name={this.state.playerNames.East} pointInfo={this.props.pointInfo} parent={this.state.parent} havingPoint={(point, name) => { this.pointFromTo(point, name); }} score={this.state.score1}/>
+
           </Col>
           <Col className="area" xs={12} md={4}>
           <div className="display-starting-player">起家:{this.state.startingPlayer}</div>
@@ -41,13 +97,15 @@ class ScoreDisplay extends React.Component {
         </Row>
         <Row className="tmp">
           <Col className="area" xs={12} md={4}>
-          <EachPlayerScore name={this.state.player2} />
+
+          <EachPlayerScore name={this.state.playerNames.South} pointInfo={this.props.pointInfo} parent={this.state.parent} havingPoint={(point, name) => { this.pointFromTo(point, name); }} score={this.state.score2}/>
           </Col>
           <Col className="area" xs={12} md={4}>
           <CurrentRound />
           </Col>
           <Col className="area" xs={12} md={4}>
-          <EachPlayerScore name={this.state.player4} />
+
+          <EachPlayerScore name={this.state.playerNames.North} pointInfo={this.props.pointInfo} parent={this.state.parent} havingPoint={(point, name) => { this.pointFromTo(point, name); }} score={this.state.score4}/>
           </Col>
         </Row>
         <Row>
@@ -55,10 +113,14 @@ class ScoreDisplay extends React.Component {
             <button className="reset-score-button">１局前に戻る</button>
           </Col>
           <Col className="area" xs={12} md={4}>
-          <EachPlayerScore name={this.state.player3} />
+
+          <EachPlayerScore name={this.state.playerNames.West} pointInfo={this.props.pointInfo} parent={this.state.parent} havingPoint={(point, name) => { this.pointFromTo(point, name); }} score={this.state.score3}/>
+
           </Col>
           <Col className="update-button-area" xs={12} md={4}>
-            <button className="update-score-button">局終了，点数更新</button>
+            <Link to="/oneResultDisplay">
+            <button className="update-score-button" onClick={() => { this.clickButton(this.state.score1, this.state.score2, this.state.score3, this.state.score4); }}>局終了</button>
+            </Link>
           </Col>
         </Row>
       </div>
@@ -66,5 +128,5 @@ class ScoreDisplay extends React.Component {
   }
 };
 
-
+ScoreDisplay.propTypes = propTypes;
 export default ScoreDisplay;
