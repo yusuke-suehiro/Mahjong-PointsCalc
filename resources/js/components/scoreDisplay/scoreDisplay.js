@@ -13,14 +13,10 @@ class ScoreDisplay extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props.history)
+    console.log(this.props.playerNames)
     this.state = {
-      playerName: props.playerNames,
-      startingPlayer: "A",
-      player1: "player1",
-      player2: "player2",
-      player3: "player3",
-      player4: "player4",
+      playerNames: props.playerNames,
+      startingPlayer: props.playerNames.East,
     };
   }
 
@@ -42,17 +38,17 @@ class ScoreDisplay extends React.Component {
 
         <br></br>
          aaa:{this.state.player1}
-         {/* {this.props.location.state.playerNames} */}
         <Link to="/oneResultDisplay">
           <button>
             show OneResultDisplay when you click this!!
           </button>
         </Link>
+        {this.state.playerNames.East}:aaa
         <Row>
           <Col className="area" xs={12} md={4}>
           </Col>
           <Col className="area" xs={12} md={4}>
-          <EachPlayerScore name={this.state.player1}/>
+          <EachPlayerScore name={this.state.playerNames.East}/>
           </Col>
           <Col className="area" xs={12} md={4}>
           <div className="display-starting-player">起家:{this.state.startingPlayer}</div>
@@ -60,13 +56,13 @@ class ScoreDisplay extends React.Component {
         </Row>
         <Row className="tmp">
           <Col className="area" xs={12} md={4}>
-          <EachPlayerScore name={this.state.player2} />
+          <EachPlayerScore name={this.state.playerNames.South} />
           </Col>
           <Col className="area" xs={12} md={4}>
           <CurrentRound />
           </Col>
           <Col className="area" xs={12} md={4}>
-          <EachPlayerScore name={this.state.player4} />
+          <EachPlayerScore name={this.state.playerNames.North} />
           </Col>
         </Row>
         <Row>
@@ -74,7 +70,7 @@ class ScoreDisplay extends React.Component {
             <button className="reset-score-button">１局前に戻る</button>
           </Col>
           <Col className="area" xs={12} md={4}>
-          <EachPlayerScore name={this.state.player3} />
+          <EachPlayerScore name={this.state.playerNames.West} />
           </Col>
           <Col className="update-button-area" xs={12} md={4}>
             <button className="update-score-button">局終了，点数更新</button>

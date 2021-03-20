@@ -2112,6 +2112,12 @@ var App = /*#__PURE__*/function (_React$Component2) {
         tsumoChild: '',
         tempaiWho: '',
         tempaiNum: ''
+      },
+      playerNames: {
+        East: '',
+        South: '',
+        West: '',
+        North: ''
       }
     };
     return _this;
@@ -2125,6 +2131,14 @@ var App = /*#__PURE__*/function (_React$Component2) {
       });
     }
   }, {
+    key: "nameFromTo",
+    value: function nameFromTo(names) {
+      var newName = names;
+      this.setState({
+        playerNames: names
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -2134,13 +2148,19 @@ var App = /*#__PURE__*/function (_React$Component2) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
               path: "/",
-              exact: true,
-              component: _inputNameScreen_inputName__WEBPACK_IMPORTED_MODULE_6__.default
+              render: function render() {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_inputNameScreen_inputName__WEBPACK_IMPORTED_MODULE_6__.default, {
+                  dataPoint: function dataPoint(names) {
+                    _this2.nameFromTo(names);
+                  }
+                });
+              }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
               path: "/scoredisplay",
               render: function render() {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scoreDisplay_scoreDisplay__WEBPACK_IMPORTED_MODULE_2__.default, {
-                  pointInfo: _this2.state.pointInfo
+                  pointInfo: _this2.state.pointInfo,
+                  playerNames: _this2.state.playerNames
                 });
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
@@ -2297,9 +2317,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2326,15 +2348,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var inputName = /*#__PURE__*/function (_React$Component) {
-  _inherits(inputName, _React$Component);
+var InputName = /*#__PURE__*/function (_React$Component) {
+  _inherits(InputName, _React$Component);
 
-  var _super = _createSuper(inputName);
+  var _super = _createSuper(InputName);
 
-  function inputName(props) {
+  function InputName(props) {
     var _this;
 
-    _classCallCheck(this, inputName);
+    _classCallCheck(this, InputName);
 
     _this = _super.call(this, props);
     _this.state = {
@@ -2350,12 +2372,19 @@ var inputName = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(inputName, [{
+  _createClass(InputName, [{
     key: "handleChange",
     value: function handleChange(e) {
+      // console.log(e.target.name)
+      // console.log(e.target.value)
       var data = this.state.playerNames; //現在の値を予め取得しておく
 
       var eachPlayerName = e.target.name; // フォームのname属性を取得 
+      // console.log({playerName:{[name]: e.target.value}})
+
+      this.setState({
+        playerNames: _defineProperty({}, eachPlayerName, e.target.value)
+      }); // name属性 = stateのkey名なのでstateに保存
 
       data[eachPlayerName] = e.target.value;
       this.setState({
@@ -2364,15 +2393,16 @@ var inputName = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleClick",
-    value: function handleClick() {
-      console.log("te");
-      console.log(this.props);
-      this.props.history.push({
-        pathname: "/scoredisplay",
-        state: {
-          playerNames: this.state.playerNames
-        }
-      });
+    value: function handleClick(e) {
+      // console.log("te")
+      // console.log(this.props)
+      var updatedName = this.state.playerNames; // console.log(updatedName)
+
+      this.props.dataPoint(updatedName); // this.setState({playerNames : this.state.playerNames})
+      // this.props.history.push({
+      //   pathname: "/scoredisplay",
+      //   state: { playerNames: this.state.playerNames }
+      // });
     }
   }, {
     key: "render",
@@ -2385,39 +2415,44 @@ var inputName = /*#__PURE__*/function (_React$Component) {
             value: this.state.value,
             onChange: this.handleChange
           })]
-        }), this.state.playerNames.player1, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        }), this.state.playerNames.East, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "player-name",
           children: ["\u5357\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             name: "South",
             value: this.state.value,
             onChange: this.handleChange
           })]
-        }), this.state.playerNames.player2, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        }), this.state.playerNames.South, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "player-name",
           children: ["\u897F\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             name: "West",
             value: this.state.value,
             onChange: this.handleChange
           })]
-        }), this.state.playerNames.player3, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        }), this.state.playerNames.West, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "player-name",
           children: ["\u5317\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
             name: "North",
             value: this.state.value,
             onChange: this.handleChange
           })]
-        }), this.state.playerNames.player4, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          onClick: this.handleClick,
-          children: "\u30B2\u30FC\u30E0\u958B\u59CB\uFF01"
+        }), this.state.playerNames.North, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+          to: {
+            pathname: "/scoredisplay"
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            onClick: this.handleClick,
+            children: "\u30B2\u30FC\u30E0\u958B\u59CB\uFF01"
+          })
         })]
       });
     }
   }]);
 
-  return inputName;
+  return InputName;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.withRouter)(inputName));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InputName);
 
 /***/ }),
 
@@ -3256,8 +3291,9 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
     value: function pointsUpdate(newScore) {
       // console.log("newScore:",newScore);
       // var tmp = childState.score
+      var tmp = newScore;
       this.setState({
-        score: newScore
+        score: tmp
       }); // console.log("parent:",this.state.score);
       // console.log("parent:",this.state.score);
     }
@@ -3389,14 +3425,10 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ScoreDisplay);
 
     _this = _super.call(this, props);
-    console.log(_this.props.history);
+    console.log(_this.props.playerNames);
     _this.state = {
-      playerName: props.playerNames,
-      startingPlayer: "A",
-      player1: "player1",
-      player2: "player2",
-      player3: "player3",
-      player4: "player4"
+      playerNames: props.playerNames,
+      startingPlayer: props.playerNames.East
     };
     return _this;
   }
@@ -3411,7 +3443,7 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
             children: "show OneResultDisplay when you click this!!"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
+        }), this.state.playerNames.East, ":aaa", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__.default, {
             className: "area",
             xs: 12,
@@ -3421,7 +3453,7 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
             xs: 12,
             md: 4,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__.default, {
-              name: this.state.player1
+              name: this.state.playerNames.East
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__.default, {
             className: "area",
@@ -3439,7 +3471,7 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
             xs: 12,
             md: 4,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__.default, {
-              name: this.state.player2
+              name: this.state.playerNames.South
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__.default, {
             className: "area",
@@ -3451,7 +3483,7 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
             xs: 12,
             md: 4,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__.default, {
-              name: this.state.player4
+              name: this.state.playerNames.North
             })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
@@ -3468,7 +3500,7 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
             xs: 12,
             md: 4,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_eachPlayerScore__WEBPACK_IMPORTED_MODULE_4__.default, {
-              name: this.state.player3
+              name: this.state.playerNames.West
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__.default, {
             className: "update-button-area",
