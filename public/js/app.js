@@ -3195,6 +3195,7 @@ var OneResultDisplay = /*#__PURE__*/function (_React$Component) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
             to: "/scoredisplay",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              className: "link-button",
               onClick: function onClick() {
                 _this2.clickButton(_this2.state.pointInfo);
               },
@@ -3203,6 +3204,7 @@ var OneResultDisplay = /*#__PURE__*/function (_React$Component) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
             to: "/finishgame",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              className: "link-button",
               onClick: function onClick() {
                 _this2.clickButton(_this2.state.pointInfo);
               },
@@ -8757,7 +8759,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".LinkButton {\n  font-size:2em;\n  text-align:center;\n  display: inline;\n  font-size: 30px;\n}\n.LinkButton button {\n  width: 40%;\n  margin-top: 10px;\n  margin-left: 30%;\n  margin-right :30%;\n}\n.result-screen-button {\n  font-size: 25px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".LinkButton {\n  font-size:2em;\n  text-align:center;\n  display: inline;\n  font-size: 30px;\n}\n.LinkButton button {\n  width: 40%;\n  margin-top: 10px;\n  margin-left: 30%;\n  margin-right :30%;\n}\n.result-screen-button {\n  font-size: 25px;\n}\n\n\n\n.link-button {\n  text-align: center;\n  font-size: 25px;\n  margin: auto;\n  padding: 5px;\n  border-radius: 2px;\n  position: relative;\n  display: inline-block;\n  font-weight: bold;\n  text-decoration: none;\n  color: black;\n  background: white;\n  transition: .4s;\n  border-radius: 4px;\n  border-bottom: 4px solid #43413e;\n}\n\n.link-button:hover {\n  background: black;\n  color: white;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
