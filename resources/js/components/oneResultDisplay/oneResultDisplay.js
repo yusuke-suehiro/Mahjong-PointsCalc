@@ -23,12 +23,13 @@ class OneResultDisplay extends React.Component{
         tsumoParent:'',
         tsumoChild:'',
         tempaiWho:'',
-        tempaiNum:''
+        tempaiNum:'',
+        parentWho:''
       },
     };
   }
   clickButton(point) {
-    return this.props.dataPoint(point);
+      return this.props.dataPoint(point);
   }
   pointFromTo(point) {
       this.setState({ pointInfo: point });
@@ -36,7 +37,6 @@ class OneResultDisplay extends React.Component{
   render(){
     return (
       <div>
-
         <ResultLayout dataPoint={(point) => { this.pointFromTo(point); }} playerNames={this.props.playerNames} honnba={this.props.honnba} kyoutaku={this.props.kyoutaku}/>
         <div className="LinkButton">
         <Link to="/scoredisplay">

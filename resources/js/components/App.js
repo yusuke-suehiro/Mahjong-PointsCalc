@@ -38,7 +38,8 @@ class App extends React.Component{
         tsumoParent:'',
         tsumoChild:'',
         tempaiWho:'',
-        tempaiNum:''
+        tempaiNum:'',
+        parentWho:''
       },
       playerNames: {
         East: '',
@@ -51,7 +52,8 @@ class App extends React.Component{
         score3:25000,
         score4:25000,
         honnba:0,
-        kyoutaku:0
+        kyoutaku:0,
+        parent:'親'
     };
   }
   pointFromTo(point) {
@@ -84,13 +86,14 @@ class App extends React.Component{
       {this.state.score3}
       {this.state.score4},
       {this.state.honnba},
-      {this.state.kyoutaku}
+      {this.state.kyoutaku},
+      {this.state.parent}
         <BrowserRouter>
           <div>
             {/* <Route path="/" exact component={inputName} /> */}
             <Route path="/" exact render={() => <InputName dataPoint={(names) => { this.nameFromTo(names); }}/>}/>
             <Route path="/scoredisplay" render={() => <ScoreDisplay pointInfo={this.state.pointInfo} playerNames={this.state.playerNames} havingPoint={(point1, point2, point3, point4, honnba, kyoutaku) => { this.havingpointFromTo(point1, point2, point3, point4, honnba, kyoutaku); }} score1={this.state.score1} score2={this.state.score2} score3={this.state.score3} score4={this.state.score4}/>}/>
-            <Route path="/oneresultdisplay" render={() => <OneResultDisplay playerNames={this.state.playerNames} dataPoint={(point) => { this.pointFromTo(point); }} honnba={this.state.honnba} kyoutaku={this.state.kyoutaku}/>}/>
+            <Route path="/oneresultdisplay" render={() => <OneResultDisplay playerNames={this.state.playerNames} dataPoint={(point) => { this.pointFromTo(point); }} honnba={this.state.honnba} kyoutaku={this.state.kyoutaku} parent={this.state.parent}/>}/>
             <Route path="/finishgame" render={() => <FinishGame playerNames={this.state.playerNames} score1={this.state.score1} score2={this.state.score2} score3={this.state.score3} score4={this.state.score4}/>}/>
           </div>
         </BrowserRouter>

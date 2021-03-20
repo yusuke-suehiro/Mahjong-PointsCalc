@@ -3,6 +3,7 @@ import './eachPlayerScore.css'
 import {Container, Row, Col, Button} from "react-bootstrap";
 import ScoreOperation from './scoreOperation';
 import PropTypes from 'prop-types';
+import CalcParent from './CalcParent';
 
 const propTypes = {
   dataPoint: PropTypes.func,
@@ -16,6 +17,9 @@ class EachPlayerScore extends React.Component{
     this.state = {
       name: props.name,
       score: props.score,
+      parent:props.parent,
+      parentFlag: "",
+      parentNum: 1,
       updateFlag: false
     };
     this.pointsUpdate = this.pointsUpdate.bind(this)
@@ -42,13 +46,15 @@ class EachPlayerScore extends React.Component{
       if (this.props.pointInfo.ronFrom == this.state.name) {
         if (this.props.pointInfo.ronTo == this.props.parent) {
           var newScore = this.state.score - this.props.pointInfo.ronParent - this.props.pointInfo.honnba*300;
-          this.setState({ score: newScore }, () => {
+          this.setState({ score: newScore}, () => {
             return this.props.havingPoint(this.state.score, this.state.name);
           } );
         }
         else {
           var newScore = this.state.score - this.props.pointInfo.ronChild - this.props.pointInfo.honnba*300;
-          this.setState({ score: newScore }, () => {
+          var parentResult=CalcParent(this.props.parent, this.props.member);
+          console.log(parentResult);
+          this.setState({ score: newScore ,parent:parentResult}, () => {
             return this.props.havingPoint(this.state.score, this.state.name);
           } );
         }
@@ -62,7 +68,7 @@ class EachPlayerScore extends React.Component{
         }
         else {
           var newScore = this.state.score + this.props.pointInfo.ronChild + this.props.pointInfo.honnba*300 + this.props.pointInfo.kyoutaku*1000;
-          this.setState({ score: newScore }, () => {
+          this.setState({ score: newScore}, () => {
             return this.props.havingPoint(this.state.score, this.state.name);
           } );
         }
@@ -166,8 +172,17 @@ class EachPlayerScore extends React.Component{
           break;
       }
     }
-    else if (this.props.pointInfo.kind == "") {
-
+    /*
+    var parentResult=CalcParent(this.props.parent, this.props.member);
+    console.log(parentResult);
+    */
+    if (this.props.parent == this.state.name) {
+      this.setState({ parentFlag: "親：" }, () => {
+      } );
+    }
+    else {
+      this.setState({ parentFlag: "" }, () => {
+      } );
     }
     this.setState({ updateFlag: true});
     console.log(this.state.score);
@@ -184,7 +199,7 @@ class EachPlayerScore extends React.Component{
             <div className="player-score-area">
             <button className="update-pointInfo-button" onClick={() => { this.pointInfoUpdate(); }}>更新</button>
               <div className="player-name">
-                <p>{this.state.name}</p>
+                <p>{this.state.parentFlag}{this.state.name}</p>
               </div>
               <div className="player-score">
                 <p>{this.state.score}</p>

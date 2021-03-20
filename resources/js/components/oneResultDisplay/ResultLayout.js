@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './OneResultDisplay.css';
 import PropTypes from 'prop-types';
 import {Row, Col} from "react-bootstrap";
+//import CalcParent from './CalcParent';
 
 const propTypes = {
   dataPoint: PropTypes.func,
@@ -153,6 +154,7 @@ class ResultLayout extends React.Component{
         this.setState({ numTempai: count });
         pointArray.tempaiNum=count;
       }
+
       return this.props.dataPoint(pointArray);
     };
 

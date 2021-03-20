@@ -19,7 +19,7 @@ class CurrentRound extends React.Component{
     super(props);
     this.state = {
       round : "東",
-      handNumber: 0,
+      handNumber: 1,
       honnba: 0,
       kyoutaku: 0
     };
