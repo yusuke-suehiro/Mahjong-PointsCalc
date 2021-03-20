@@ -41,12 +41,12 @@ class OneResultDisplay extends React.Component{
         <div className="LinkButton">
         <Link to="/scoredisplay">
 
-          <button onClick={() => { this.clickButton(this.state.pointInfo); }}>
+          <button className="link-button" onClick={() => { this.clickButton(this.state.pointInfo); }}>
             点数表示画面に戻る
           </button>
         </Link>
         <Link to="/finishgame">
-          <button onClick={() => { this.clickButton(this.state.pointInfo); }}>
+          <button className="link-button" onClick={() => { this.clickButton(this.state.pointInfo); }}>
             半荘を終了する
           </button>
         </Link>

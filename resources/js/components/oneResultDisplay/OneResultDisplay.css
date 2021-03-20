@@ -1,8 +1,10 @@
 .FirstSelect {
   margin-top: 0.5em;
-  text-align:center;
-  font-size:2em;
+  text-align: center;
+  font-size: 2em;
+  font-size: 25px;
 }
+
 .FirstInput {
   text-align:center;
   font-size:2em;
@@ -12,6 +14,7 @@
     text-align:center;
     font-size:2em;
     padding: 0.5em 1em;
+    font-size: 25px;
 }
 .PlusMinus{
     text-align:center;
@@ -24,10 +27,12 @@
 
 
 .ロン点数 {
-  display:block
+  display:block;
+  font-size: 12px;
 }
 .ツモ点数 {
-  display:block
+  display:block;
+  font-size: 12px;
 }
 .流局点数 {
   display:none
@@ -40,7 +45,8 @@
   text-align:center;
   font-size:2em;
   padding: 0.5em 1em;
-  display:block
+  display:block;
+  font-size: 25px;
 }
 .ツモFromTo {
   display:none
@@ -59,7 +65,8 @@
   text-align:center;
   font-size:2em;
   padding: 0.5em 1em;
-  display:block
+  display:block;
+  font-size: 25px;
 }
 .流局Tsumo {
   display:none
@@ -78,8 +85,10 @@
   text-align:center;
   font-size:2em;
   padding: 0.5em 1em;
-  display:block
+  display:block;
+  font-size: 25px;
 }
 .Tempai {
-  display:none
+  display:none;
+  font-size: 25px;
 }

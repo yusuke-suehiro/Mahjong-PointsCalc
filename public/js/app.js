@@ -2933,14 +2933,17 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "FirstInput",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            className: "result-screen-button",
             type: "button",
             onClick: ShowMessage.bind(this, "ロン"),
             value: "\u30ED\u30F3"
           }), "\u2003", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            className: "result-screen-button",
             type: "button",
             onClick: ShowMessage.bind(this, "ツモ"),
             value: "\u30C4\u30E2"
           }), "\u2003", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            className: "result-screen-button",
             type: "button",
             onClick: ShowMessage.bind(this, "流局"),
             value: "\u6D41\u5C40"
@@ -3192,6 +3195,7 @@ var OneResultDisplay = /*#__PURE__*/function (_React$Component) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
             to: "/scoredisplay",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              className: "link-button",
               onClick: function onClick() {
                 _this2.clickButton(_this2.state.pointInfo);
               },
@@ -3200,6 +3204,7 @@ var OneResultDisplay = /*#__PURE__*/function (_React$Component) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
             to: "/finishgame",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              className: "link-button",
               onClick: function onClick() {
                 _this2.clickButton(_this2.state.pointInfo);
               },
@@ -8730,7 +8735,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".FirstSelect {\n  margin-top: 0.5em;\n  text-align:center;\n  font-size:2em;\n}\n.FirstInput {\n  text-align:center;\n  font-size:2em;\n  padding:1em;\n}\n.SelectResult{\n    text-align:center;\n    font-size:2em;\n    padding: 0.5em 1em;\n}\n.PlusMinus{\n    text-align:center;\n    font-size:2em;\n    padding: 0.5em 1em;\n    display:block;\n}\n\n\n\n\n.ロン点数 {\n  display:block\n}\n.ツモ点数 {\n  display:block\n}\n.流局点数 {\n  display:none\n}\n.点数 {\n  display:none\n}\n\n.ロンFromTo {\n  text-align:center;\n  font-size:2em;\n  padding: 0.5em 1em;\n  display:block\n}\n.ツモFromTo {\n  display:none\n}\n.流局FromTo {\n  display:none\n}\n.FromTo {\n  display:none\n}\n\n.ロンTsumo{\n  display:none\n}\n.ツモTsumo {\n  text-align:center;\n  font-size:2em;\n  padding: 0.5em 1em;\n  display:block\n}\n.流局Tsumo {\n  display:none\n}\n.Tsumo {\n  display:none\n}\n\n.ロンTempai{\n  display:none\n}\n.ツモTempai {\n  display:none\n}\n.流局Tempai {\n  text-align:center;\n  font-size:2em;\n  padding: 0.5em 1em;\n  display:block\n}\n.Tempai {\n  display:none\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".FirstSelect {\n  margin-top: 0.5em;\n  text-align: center;\n  font-size: 2em;\n  font-size: 25px;\n}\n\n.FirstInput {\n  text-align:center;\n  font-size:2em;\n  padding:1em;\n}\n.SelectResult{\n    text-align:center;\n    font-size:2em;\n    padding: 0.5em 1em;\n    font-size: 25px;\n}\n.PlusMinus{\n    text-align:center;\n    font-size:2em;\n    padding: 0.5em 1em;\n    display:block;\n}\n\n\n\n\n.ロン点数 {\n  display:block;\n  font-size: 12px;\n}\n.ツモ点数 {\n  display:block;\n  font-size: 12px;\n}\n.流局点数 {\n  display:none\n}\n.点数 {\n  display:none\n}\n\n.ロンFromTo {\n  text-align:center;\n  font-size:2em;\n  padding: 0.5em 1em;\n  display:block;\n  font-size: 25px;\n}\n.ツモFromTo {\n  display:none\n}\n.流局FromTo {\n  display:none\n}\n.FromTo {\n  display:none\n}\n\n.ロンTsumo{\n  display:none\n}\n.ツモTsumo {\n  text-align:center;\n  font-size:2em;\n  padding: 0.5em 1em;\n  display:block;\n  font-size: 25px;\n}\n.流局Tsumo {\n  display:none\n}\n.Tsumo {\n  display:none\n}\n\n.ロンTempai{\n  display:none\n}\n.ツモTempai {\n  display:none\n}\n.流局Tempai {\n  text-align:center;\n  font-size:2em;\n  padding: 0.5em 1em;\n  display:block;\n  font-size: 25px;\n}\n.Tempai {\n  display:none;\n  font-size: 25px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8754,7 +8759,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".LinkButton {\n  font-size:2em;\n  text-align:center;\n  display: inline;\n}\n.LinkButton button {\n  width:40%;\n  margin-top:2em;\n  margin-left:30%;\n  margin-right:30%;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".LinkButton {\n  font-size:2em;\n  text-align:center;\n  display: inline;\n  font-size: 30px;\n}\n.LinkButton button {\n  width: 40%;\n  margin-top: 10px;\n  margin-left: 30%;\n  margin-right :30%;\n}\n.result-screen-button {\n  font-size: 25px;\n}\n\n\n\n.link-button {\n  text-align: center;\n  font-size: 25px;\n  margin: auto;\n  padding: 5px;\n  border-radius: 2px;\n  position: relative;\n  display: inline-block;\n  font-weight: bold;\n  text-decoration: none;\n  color: black;\n  background: white;\n  transition: .4s;\n  border-radius: 4px;\n  border-bottom: 4px solid #43413e;\n}\n\n.link-button:hover {\n  background: black;\n  color: white;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8826,7 +8831,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "button{\n  width: 95%;\n  margin: 5px;\n}\n\n.area {\n  padding-right: 10px;\n  text-align: center;\n  margin-bottom: 5px;\n  font-size: 20px;\n}\n\n.score-display-area {\n  width: 95%;\n  padding: 3px;\n  margin: auto;\n}\n\n.display-starting-player {\n  margin: auto;\n  vertical-align: middle;\n  font-size: 30px;\n  background-color: lightgray;\n  width: 70%;\n}\n\n\n.reset-button-area {\n  margin: auto;\n}\n\n.reset-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}\n\n.update-button-area {\n  margin: auto;\n}\n\n/* .update-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n} */\n\n.update-score-button {\n  /* width: 70%; */\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n  /* text-align: center; */\n  /* font-size: 30px; */\n  border-radius: 2px;\n  /* padding : 10px 0px; */\n  position: relative;\n  display: inline-block;\n  font-weight: bold;\n  /* padding: 0.25em 0.5em; */\n  text-decoration: none;\n  color: black;\n  background: white;\n  transition: .4s;\n  border-radius: 4px;\n  border-bottom: 4px solid #43413e;\n}\n\n.update-score-button:hover {\n  background: black;\n  color: white;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "button{\n  width: 95%;\n  margin: 5px;\n}\n\n.area {\n  padding-right: 10px;\n  text-align: center;\n  margin-bottom: 5px;\n  font-size: 20px;\n}\n\n.score-display-area {\n  width: 95%;\n  padding: 3px;\n  margin: auto;\n}\n\n.display-starting-player {\n  margin: auto;\n  vertical-align: middle;\n  font-size: 30px;\n  background-color: lightgray;\n  width: 70%;\n}\n\n\n.reset-button-area {\n  margin: auto;\n}\n\n.reset-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}\n\n.update-button-area {\n  margin: auto;\n}\n\n.update-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n  border-radius: 2px;\n  position: relative;\n  display: inline-block;\n  font-weight: bold;\n  text-decoration: none;\n  color: black;\n  background: white;\n  transition: .4s;\n  border-radius: 4px;\n  border-bottom: 4px solid #43413e;\n}\n\n.update-score-button:hover {\n  background: black;\n  color: white;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
