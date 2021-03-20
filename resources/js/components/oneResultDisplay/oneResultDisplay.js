@@ -36,7 +36,7 @@ class OneResultDisplay extends React.Component{
   render(){
     return (
       <div>
-        <ResultLayout dataPoint={(point) => { this.pointFromTo(point); }}/>
+        <ResultLayout dataPoint={(point) => { this.pointFromTo(point); }} playerNames={this.props.playerNames}/>
         <div className="LinkButton">
         <Link to="/scoredisplay">
 

@@ -19,9 +19,9 @@ class ResultLayout extends React.Component{
       fu: 20,
       hanError: "",
       fuError: "",
-      playerFrom: "Player2",
-      playerTo: "Player1",
-      playerTsumo: "Player1",
+      playerFrom: this.props.playerNames.South,
+      playerTo: this.props.playerNames.East,
+      playerTsumo: this.props.playerNames.East,
       playerTempai: ["", "", "", ""],
       numTempai: 0,
       pointsParent: "",
@@ -136,8 +136,8 @@ class ResultLayout extends React.Component{
         pointArray.kind=this.state.kind;
         pointArray.tsumoWho=this.state.playerTsumo;
         pointArray.tsumoALL=ParentPoints[AnsNum][4];
-        pointArray.tsumoParent=ChildPoints[AnsNum][4];
-        pointArray.tsumoChild=ChildPoints[AnsNum][5];
+        pointArray.tsumoParent=ChildPoints[AnsNum][5];
+        pointArray.tsumoChild=ChildPoints[AnsNum][4];
       }
       else {
         pointArray.kind=this.state.kind;
@@ -204,33 +204,33 @@ class ResultLayout extends React.Component{
 
         <div className={this.state.kind + "FromTo"}>
           和了：「{this.state.playerTo}」
-          <input type="button" onClick={PlayerTo.bind(this, "Player1")} value="Player1"></input>&nbsp;
-          <input type="button" onClick={PlayerTo.bind(this, "Player2")} value="Player2"></input>&nbsp;
-          <input type="button" onClick={PlayerTo.bind(this, "Player3")} value="Player3"></input>&nbsp;
-          <input type="button" onClick={PlayerTo.bind(this, "Player4")} value="Player4"></input>
+          <input type="button" onClick={PlayerTo.bind(this, this.props.playerNames.East)} value={this.props.playerNames.East}></input>&nbsp;
+          <input type="button" onClick={PlayerTo.bind(this, this.props.playerNames.South)} value={this.props.playerNames.South}></input>&nbsp;
+          <input type="button" onClick={PlayerTo.bind(this, this.props.playerNames.West)} value={this.props.playerNames.West}></input>&nbsp;
+          <input type="button" onClick={PlayerTo.bind(this, this.props.playerNames.North)} value={this.props.playerNames.North}></input>
           </div>
           <div className={this.state.kind + "FromTo"}>
           放銃：「{this.state.playerFrom}」
-          <input type="button" onClick={PlayerFrom.bind(this, "Player1")} value="Player1"></input>&nbsp;
-          <input type="button" onClick={PlayerFrom.bind(this, "Player2")} value="Player2"></input>&nbsp;
-          <input type="button" onClick={PlayerFrom.bind(this, "Player3")} value="Player3"></input>&nbsp;
-          <input type="button" onClick={PlayerFrom.bind(this, "Player4")} value="Player4"></input>
+          <input type="button" onClick={PlayerFrom.bind(this, this.props.playerNames.East)} value={this.props.playerNames.East}></input>&nbsp;
+          <input type="button" onClick={PlayerFrom.bind(this, this.props.playerNames.South)} value={this.props.playerNames.South}></input>&nbsp;
+          <input type="button" onClick={PlayerFrom.bind(this, this.props.playerNames.West)} value={this.props.playerNames.West}></input>&nbsp;
+          <input type="button" onClick={PlayerFrom.bind(this, this.props.playerNames.North)} value={this.props.playerNames.North}></input>
         </div>
         <div className={this.state.kind + "Tsumo"}>
           和了：「{this.state.playerTsumo}」
-          <input type="button" onClick={PlayerTsumo.bind(this, "Player1")} value="Player1"></input>&nbsp;
-          <input type="button" onClick={PlayerTsumo.bind(this, "Player2")} value="Player2"></input>&nbsp;
-          <input type="button" onClick={PlayerTsumo.bind(this, "Player3")} value="Player3"></input>&nbsp;
-          <input type="button" onClick={PlayerTsumo.bind(this, "Player4")} value="Player4"></input>
+          <input type="button" onClick={PlayerTsumo.bind(this, this.props.playerNames.East)} value={this.props.playerNames.East}></input>&nbsp;
+          <input type="button" onClick={PlayerTsumo.bind(this, this.props.playerNames.South)} value={this.props.playerNames.South}></input>&nbsp;
+          <input type="button" onClick={PlayerTsumo.bind(this, this.props.playerNames.West)} value={this.props.playerNames.West}></input>&nbsp;
+          <input type="button" onClick={PlayerTsumo.bind(this, this.props.playerNames.North)} value={this.props.playerNames.North}></input>
         </div>
         <div className={this.state.kind + "Tempai"}>
         テンパイ：{this.state.playerTempai}
         </div>
         <div className={this.state.kind + "Tempai"}>
-          <input type="button" onClick={PlayerTempai.bind(this, "Player1")} value="Player1"></input>&nbsp;
-          <input type="button" onClick={PlayerTempai.bind(this, "Player2")} value="Player2"></input>&nbsp;
-          <input type="button" onClick={PlayerTempai.bind(this, "Player3")} value="Player3"></input>&nbsp;
-          <input type="button" onClick={PlayerTempai.bind(this, "Player4")} value="Player4"></input>&emsp;
+          <input type="button" onClick={PlayerTempai.bind(this, this.props.playerNames.East)} value={this.props.playerNames.East}></input>&nbsp;
+          <input type="button" onClick={PlayerTempai.bind(this, this.props.playerNames.South)} value={this.props.playerNames.South}></input>&nbsp;
+          <input type="button" onClick={PlayerTempai.bind(this, this.props.playerNames.West)} value={this.props.playerNames.West}></input>&nbsp;
+          <input type="button" onClick={PlayerTempai.bind(this, this.props.playerNames.North)} value={this.props.playerNames.North}></input>&emsp;
           <input type="button" onClick={CalcPoints.bind(this)} value="計算"></input>
         </div>
         <div className={this.state.kind + "点数"}>
