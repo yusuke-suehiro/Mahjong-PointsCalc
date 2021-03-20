@@ -184,10 +184,10 @@ class EachPlayerScore extends React.Component{
             <div className="player-score-area">
             <button className="update-pointInfo-button" onClick={() => { this.pointInfoUpdate(); }}>更新</button>
               <div className="player-name">
-                <p>{this.state.name}</p>
+                <p className="player-name-display">{this.state.name}</p>
               </div>
               <div className="player-score">
-                <p>{this.state.score}</p>
+                <p className="player-score-display">{this.state.score}</p>
               </div>
             </div>
           </Col>

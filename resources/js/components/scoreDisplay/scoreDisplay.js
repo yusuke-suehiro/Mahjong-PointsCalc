@@ -99,7 +99,7 @@ class ScoreDisplay extends React.Component {
 
           </Col>
           <Col className="area" xs={12} md={4}>
-          <div className="display-starting-player">起家:{this.state.startingPlayer}</div>
+          <div className="display-starting-player">起家:{this.state.playerNames.East}</div>
           </Col>
         </Row>
         <Row className="tmp">
