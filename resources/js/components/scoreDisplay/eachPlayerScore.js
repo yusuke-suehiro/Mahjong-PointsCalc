@@ -25,7 +25,9 @@ class EachPlayerScore extends React.Component{
     // console.log("newScore:",newScore);
     // var tmp = childState.score
     var tmp = newScore
-    this.setState({ score: tmp });
+    this.setState({ score: tmp }, () => {
+      return this.props.havingPoint(this.state.score, this.state.name);
+    } );
     // console.log("parent:",this.state.score);
     // console.log("parent:",this.state.score);
   };
@@ -39,13 +41,13 @@ class EachPlayerScore extends React.Component{
     if (this.props.pointInfo.kind == "ロン") {
       if (this.props.pointInfo.ronFrom == this.state.name) {
         if (this.props.pointInfo.ronTo == this.props.parent) {
-          var newScore = this.state.score - this.props.pointInfo.ronParent;
+          var newScore = this.state.score - this.props.pointInfo.ronParent - this.props.pointInfo.honnba*300;
           this.setState({ score: newScore }, () => {
             return this.props.havingPoint(this.state.score, this.state.name);
           } );
         }
         else {
-          var newScore = this.state.score - this.props.pointInfo.ronChild;
+          var newScore = this.state.score - this.props.pointInfo.ronChild - this.props.pointInfo.honnba*300;
           this.setState({ score: newScore }, () => {
             return this.props.havingPoint(this.state.score, this.state.name);
           } );
@@ -53,13 +55,13 @@ class EachPlayerScore extends React.Component{
       }
       if (this.props.pointInfo.ronTo == this.state.name) {
         if (this.props.pointInfo.ronTo == this.props.parent) {
-          var newScore = this.state.score + this.props.pointInfo.ronParent;
+          var newScore = this.state.score + this.props.pointInfo.ronParent + this.props.pointInfo.honnba*300 + this.props.pointInfo.kyoutaku*1000;
           this.setState({ score: newScore }, () => {
             return this.props.havingPoint(this.state.score, this.state.name);
           } );
         }
         else {
-          var newScore = this.state.score + this.props.pointInfo.ronChild;
+          var newScore = this.state.score + this.props.pointInfo.ronChild + this.props.pointInfo.honnba*300 + this.props.pointInfo.kyoutaku*1000;
           this.setState({ score: newScore }, () => {
             return this.props.havingPoint(this.state.score, this.state.name);
           } );
@@ -69,13 +71,13 @@ class EachPlayerScore extends React.Component{
     else if (this.props.pointInfo.kind == "ツモ") {
       if (this.props.pointInfo.tsumoWho == this.state.name) {
         if (this.props.pointInfo.tsumoWho == this.props.parent) {
-          var newScore = this.state.score + 3*this.props.pointInfo.tsumoALL;
+          var newScore = this.state.score + 3*this.props.pointInfo.tsumoALL + this.props.pointInfo.honnba*300 + this.props.pointInfo.kyoutaku*1000;
           this.setState({ score: newScore }, () => {
             return this.props.havingPoint(this.state.score, this.state.name);
           } );
         }
         else {
-          var newScore = this.state.score + 2*this.props.pointInfo.tsumoChild + this.props.pointInfo.tsumoParent;
+          var newScore = this.state.score + 2*this.props.pointInfo.tsumoChild + this.props.pointInfo.tsumoParent + this.props.pointInfo.honnba*300 + this.props.pointInfo.kyoutaku*1000;
           this.setState({ score: newScore }, () => {
             return this.props.havingPoint(this.state.score, this.state.name);
           } );
@@ -83,20 +85,20 @@ class EachPlayerScore extends React.Component{
       }
       else {
         if (this.props.pointInfo.tsumoWho == this.props.parent) {
-          var newScore = this.state.score - this.props.pointInfo.tsumoALL;
+          var newScore = this.state.score - this.props.pointInfo.tsumoALL - this.props.pointInfo.honnba*100;
           this.setState({ score: newScore }, () => {
             return this.props.havingPoint(this.state.score, this.state.name);
           } );
         }
         else {
           if (this.state.name == this.props.parent) {
-            var newScore = this.state.score - this.props.pointInfo.tsumoParent;
+            var newScore = this.state.score - this.props.pointInfo.tsumoParent - this.props.pointInfo.honnba*100;
             this.setState({ score: newScore }, () => {
               return this.props.havingPoint(this.state.score, this.state.name);
             } );
           }
           else {
-            var newScore = this.state.score - this.props.pointInfo.tsumoChild;
+            var newScore = this.state.score - this.props.pointInfo.tsumoChild - this.props.pointInfo.honnba*100;
             this.setState({ score: newScore }, () => {
               return this.props.havingPoint(this.state.score, this.state.name);
             } );
@@ -165,7 +167,7 @@ class EachPlayerScore extends React.Component{
       }
     }
     else if (this.props.pointInfo.kind == "") {
-      
+
     }
     this.setState({ updateFlag: true});
     console.log(this.state.score);

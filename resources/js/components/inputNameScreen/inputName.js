@@ -21,7 +21,7 @@ class InputName extends React.Component{
     // console.log(e.target.name)
     // console.log(e.target.value)
     var data = this.state.playerNames//現在の値を予め取得しておく
-    let eachPlayerName = e.target.name; // フォームのname属性を取得 
+    let eachPlayerName = e.target.name; // フォームのname属性を取得
     // console.log({playerName:{[name]: e.target.value}})
     this.setState({playerNames:{[eachPlayerName]: e.target.value}}) // name属性 = stateのkey名なのでstateに保存
     data[eachPlayerName] = e.target.value;
@@ -75,7 +75,7 @@ class InputName extends React.Component{
         <Link
           to={{
             pathname: "/scoredisplay",
-          }}> 
+          }}>
           <button onClick={this.handleClick}>
             ゲーム開始！
           </button>
