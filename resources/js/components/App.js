@@ -46,6 +46,12 @@ class App extends React.Component{
         West: '',
         North: '',
       },
+      score1:'1',
+      score2:'1',
+      score3:'1',
+      score4:'1',
+
+
     };
   }
   pointFromTo(point) {
@@ -65,7 +71,7 @@ class App extends React.Component{
             {/* <Route path="/" exact component={inputName} /> */}
             <Route path="/" render={() => <InputName dataPoint={(names) => { this.nameFromTo(names); }}/>}/>
             <Route path="/scoredisplay" render={() => <ScoreDisplay pointInfo={this.state.pointInfo} playerNames={this.state.playerNames}/>}/>
-            <Route path="/oneresultdisplay" render={() => <OneResultDisplay dataPoint={(point) => { this.pointFromTo(point); }}/>}/>
+            <Route path="/oneresultdisplay" render={() => <OneResultDisplay playerNames={this.state.playerNames} dataPoint={(point) => { this.pointFromTo(point); }}/>}/>
             <Route path="/finishgame" component={FinishGame}/>
           </div>
         </BrowserRouter>
