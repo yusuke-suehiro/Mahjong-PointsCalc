@@ -46,16 +46,20 @@ class App extends React.Component{
         West: '',
         North: '',
       },
-      score1:'1',
-      score2:'1',
-      score3:'1',
-      score4:'1',
-
-
+        score1:25000,
+        score2:25000,
+        score3:25000,
+        score4:25000,
     };
   }
   pointFromTo(point) {
       this.setState({ pointInfo: point });
+  }
+  havingpointFromTo(point1, point2, point3, point4) {
+      this.setState({ score1: point1 });
+      this.setState({ score2: point2 });
+      this.setState({ score3: point3 });
+      this.setState({ score4: point4 });
   }
 
   nameFromTo(names) {
@@ -66,13 +70,18 @@ class App extends React.Component{
   render(){
     return (
       <div>
+      Appjsの値
+      {this.state.score1}
+      {this.state.score2}
+      {this.state.score3}
+      {this.state.score4}
         <BrowserRouter>
           <div>
             {/* <Route path="/" exact component={inputName} /> */}
-            <Route path="/" render={() => <InputName dataPoint={(names) => { this.nameFromTo(names); }}/>}/>
-            <Route path="/scoredisplay" render={() => <ScoreDisplay pointInfo={this.state.pointInfo} playerNames={this.state.playerNames}/>}/>
+            <Route path="/" exact render={() => <InputName dataPoint={(names) => { this.nameFromTo(names); }}/>}/>
+            <Route path="/scoredisplay" render={() => <ScoreDisplay pointInfo={this.state.pointInfo} playerNames={this.state.playerNames} havingPoint={(point1, point2, point3, point4) => { this.havingpointFromTo(point1, point2, point3, point4); }} score1={this.state.score1} score2={this.state.score2} score3={this.state.score3} score4={this.state.score4}/>}/>
             <Route path="/oneresultdisplay" render={() => <OneResultDisplay playerNames={this.state.playerNames} dataPoint={(point) => { this.pointFromTo(point); }}/>}/>
-            <Route path="/finishgame" component={FinishGame}/>
+            <Route path="/finishgame" render={() => <FinishGame playerNames={this.state.playerNames} score1={this.state.score1} score2={this.state.score2} score3={this.state.score3} score4={this.state.score4}/>}/>
           </div>
         </BrowserRouter>
       </div>

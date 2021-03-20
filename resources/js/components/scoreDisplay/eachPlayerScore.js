@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   dataPoint: PropTypes.func,
+  havingPoint: PropTypes.func,
 };
 
 class EachPlayerScore extends React.Component{
@@ -39,21 +40,29 @@ class EachPlayerScore extends React.Component{
       if (this.props.pointInfo.ronFrom == this.state.name) {
         if (this.props.pointInfo.ronTo == this.props.parent) {
           var newScore = this.state.score - this.props.pointInfo.ronParent;
-          this.setState({ score: newScore });
+          this.setState({ score: newScore }, () => {
+            return this.props.havingPoint(this.state.score, this.state.name);
+          } );
         }
         else {
           var newScore = this.state.score - this.props.pointInfo.ronChild;
-          this.setState({ score: newScore });
+          this.setState({ score: newScore }, () => {
+            return this.props.havingPoint(this.state.score, this.state.name);
+          } );
         }
       }
       if (this.props.pointInfo.ronTo == this.state.name) {
         if (this.props.pointInfo.ronTo == this.props.parent) {
           var newScore = this.state.score + this.props.pointInfo.ronParent;
-          this.setState({ score: newScore });
+          this.setState({ score: newScore }, () => {
+            return this.props.havingPoint(this.state.score, this.state.name);
+          } );
         }
         else {
           var newScore = this.state.score + this.props.pointInfo.ronChild;
-          this.setState({ score: newScore });
+          this.setState({ score: newScore }, () => {
+            return this.props.havingPoint(this.state.score, this.state.name);
+          } );
         }
       }
     }
@@ -61,26 +70,36 @@ class EachPlayerScore extends React.Component{
       if (this.props.pointInfo.tsumoWho == this.state.name) {
         if (this.props.pointInfo.tsumoWho == this.props.parent) {
           var newScore = this.state.score + 3*this.props.pointInfo.tsumoALL;
-          this.setState({ score: newScore});
+          this.setState({ score: newScore }, () => {
+            return this.props.havingPoint(this.state.score, this.state.name);
+          } );
         }
         else {
           var newScore = this.state.score + 2*this.props.pointInfo.tsumoChild + this.props.pointInfo.tsumoParent;
-          this.setState({ score: newScore});
+          this.setState({ score: newScore }, () => {
+            return this.props.havingPoint(this.state.score, this.state.name);
+          } );
         }
       }
       else {
         if (this.props.pointInfo.tsumoWho == this.props.parent) {
           var newScore = this.state.score - this.props.pointInfo.tsumoALL;
-          this.setState({ score: newScore});
+          this.setState({ score: newScore }, () => {
+            return this.props.havingPoint(this.state.score, this.state.name);
+          } );
         }
         else {
           if (this.state.name == this.props.parent) {
             var newScore = this.state.score - this.props.pointInfo.tsumoParent;
-            this.setState({ score: newScore});
+            this.setState({ score: newScore }, () => {
+              return this.props.havingPoint(this.state.score, this.state.name);
+            } );
           }
           else {
             var newScore = this.state.score - this.props.pointInfo.tsumoChild;
-            this.setState({ score: newScore});
+            this.setState({ score: newScore }, () => {
+              return this.props.havingPoint(this.state.score, this.state.name);
+            } );
           }
         }
       }
@@ -93,10 +112,14 @@ class EachPlayerScore extends React.Component{
         case 1:
           for (let player=0;player<this.props.pointInfo.tempaiNum;player++) {
             if (this.props.pointInfo.tempaiWho[player] == "「" + this.state.name + "」") {
-              this.setState({ score: this.state.score + 3000});
+              this.setState({ score: this.state.score + 3000 }, () => {
+                return this.props.havingPoint(this.state.score, this.state.name);
+              } );
             }
             else {
-              this.setState({ score: this.state.score - 1000});
+              this.setState({ score: this.state.score - 1000 }, () => {
+                return this.props.havingPoint(this.state.score, this.state.name);
+              } );
             }
           }
           break;
@@ -108,10 +131,14 @@ class EachPlayerScore extends React.Component{
             }
           }
           if (TempaiFlag == true) {
-            this.setState({ score: this.state.score + 1500});
+            this.setState({ score: this.state.score + 1500 }, () => {
+              return this.props.havingPoint(this.state.score, this.state.name);
+            } );
           }
           else {
-            this.setState({ score: this.state.score - 1500});
+            this.setState({ score: this.state.score - 1500 }, () => {
+              return this.props.havingPoint(this.state.score, this.state.name);
+            } );
           }
           break;
         case 3:
@@ -122,10 +149,14 @@ class EachPlayerScore extends React.Component{
             }
           }
           if (TempaiFlag == true) {
-            this.setState({ score: this.state.score + 1000});
+            this.setState({ score: this.state.score + 1000 }, () => {
+              return this.props.havingPoint(this.state.score, this.state.name);
+            } );
           }
           else {
-            this.setState({ score: this.state.score - 3000});
+            this.setState({ score: this.state.score - 3000 }, () => {
+              return this.props.havingPoint(this.state.score, this.state.name);
+            } );
           }
           break;
         case 4:
@@ -134,13 +165,12 @@ class EachPlayerScore extends React.Component{
       }
     }
     else if (this.props.pointInfo.kind == "") {
-      var newScore = 25000;
-      this.setState({ score: newScore});
+      
     }
     this.setState({ updateFlag: true});
     console.log(this.state.score);
   }
-  return this.props.dataPoint(this.state.score, this.state.name);
+  //return this.props.havingPoint(this.state.score, this.state.name);
   };
 
   render(){
