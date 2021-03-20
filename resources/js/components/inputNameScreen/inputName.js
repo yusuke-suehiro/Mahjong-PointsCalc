@@ -29,13 +29,18 @@ class InputName extends React.Component{
   }
 
 
-  handleClick(){
+  handleClick(e){
     // console.log("te")
     // console.log(this.props)
-    this.props.history.push({
-      pathname: "/scoredisplay",
-      state: { playerNames: this.state.playerNames }
-    });
+    var updatedName = this.state.playerNames
+    // console.log(updatedName)
+    this.props.dataPoint(updatedName)
+    // this.setState({playerNames : this.state.playerNames})
+    // this.props.history.push({
+    //   pathname: "/scoredisplay",
+    //   state: { playerNames: this.state.playerNames }
+    // });
+
   }
 
   render(){
@@ -71,7 +76,7 @@ class InputName extends React.Component{
           to={{
             pathname: "/scoredisplay",
           }}> 
-          <button>
+          <button onClick={this.handleClick}>
             ゲーム開始！
           </button>
         </Link>

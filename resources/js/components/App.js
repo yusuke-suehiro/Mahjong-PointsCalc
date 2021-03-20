@@ -53,6 +53,7 @@ class App extends React.Component{
   }
 
   nameFromTo(names) {
+    var newName = names;
     this.setState({ playerNames: names });
   }
 
@@ -63,7 +64,7 @@ class App extends React.Component{
           <div>
             {/* <Route path="/" exact component={inputName} /> */}
             <Route path="/" render={() => <InputName dataPoint={(names) => { this.nameFromTo(names); }}/>}/>
-            <Route path="/scoredisplay" render={() => <ScoreDisplay pointInfo={this.state.pointInfo}/>}/>
+            <Route path="/scoredisplay" render={() => <ScoreDisplay pointInfo={this.state.pointInfo} playerNames={this.state.playerNames}/>}/>
             <Route path="/oneresultdisplay" render={() => <OneResultDisplay dataPoint={(point) => { this.pointFromTo(point); }}/>}/>
             <Route path="/finishgame" component={FinishGame}/>
           </div>
