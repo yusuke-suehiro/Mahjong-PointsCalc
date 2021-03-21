@@ -23,7 +23,8 @@
 }
 
 .player-name-and-score {
-  margin: auto
+  margin: auto;
+  width: 100%;
 }
 
 .update-pointInfo-button {
