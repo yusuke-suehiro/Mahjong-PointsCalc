@@ -5,13 +5,15 @@
 
 .round {
   text-align: center;
-  background-color: chartreuse;
-  margin-bottom: 3px;
+  background-color: lightgray;
+  margin-bottom: 5px;
 }
 
 .hand {
   text-align: center;
-  background-color: cyan;
+  background-color: lightgray;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .text {

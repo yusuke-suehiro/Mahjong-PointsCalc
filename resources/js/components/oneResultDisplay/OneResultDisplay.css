@@ -1,17 +1,31 @@
 .FirstSelect {
   margin-top: 0.5em;
-  text-align:center;
-  font-size:2em;
+  text-align: center;
+  font-size: 2em;
+  font-size: 25px;
 }
+
 .FirstInput {
   text-align:center;
   font-size:2em;
   padding:1em;
 }
+.FirstInput input {
+  border: solid 2px #000000;
+  border-radius: 3px;
+}
+
 .SelectResult{
     text-align:center;
     font-size:2em;
     padding: 0.5em 1em;
+    font-size: 25px;
+}
+.SelectResultUnder{
+    border-bottom: double 6px black;
+}
+.FirstUnder{
+    border-bottom: solid 2px black;
 }
 .PlusMinus{
     text-align:center;
@@ -20,14 +34,37 @@
     display:block;
 }
 
+.PlusMinus button {
+  width: 10%;
+  text-align: center;
+  font-size: 25px;
+  border-radius: 2px;
+  padding : 10px 0px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: black;
+  background: white;
+  transition: .4s;
+  border-radius: 4px;
+  border-bottom: 4px solid #43413e;
+}
+.PlusMinus button:hover {
+  background: black;
+  color: white;
+}
 
 
 
 .ロン点数 {
-  display:block
+  display:block;
+  font-size: 12px;
 }
 .ツモ点数 {
-  display:block
+  display:block;
+  font-size: 12px;
 }
 .流局点数 {
   display:none
@@ -40,7 +77,12 @@
   text-align:center;
   font-size:2em;
   padding: 0.5em 1em;
-  display:block
+  display:block;
+  font-size: 25px;
+}
+.ロンFromTo input {
+  border: solid 2px #000000;
+  border-radius: 3px;
 }
 .ツモFromTo {
   display:none
@@ -59,7 +101,12 @@
   text-align:center;
   font-size:2em;
   padding: 0.5em 1em;
-  display:block
+  display:block;
+  font-size: 25px;
+}
+.ツモTsumo input {
+  border: solid 2px #000000;
+  border-radius: 3px;
 }
 .流局Tsumo {
   display:none
@@ -78,8 +125,35 @@
   text-align:center;
   font-size:2em;
   padding: 0.5em 1em;
-  display:block
+  display:block;
+  font-size: 25px;
+}
+.流局Tempai input {
+  border: solid 2px #000000;
+  border-radius: 3px;
+}
+.流局Tempai button {
+  width: 10%;
+  text-align: center;
+  font-size: 25px;
+  border-radius: 2px;
+  padding : 10px 0px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: black;
+  background: white;
+  transition: .4s;
+  border-radius: 4px;
+  border-bottom: 4px solid #43413e;
+}
+.流局Tempai button:hover {
+  background: black;
+  color: white;
 }
 .Tempai {
-  display:none
+  display:none;
+  font-size: 25px;
 }

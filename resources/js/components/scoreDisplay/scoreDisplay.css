@@ -20,6 +20,8 @@ button{
   margin: auto;
   vertical-align: middle;
   font-size: 30px;
+  background-color: lightgray;
+  width: 70%;
 }
 
 
@@ -43,4 +45,19 @@ button{
   font-size: 30px;
   margin: auto;
   padding: 5px;
+  border-radius: 2px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  background: white;
+  transition: .4s;
+  border-radius: 4px;
+  border-bottom: 4px solid #43413e;
+}
+
+.update-score-button:hover {
+  background: black;
+  color: white;
 }

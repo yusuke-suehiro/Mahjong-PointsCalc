@@ -36,17 +36,16 @@ class OneResultDisplay extends React.Component{
   render(){
     return (
       <div>
-
-        <ResultLayout dataPoint={(point) => { this.pointFromTo(point); }} playerNames={this.props.playerNames} honnba={this.props.honnba} kyoutaku={this.props.kyoutaku}/>
+        <ResultLayout dataPoint={(point) => { this.pointFromTo(point); }} playerNames={this.props.playerNames} honnba={this.props.honnba} kyoutaku={this.props.kyoutaku} handNum={this.props.handNum}/>
         <div className="LinkButton">
         <Link to="/scoredisplay">
 
-          <button onClick={() => { this.clickButton(this.state.pointInfo); }}>
+          <button className="link-button" onClick={() => { this.clickButton(this.state.pointInfo); }}>
             点数表示画面に戻る
           </button>
         </Link>
         <Link to="/finishgame">
-          <button onClick={() => { this.clickButton(this.state.pointInfo); }}>
+          <button className="link-button" onClick={() => { this.clickButton(this.state.pointInfo); }}>
             半荘を終了する
           </button>
         </Link>

@@ -2111,7 +2111,8 @@ var App = /*#__PURE__*/function (_React$Component2) {
         tsumoParent: '',
         tsumoChild: '',
         tempaiWho: '',
-        tempaiNum: ''
+        tempaiNum: '',
+        parentWho: ''
       },
       playerNames: {
         East: '',
@@ -2124,7 +2125,9 @@ var App = /*#__PURE__*/function (_React$Component2) {
       score3: 25000,
       score4: 25000,
       honnba: 0,
-      kyoutaku: 0
+      kyoutaku: 0,
+      parent: '親',
+      handNum: '1'
     };
     return _this;
   }
@@ -2138,7 +2141,7 @@ var App = /*#__PURE__*/function (_React$Component2) {
     }
   }, {
     key: "havingpointFromTo",
-    value: function havingpointFromTo(point1, point2, point3, point4, honba, kyotaku) {
+    value: function havingpointFromTo(point1, point2, point3, point4, honba, kyotaku, hand) {
       this.setState({
         score1: point1
       });
@@ -2156,6 +2159,9 @@ var App = /*#__PURE__*/function (_React$Component2) {
       });
       this.setState({
         kyoutaku: kyotaku
+      });
+      this.setState({
+        handNum: hand
       });
     }
   }, {
@@ -2183,8 +2189,8 @@ var App = /*#__PURE__*/function (_React$Component2) {
     value: function render() {
       var _this2 = this;
 
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-        children: ["Appjs\u306E\u5024", this.state.score1, this.state.score2, this.state.score3, this.state.score4, ",", this.state.honnba, ",", this.state.kyoutaku, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
               path: "/",
@@ -2202,8 +2208,8 @@ var App = /*#__PURE__*/function (_React$Component2) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scoreDisplay_scoreDisplay__WEBPACK_IMPORTED_MODULE_2__.default, {
                   pointInfo: _this2.state.pointInfo,
                   playerNames: _this2.state.playerNames,
-                  havingPoint: function havingPoint(point1, point2, point3, point4, honnba, kyoutaku) {
-                    _this2.havingpointFromTo(point1, point2, point3, point4, honnba, kyoutaku);
+                  havingPoint: function havingPoint(point1, point2, point3, point4, honnba, kyoutaku, hand) {
+                    _this2.havingpointFromTo(point1, point2, point3, point4, honnba, kyoutaku, hand);
                   },
                   score1: _this2.state.score1,
                   score2: _this2.state.score2,
@@ -2220,7 +2226,9 @@ var App = /*#__PURE__*/function (_React$Component2) {
                     _this2.pointFromTo(point);
                   },
                   honnba: _this2.state.honnba,
-                  kyoutaku: _this2.state.kyoutaku
+                  kyoutaku: _this2.state.kyoutaku,
+                  parent: _this2.state.parent,
+                  handNum: _this2.state.handNum
                 });
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
@@ -2236,7 +2244,7 @@ var App = /*#__PURE__*/function (_React$Component2) {
               }
             })]
           })
-        })]
+        })
       });
     }
   }]);
@@ -2253,6 +2261,37 @@ if (document.getElementById('app')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/finishGame/finalScoreCalc.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/finishGame/finalScoreCalc.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+
+
+function finalScoreCalc(score) {
+  if (score > 0) {
+    score = score.toFixed(1);
+    score = "+" + score;
+  } else {
+    score = score.toFixed(1);
+  }
+
+  return score;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (finalScoreCalc);
+
+/***/ }),
+
 /***/ "./resources/js/components/finishGame/finishGame.js":
 /*!**********************************************************!*\
   !*** ./resources/js/components/finishGame/finishGame.js ***!
@@ -2266,10 +2305,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _finishGame_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./finishGame.css */ "./resources/js/components/finishGame/finishGame.css");
-/* harmony import */ var _oneResultDisplay_oneResultLayout_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../oneResultDisplay/oneResultLayout.css */ "./resources/js/components/oneResultDisplay/oneResultLayout.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _finalScoreCalc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./finalScoreCalc.js */ "./resources/js/components/finishGame/finalScoreCalc.js");
+/* harmony import */ var _oneResultDisplay_oneResultLayout_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../oneResultDisplay/oneResultLayout.css */ "./resources/js/components/oneResultDisplay/oneResultLayout.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2300,6 +2340,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var FinishGame = /*#__PURE__*/function (_React$Component) {
   _inherits(FinishGame, _React$Component);
 
@@ -2311,7 +2352,6 @@ var FinishGame = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, FinishGame);
 
     _this = _super.call(this, props);
-    console.log(props.score1);
     _this.state = {
       playerNames: props.playerNames,
       startingPlayer: props.playerNames.East,
@@ -2323,7 +2363,14 @@ var FinishGame = /*#__PURE__*/function (_React$Component) {
       player1: "",
       player2: "",
       player3: "",
-      player4: ""
+      player4: "",
+      oka: 30000,
+      umaFrom3To2: 10000,
+      umaFrom4To1: 20000,
+      score1Result: "",
+      score2Result: "",
+      score3Result: "",
+      score4Result: ""
     };
     return _this;
   }
@@ -2348,38 +2395,72 @@ var FinishGame = /*#__PURE__*/function (_React$Component) {
       }
 
       this.setState({
-        player1: player[3]
+        player1: "１位：" + player[3]
       });
       this.setState({
-        player2: player[2]
+        player2: "２位：" + player[2]
       });
       this.setState({
-        player3: player[1]
+        player3: "３位：" + player[1]
       });
       this.setState({
-        player4: player[0]
+        player4: "４位：" + player[0]
       });
       this.setState({
-        score1: score[3]
+        score1: score[3] + "点"
       });
       this.setState({
-        score2: score[2]
+        score2: score[2] + "点"
       });
       this.setState({
-        score3: score[1]
+        score3: score[1] + "点"
       });
       this.setState({
-        score4: score[0]
+        score4: score[0] + "点"
+      });
+
+      if (score[2] - this.state.oka + this.state.umaFrom3To2 == 0) {
+        var tmp_score2 = 0;
+      } else {
+        var tmp_score2 = (score[2] - this.state.oka + this.state.umaFrom3To2) / 1000;
+      }
+
+      if (score[1] - this.state.oka - this.state.umaFrom3To2 == 0) {
+        var tmp_score3 = 0;
+      } else {
+        var tmp_score3 = (score[1] - this.state.oka - this.state.umaFrom3To2) / 1000;
+      }
+
+      if (score[0] - this.state.oka - this.state.umaFrom4To1 == 0) {
+        var tmp_score4 = 0;
+      } else {
+        var tmp_score4 = (score[0] - this.state.oka - this.state.umaFrom4To1) / 1000;
+      }
+
+      var tmp_score1 = (tmp_score4 + tmp_score3 + tmp_score2) * -1;
+      tmp_score1 = (0,_finalScoreCalc_js__WEBPACK_IMPORTED_MODULE_3__.default)(tmp_score1);
+      tmp_score2 = (0,_finalScoreCalc_js__WEBPACK_IMPORTED_MODULE_3__.default)(tmp_score2);
+      tmp_score3 = (0,_finalScoreCalc_js__WEBPACK_IMPORTED_MODULE_3__.default)(tmp_score3);
+      tmp_score4 = (0,_finalScoreCalc_js__WEBPACK_IMPORTED_MODULE_3__.default)(tmp_score4);
+      this.setState({
+        score1Result: tmp_score1
+      });
+      this.setState({
+        score2Result: tmp_score2
+      });
+      this.setState({
+        score3Result: tmp_score3
+      });
+      this.setState({
+        score4Result: tmp_score4
       });
     }
   }, {
     key: "resetScore",
     value: function resetScore() {
-      console.log(this.state.score1);
       this.setState({
         score1: 25000
       });
-      console.log(this.state.score1);
       this.setState({
         score2: 25000
       });
@@ -2395,55 +2476,74 @@ var FinishGame = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: ["\u534A\u8358\u7D42\u4E86\uFF0C\u6210\u7E3E\u8868\u793A\u753B\u9762", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "LinkButton",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+            className: "Newgame-start-button",
             onClick: function onClick() {
               _this2.clickButton();
             },
             children: "\u6700\u7D42\u7D50\u679C\u3092\u8868\u793A\u3059\u308B"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
           className: "FinalResult",
-          width: "30%",
-          cellpadding: "10",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+          width: "40%",
+          cellPadding: "10",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: this.state.player1
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: this.state.score1
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+              children: this.state.score1Result
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: this.state.player2
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: this.state.score2
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+              children: this.state.score2Result
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: this.state.player3
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: this.state.score3
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+              children: this.state.score3Result
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: this.state.player4
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: this.state.score4
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+              children: this.state.score4Result
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "LinkButton",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
             to: "/",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              className: "Newgame-start-button",
               onClick: function onClick() {
                 _this2.resetScore();
               },
               children: "\u65B0\u3057\u3044\u534A\u8358\u3092\u59CB\u3081\u308B"
             })
           })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "surroundOkaUma",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "OkaUmaSelect",
+            children: ["\u30AA\u30AB\u3000", this.state.oka, "\u70B9\u8FD4\u3057"]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "OkaUmaSelect",
+            children: ["\u30A6\u30DE\u3000", this.state.umaFrom3To2, "-", this.state.umaFrom4To1]
+          })]
         })]
       });
     }
@@ -2468,8 +2568,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _inputName_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inputName.css */ "./resources/js/components/inputNameScreen/inputName.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2493,6 +2594,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -2544,56 +2646,66 @@ var InputName = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleClick",
-    value: function handleClick(e) {
-      // console.log("te")
-      // console.log(this.props)
-      var updatedName = this.state.playerNames; // console.log(updatedName)
-
-      this.props.dataPoint(updatedName); // this.setState({playerNames : this.state.playerNames})
-      // this.props.history.push({
-      //   pathname: "/scoredisplay",
-      //   state: { playerNames: this.state.playerNames }
-      // });
+    value: function handleClick() {
+      var updatedName = this.state.playerNames;
+      this.props.dataPoint(updatedName);
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        children: ["\u30D7\u30EC\u30A4\u30E4\u30FC\u540D\u5165\u529B\u753B\u9762", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "player-name",
-          children: ["\u6771\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            name: "East",
-            value: this.state.value,
-            onChange: this.handleChange
-          })]
-        }), this.state.playerNames.East, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "player-name",
-          children: ["\u5357\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            name: "South",
-            value: this.state.value,
-            onChange: this.handleChange
-          })]
-        }), this.state.playerNames.South, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "player-name",
-          children: ["\u897F\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            name: "West",
-            value: this.state.value,
-            onChange: this.handleChange
-          })]
-        }), this.state.playerNames.West, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "player-name",
-          children: ["\u5317\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            name: "North",
-            value: this.state.value,
-            onChange: this.handleChange
-          })]
-        }), this.state.playerNames.North, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "input-name-area",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "each-player",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "player-name-wind",
+            children: ["\u6771\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              name: "East",
+              value: this.state.value,
+              onChange: this.handleChange
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "each-player",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "player-name-wind",
+            children: ["\u5357\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              name: "South",
+              value: this.state.value,
+              onChange: this.handleChange
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "each-player",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "player-name-wind",
+            children: ["\u897F\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              name: "West",
+              value: this.state.value,
+              onChange: this.handleChange
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "each-player",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "player-name-wind",
+            children: ["\u5317\uFF1A", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              name: "North",
+              value: this.state.value,
+              onChange: this.handleChange
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
           to: {
             pathname: "/scoredisplay"
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            onClick: this.handleClick,
-            children: "\u30B2\u30FC\u30E0\u958B\u59CB\uFF01"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "button-area",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "game-start-button",
+              onClick: this.handleClick,
+              children: "\u30B2\u30FC\u30E0\u958B\u59CB\uFF01"
+            })
           })
         })]
       });
@@ -2812,7 +2924,7 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
 
         if (this.state.kind == "ロン") {
           this.setState({
-            pointsParent: "親：" + ParentPoints[AnsNum][3]
+            pointsParent: "親：" + ParentPoints[AnsNum][3] + "　/　"
           });
           this.setState({
             pointsChild: "子：" + ChildPoints[AnsNum][3]
@@ -2824,7 +2936,7 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
           pointArray.ronChild = ChildPoints[AnsNum][3];
         } else if (this.state.kind == "ツモ") {
           this.setState({
-            pointsParent: "親：" + ParentPoints[AnsNum][4] + "ALL"
+            pointsParent: "親：" + ParentPoints[AnsNum][4] + " オール　/　"
           });
           this.setState({
             pointsChild: "子：" + ChildPoints[AnsNum][4] + "-" + ChildPoints[AnsNum][5]
@@ -2912,23 +3024,29 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
       }
 
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "FirstSelect",
-          children: [this.props.honnba, "\u672C\u5834\u2003\u4F9B\u8A17", this.props.kyoutaku, "\u672C"]
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+            className: "FirstUnder",
+            children: ["\u6771", this.props.handNum, "\u5C40\u2003", this.props.honnba, "\u672C\u5834\u2003\u4F9B\u8A17", this.props.kyoutaku, "\u672C"]
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "FirstSelect",
-          children: "\u5C40\u7D42\u4E86\u306E\u7A2E\u985E"
+          children: "\u25CE\u5C40\u7D42\u4E86\u306E\u7A2E\u985E"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "FirstInput",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            className: "result-screen-button",
             type: "button",
             onClick: ShowMessage.bind(this, "ロン"),
             value: "\u30ED\u30F3"
           }), "\u2003", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            className: "result-screen-button",
             type: "button",
             onClick: ShowMessage.bind(this, "ツモ"),
             value: "\u30C4\u30E2"
           }), "\u2003", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            className: "result-screen-button",
             type: "button",
             onClick: ShowMessage.bind(this, "流局"),
             value: "\u6D41\u5C40"
@@ -2936,7 +3054,10 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "SelectResult",
           align: "center",
-          children: this.state.kind
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            className: "SelectResultUnder",
+            children: this.state.kind
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: this.state.kind + "FromTo",
           children: ["\u548C\u4E86\uFF1A\u300C", this.state.playerTo, "\u300D", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
@@ -3015,10 +3136,9 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
             type: "button",
             onClick: PlayerTempai.bind(this, this.props.playerNames.North),
             value: this.props.playerNames.North
-          }), "\u2003", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "button",
+          }), "\u2003", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
             onClick: CalcPoints.bind(this),
-            value: "\u8A08\u7B97"
+            children: "\u8A08\u7B97"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: this.state.kind + "点数",
@@ -3040,10 +3160,9 @@ var ResultLayout = /*#__PURE__*/function (_React$Component) {
               type: "button",
               onClick: CalcFu.bind(this, -10),
               value: "\u30FC"
-            }), "\u2003", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-              type: "button",
+            }), "\u2003", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
               onClick: CalcPoints.bind(this),
-              value: "\u8A08\u7B97"
+              children: "\u8A08\u7B97"
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -3174,12 +3293,14 @@ var OneResultDisplay = /*#__PURE__*/function (_React$Component) {
           },
           playerNames: this.props.playerNames,
           honnba: this.props.honnba,
-          kyoutaku: this.props.kyoutaku
+          kyoutaku: this.props.kyoutaku,
+          handNum: this.props.handNum
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "LinkButton",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
             to: "/scoredisplay",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              className: "link-button",
               onClick: function onClick() {
                 _this2.clickButton(_this2.state.pointInfo);
               },
@@ -3188,6 +3309,7 @@ var OneResultDisplay = /*#__PURE__*/function (_React$Component) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
             to: "/finishgame",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              className: "link-button",
               onClick: function onClick() {
                 _this2.clickButton(_this2.state.pointInfo);
               },
@@ -3276,7 +3398,7 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       round: "東",
-      handNumber: 0,
+      handNumber: 1,
       honnba: 0,
       kyoutaku: 0
     };
@@ -3291,7 +3413,7 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
       this.setState({
         honnba: this.state.honnba + 1
       }, function () {
-        return _this2.props.honbaAndkyoutaku(_this2.state.honnba, _this2.state.kyoutaku);
+        return _this2.props.honbaAndkyoutaku(_this2.state.honnba, _this2.state.kyoutaku, _this2.state.handNumber);
       });
     }
   }, {
@@ -3302,7 +3424,7 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
       this.setState({
         honnba: this.state.honnba - 1 >= 0 ? this.state.honnba - 1 : 0
       }, function () {
-        return _this3.props.honbaAndkyoutaku(_this3.state.honnba, _this3.state.kyoutaku);
+        return _this3.props.honbaAndkyoutaku(_this3.state.honnba, _this3.state.kyoutaku, _this3.state.handNumber);
       });
     }
   }, {
@@ -3313,7 +3435,7 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
       this.setState({
         kyoutaku: this.state.kyoutaku + 1
       }, function () {
-        return _this4.props.honbaAndkyoutaku(_this4.state.honnba, _this4.state.kyoutaku);
+        return _this4.props.honbaAndkyoutaku(_this4.state.honnba, _this4.state.kyoutaku, _this4.state.handNumber);
       });
     }
   }, {
@@ -3324,7 +3446,7 @@ var CurrentRound = /*#__PURE__*/function (_React$Component) {
       this.setState({
         kyoutaku: this.state.kyoutaku - 1 >= 0 ? this.state.kyoutaku - 1 : 0
       }, function () {
-        return _this5.props.honbaAndkyoutaku(_this5.state.honnba, _this5.state.kyoutaku);
+        return _this5.props.honbaAndkyoutaku(_this5.state.honnba, _this5.state.kyoutaku, _this5.state.handNumber);
       });
     }
   }, {
@@ -3603,7 +3725,6 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
         } else if (this.props.pointInfo.kind == "流局") {
           switch (this.props.pointInfo.tempaiNum) {
             case 0:
-              console.log("点棒やり取りなし");
               break;
 
             case 1:
@@ -3676,7 +3797,6 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               break;
 
             case 4:
-              console.log("点棒やり取りなし");
               break;
           }
         } else if (this.props.pointInfo.kind == "") {}
@@ -3684,7 +3804,6 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
         this.setState({
           updateFlag: true
         });
-        console.log(this.state.score);
       } //return this.props.havingPoint(this.state.score, this.state.name);
 
     }
@@ -3710,11 +3829,13 @@ var EachPlayerScore = /*#__PURE__*/function (_React$Component) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                 className: "player-name",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                  className: "player-name-display",
                   children: this.state.name
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                 className: "player-score",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                  className: "player-score-display",
                   children: this.state.score
                 })
               })]
@@ -3825,7 +3946,6 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ScoreDisplay);
 
     _this = _super.call(this, props);
-    console.log(_this.props.playerNames);
     _this.state = {
       playerNames: props.playerNames,
       startingPlayer: props.playerNames.East,
@@ -3835,7 +3955,8 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
       score3: props.score3,
       score4: props.score4,
       honnba: 0,
-      kyoutaku: 0
+      kyoutaku: 0,
+      handNum: 1
     };
     _this.ChildRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
     _this.doClick = _this.AllUpdateScore.bind(_assertThisInitialized(_this));
@@ -3854,16 +3975,12 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "clickButton",
-    value: function clickButton(point1, point2, point3, point4, honnba, kyoutaku) {
-      console.log(point1);
-      return this.props.havingPoint(point1, point2, point3, point4, honnba, kyoutaku);
+    value: function clickButton(point1, point2, point3, point4, honnba, kyoutaku, hand) {
+      return this.props.havingPoint(point1, point2, point3, point4, honnba, kyoutaku, hand);
     }
   }, {
     key: "pointFromTo",
     value: function pointFromTo(point, name) {
-      console.log(point);
-      console.log(name);
-
       switch (name) {
         case this.state.playerNames.East:
           this.setState({
@@ -3893,12 +4010,15 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "honnbaKyoutaku",
-    value: function honnbaKyoutaku(honba, kyotaku) {
+    value: function honnbaKyoutaku(honba, kyotaku, hand) {
       this.setState({
         honnba: honba
       });
       this.setState({
         kyoutaku: kyotaku
+      });
+      this.setState({
+        handNum: hand
       });
     }
   }, {
@@ -3908,7 +4028,7 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "score-display-area",
-        children: ["scoredisplay\u306E\u5024", this.state.score1, this.state.score2, this.state.score3, this.state.score4, ",", this.state.honnba, ",", this.state.kyoutaku, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__.default, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__.default, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
             className: "area",
             xs: 12,
@@ -3932,7 +4052,7 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
             md: 4,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
               className: "display-starting-player",
-              children: ["\u8D77\u5BB6:", this.state.startingPlayer]
+              children: ["\u8D77\u5BB6:", this.state.playerNames.East]
             })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__.default, {
@@ -3955,8 +4075,8 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
             xs: 12,
             md: 4,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CurrentRound__WEBPACK_IMPORTED_MODULE_5__.default, {
-              honbaAndkyoutaku: function honbaAndkyoutaku(honnba, kyoutaku) {
-                _this2.honnbaKyoutaku(honnba, kyoutaku);
+              honbaAndkyoutaku: function honbaAndkyoutaku(honnba, kyoutaku, handNumber) {
+                _this2.honnbaKyoutaku(honnba, kyoutaku, handNumber);
               }
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__.default, {
@@ -4000,7 +4120,7 @@ var ScoreDisplay = /*#__PURE__*/function (_React$Component) {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
                 className: "update-score-button",
                 onClick: function onClick() {
-                  _this2.clickButton(_this2.state.score1, _this2.state.score2, _this2.state.score3, _this2.state.score4, _this2.state.honnba, _this2.state.kyoutaku);
+                  _this2.clickButton(_this2.state.score1, _this2.state.score2, _this2.state.score3, _this2.state.score4, _this2.state.honnba, _this2.state.kyoutaku, _this2.state.handNum);
                 },
                 children: "\u5C40\u7D42\u4E86"
               })
@@ -8668,7 +8788,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".FinalResult {\n  font-size:2em;\n  margin: 0px auto;\n  text-align: center;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".FinalResult {\n  font-size:30px;\n  margin: 0px auto;\n  text-align: center;\n}\n.OkaUmaSelect {\n  padding-top:10px;\n  padding-bottom:10px;\n  font-size:25px;\n  text-align: center;\n}\n.surroundOkaUma {\n padding: 0.5em 1em;\n margin: 2em 0;\n margin-left: 30%;\n margin-right: 30%;\n color: #000000;\n border: solid 3px #000000;\n border-radius: 30px;\n}\n\n.Newgame-start-button {\n  width: 70%;\n  text-align: center;\n  font-size: 25px;\n  border-radius: 2px;\n  padding : 10px 0px;\n  position: relative;\n  display: inline-block;\n  font-weight: bold;\n  padding: 0.25em 0.5em;\n  text-decoration: none;\n  color: black;\n  background: white;\n  transition: .4s;\n  border-radius: 4px;\n  border-bottom: 4px solid #43413e;\n}\n.Newgame-start-button:hover {\n  background: black;\n  color: white;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/inputNameScreen/inputName.css":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/inputNameScreen/inputName.css ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\nhtml {\n  box-sizing: border-box;\n  font-size: 62.5%;/*rem算出をしやすくするために*/\n}\n\n.btn,\na.btn,\nbutton.btn {\n  font-size: 1.6rem;\n  font-weight: 700;\n  line-height: 1.5;\n  position: relative;\n  display: inline-block;\n  padding: 1rem 4rem;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  transition: all 0.3s;\n  text-align: center;\n  vertical-align: middle;\n  text-decoration: none;\n  letter-spacing: 0.1em;\n  color: #212529;\n  border-radius: 0.5rem;\n}\n\n.player-name-wind {\n  margin: auto;\n  width: 70%;\n  text-align: center;\n  vertical-align: middle;\n  padding: 5px;\n  padding-top: 10px;\n  margin-bottom: 10px;\n  font-size: 30px;\n}\n\n.button-area {\n  text-align:center;\n}\n\n.game-start-button {\n  width: 40%;\n  text-align: center;\n  font-size: 25px;\n  border-radius: 2px;\n  padding : 10px 0px;\n  position: relative;\n  display: inline-block;\n  font-weight: bold;\n  padding: 0.25em 0.5em;\n  text-decoration: none;\n  color: black;\n  background: white;\n  transition: .4s;\n  border-radius: 4px;\n  border-bottom: 4px solid #43413e;\n}\n\n.game-start-button:hover {\n  background: black;\n  color: white;\n}\n\n.input-name-area {\n  vertical-align: middle;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8692,7 +8836,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".FirstSelect {\n  margin-top: 0.5em;\n  text-align:center;\n  font-size:2em;\n}\n.FirstInput {\n  text-align:center;\n  font-size:2em;\n  padding:1em;\n}\n.SelectResult{\n    text-align:center;\n    font-size:2em;\n    padding: 0.5em 1em;\n}\n.PlusMinus{\n    text-align:center;\n    font-size:2em;\n    padding: 0.5em 1em;\n    display:block;\n}\n\n\n\n\n.ロン点数 {\n  display:block\n}\n.ツモ点数 {\n  display:block\n}\n.流局点数 {\n  display:none\n}\n.点数 {\n  display:none\n}\n\n.ロンFromTo {\n  text-align:center;\n  font-size:2em;\n  padding: 0.5em 1em;\n  display:block\n}\n.ツモFromTo {\n  display:none\n}\n.流局FromTo {\n  display:none\n}\n.FromTo {\n  display:none\n}\n\n.ロンTsumo{\n  display:none\n}\n.ツモTsumo {\n  text-align:center;\n  font-size:2em;\n  padding: 0.5em 1em;\n  display:block\n}\n.流局Tsumo {\n  display:none\n}\n.Tsumo {\n  display:none\n}\n\n.ロンTempai{\n  display:none\n}\n.ツモTempai {\n  display:none\n}\n.流局Tempai {\n  text-align:center;\n  font-size:2em;\n  padding: 0.5em 1em;\n  display:block\n}\n.Tempai {\n  display:none\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".FirstSelect {\n  margin-top: 0.5em;\n  text-align: center;\n  font-size: 2em;\n  font-size: 25px;\n}\n\n.FirstInput {\n  text-align:center;\n  font-size:2em;\n  padding:1em;\n}\n.FirstInput input {\n  border: solid 2px #000000;\n  border-radius: 3px;\n}\n\n.SelectResult{\n    text-align:center;\n    font-size:2em;\n    padding: 0.5em 1em;\n    font-size: 25px;\n}\n.SelectResultUnder{\n    border-bottom: double 6px black;\n}\n.FirstUnder{\n    border-bottom: solid 2px black;\n}\n.PlusMinus{\n    text-align:center;\n    font-size:2em;\n    padding: 0.5em 1em;\n    display:block;\n}\n\n.PlusMinus button {\n  width: 10%;\n  text-align: center;\n  font-size: 25px;\n  border-radius: 2px;\n  padding : 10px 0px;\n  position: relative;\n  display: inline-block;\n  font-weight: bold;\n  padding: 0.25em 0.5em;\n  text-decoration: none;\n  color: black;\n  background: white;\n  transition: .4s;\n  border-radius: 4px;\n  border-bottom: 4px solid #43413e;\n}\n.PlusMinus button:hover {\n  background: black;\n  color: white;\n}\n\n\n\n.ロン点数 {\n  display:block;\n  font-size: 12px;\n}\n.ツモ点数 {\n  display:block;\n  font-size: 12px;\n}\n.流局点数 {\n  display:none\n}\n.点数 {\n  display:none\n}\n\n.ロンFromTo {\n  text-align:center;\n  font-size:2em;\n  padding: 0.5em 1em;\n  display:block;\n  font-size: 25px;\n}\n.ロンFromTo input {\n  border: solid 2px #000000;\n  border-radius: 3px;\n}\n.ツモFromTo {\n  display:none\n}\n.流局FromTo {\n  display:none\n}\n.FromTo {\n  display:none\n}\n\n.ロンTsumo{\n  display:none\n}\n.ツモTsumo {\n  text-align:center;\n  font-size:2em;\n  padding: 0.5em 1em;\n  display:block;\n  font-size: 25px;\n}\n.ツモTsumo input {\n  border: solid 2px #000000;\n  border-radius: 3px;\n}\n.流局Tsumo {\n  display:none\n}\n.Tsumo {\n  display:none\n}\n\n.ロンTempai{\n  display:none\n}\n.ツモTempai {\n  display:none\n}\n.流局Tempai {\n  text-align:center;\n  font-size:2em;\n  padding: 0.5em 1em;\n  display:block;\n  font-size: 25px;\n}\n.流局Tempai input {\n  border: solid 2px #000000;\n  border-radius: 3px;\n}\n.流局Tempai button {\n  width: 10%;\n  text-align: center;\n  font-size: 25px;\n  border-radius: 2px;\n  padding : 10px 0px;\n  position: relative;\n  display: inline-block;\n  font-weight: bold;\n  padding: 0.25em 0.5em;\n  text-decoration: none;\n  color: black;\n  background: white;\n  transition: .4s;\n  border-radius: 4px;\n  border-bottom: 4px solid #43413e;\n}\n.流局Tempai button:hover {\n  background: black;\n  color: white;\n}\n.Tempai {\n  display:none;\n  font-size: 25px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8716,7 +8860,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".LinkButton {\n  font-size:2em;\n  text-align:center;\n  display: inline;\n}\n.LinkButton button {\n  width:40%;\n  margin-top:2em;\n  margin-left:30%;\n  margin-right:30%;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".LinkButton {\n  font-size:2em;\n  text-align:center;\n  display: inline;\n  font-size: 30px;\n}\n.LinkButton button {\n  width: 40%;\n  margin-top: 10px;\n  margin-left: 30%;\n  margin-right :30%;\n}\n.result-screen-button {\n  font-size: 25px;\n}\n\n\n\n.link-button {\n  text-align: center;\n  font-size: 25px;\n  margin: auto;\n  padding: 5px;\n  border-radius: 2px;\n  position: relative;\n  display: inline-block;\n  font-weight: bold;\n  text-decoration: none;\n  color: black;\n  background: white;\n  transition: .4s;\n  border-radius: 4px;\n  border-bottom: 4px solid #43413e;\n}\n\n.link-button:hover {\n  background: black;\n  color: white;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8740,7 +8884,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".display-round-hand-area {\n  margin: auto;\n  font-size: 30px;\n}\n\n.round {\n  text-align: center;\n  background-color: chartreuse;\n  margin-bottom: 3px;\n}\n\n.hand {\n  text-align: center;\n  background-color: cyan;\n}\n\n.text {\n  text-align: center;\n  font-size: 40px;\n  margin: auto;\n  -ms-writing-mode: tb-rl;\n      writing-mode: vertical-rl;\n}\n\n.text-number {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".display-round-hand-area {\n  margin: auto;\n  font-size: 30px;\n}\n\n.round {\n  text-align: center;\n  background-color: lightgray;\n  margin-bottom: 5px;\n}\n\n.hand {\n  text-align: center;\n  background-color: lightgray;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n\n.text {\n  text-align: center;\n  font-size: 40px;\n  margin: auto;\n  -ms-writing-mode: tb-rl;\n      writing-mode: vertical-rl;\n}\n\n.text-number {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8764,7 +8908,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".player-name {\n  padding: 5px;\n  margin-bottom: 10px;\n  background-color: chartreuse;\n  font-size: 30px;\n}\n\n.player-score {\n  padding: 5px;\n  background-color: gray;\n  font-size: 30px;\n}\n\n.player-name-and-score {\n  margin: auto\n}\n\n.update-pointInfo-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".player-name {\n  padding-top: 5px;\n  margin-bottom: 10px;\n  margin-top: 10px;\n  background-color: white;\n  font-size: 30px;\n  font-weight: bold;\n  text-decoration: none;\n  color: black;\n  background-color: lightgray;\n}\n\n.player-score {\n  padding-top: 5px;\n  margin-bottom: 10px;\n  margin-top: 10px;\n  background-color: white;\n  font-size: 30px;\n  font-weight: bold;\n  text-decoration: none;\n  color: black;\n  background-color: lightgray;\n}\n\n.player-name-and-score {\n  margin: auto;\n  width: 100%;\n}\n\n.update-pointInfo-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding-top: 5px;\n}\n\n\n.update-pointInfo-button {\n  text-align: center;\n  font-size: 25px;\n  margin: auto;\n  padding-top: 5px;\n  border-radius: 2px;\n  position: relative;\n  display: inline-block;\n  /* font-weight: bold; */\n  text-decoration: none;\n  color: black;\n  background: white;\n  transition: .4s;\n  border-radius: 4px;\n  border-bottom: 4px solid #43413e;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8788,7 +8932,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "button{\n  width: 95%;\n  margin: 5px;\n}\n\n.area {\n  padding-right: 10px;\n  text-align: center;\n  margin-bottom: 5px;\n  font-size: 20px;\n}\n\n.score-display-area {\n  width: 95%;\n  padding: 3px;\n  margin: auto;\n}\n\n.display-starting-player {\n  margin: auto;\n  vertical-align: middle;\n  font-size: 30px;\n}\n\n\n.reset-button-area {\n  margin: auto;\n}\n\n.reset-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}\n\n.update-button-area {\n  margin: auto;\n}\n\n.update-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "button{\n  width: 95%;\n  margin: 5px;\n}\n\n.area {\n  padding-right: 10px;\n  text-align: center;\n  margin-bottom: 5px;\n  font-size: 20px;\n}\n\n.score-display-area {\n  width: 95%;\n  padding: 3px;\n  margin: auto;\n}\n\n.display-starting-player {\n  margin: auto;\n  vertical-align: middle;\n  font-size: 30px;\n  background-color: lightgray;\n  width: 70%;\n}\n\n\n.reset-button-area {\n  margin: auto;\n}\n\n.reset-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n}\n\n.update-button-area {\n  margin: auto;\n}\n\n.update-score-button {\n  text-align: center;\n  font-size: 30px;\n  margin: auto;\n  padding: 5px;\n  border-radius: 2px;\n  position: relative;\n  display: inline-block;\n  font-weight: bold;\n  text-decoration: none;\n  color: black;\n  background: white;\n  transition: .4s;\n  border-radius: 4px;\n  border-bottom: 4px solid #43413e;\n}\n\n.update-score-button:hover {\n  background: black;\n  color: white;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -75843,6 +75987,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_finishGame_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./resources/js/components/inputNameScreen/inputName.css":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/inputNameScreen/inputName.css ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_inputName_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./inputName.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/inputNameScreen/inputName.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_inputName_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_inputName_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
