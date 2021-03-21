@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import './finishGame.css';
+import finalScoreCalc from './finalScoreCalc.js';
 import '../oneResultDisplay/oneResultLayout.css';
 
 class FinishGame extends React.Component{
 
   constructor(props) {
     super(props);
-    console.log(props.score1)
     this.state = {
       playerNames: props.playerNames,
       startingPlayer: props.playerNames.East,
@@ -73,19 +73,12 @@ class FinishGame extends React.Component{
       var tmp_score4=(score[0] -this.state.oka - this.state.umaFrom4To1)/1000;
     }
     var tmp_score1=(tmp_score4+tmp_score3+tmp_score2) * (-1);
-    if (tmp_score1 > 0) {
-      tmp_score1="+"+tmp_score1;
-    }
-    if (tmp_score2 > 0) {
-      tmp_score2="+"+tmp_score2;
-    }
-    if (tmp_score3 > 0) {
-      tmp_score3="+"+tmp_score3;
-    }
-    if (tmp_score4 > 0) {
-      tmp_score4="+"+tmp_score4;
-    }
-    console.log(tmp_score2);
+
+    tmp_score1=finalScoreCalc(tmp_score1);
+    tmp_score2=finalScoreCalc(tmp_score2);
+    tmp_score3=finalScoreCalc(tmp_score3);
+    tmp_score4=finalScoreCalc(tmp_score4);
+
     this.setState({ score1Result: tmp_score1 });
     this.setState({ score2Result: tmp_score2 });
     this.setState({ score3Result: tmp_score3 });
@@ -93,9 +86,7 @@ class FinishGame extends React.Component{
   }
 
   resetScore() {
-    console.log(this.state.score1);
     this.setState({ score1: 25000});
-    console.log(this.state.score1);
     this.setState({ score2: 25000});
     this.setState({ score3: 25000});
     this.setState({ score4: 25000});
@@ -104,19 +95,13 @@ class FinishGame extends React.Component{
   render(){
     return (
       <div>
-        半荘終了，成績表示画面
-        <div className="OkaUmaSelect">
-          オカ　{this.state.oka}点返し
-        </div>
-        <div className="OkaUmaSelect">
-          ウマ　{this.state.umaFrom3To2}-{this.state.umaFrom4To1}
-        </div>
+
         <div className="LinkButton">
-          <button onClick={() => { this.clickButton(); }}>
+          <button className="Newgame-start-button" onClick={() => { this.clickButton(); }}>
             最終結果を表示する
           </button>
         </div>
-        <table className="FinalResult" width="30%" cellpadding="10">
+        <table className="FinalResult" width="40%" cellPadding="10" >
           <tr>
             <td>{this.state.player1}</td>
             <td>{this.state.score1}</td>
@@ -141,10 +126,18 @@ class FinishGame extends React.Component{
 
         <div className="LinkButton">
         <Link to="/">
-          <button onClick={() => { this.resetScore(); }}>
+          <button className="Newgame-start-button" onClick={() => { this.resetScore(); }}>
             新しい半荘を始める
           </button>
         </Link>
+        </div>
+        <div className="surroundOkaUma">
+          <div className="OkaUmaSelect">
+            オカ　{this.state.oka}点返し
+          </div>
+          <div className="OkaUmaSelect">
+            ウマ　{this.state.umaFrom3To2}-{this.state.umaFrom4To1}
+          </div>
         </div>
       </div>
     );

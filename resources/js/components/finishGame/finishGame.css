@@ -1,9 +1,42 @@
 .FinalResult {
-  font-size:2em;
+  font-size:30px;
   margin: 0px auto;
   text-align: center;
 }
 .OkaUmaSelect {
-  font-size:30px;
+  padding-top:10px;
+  padding-bottom:10px;
+  font-size:25px;
   text-align: center;
+}
+.surroundOkaUma {
+ padding: 0.5em 1em;
+ margin: 2em 0;
+ margin-left: 30%;
+ margin-right: 30%;
+ color: #000000;
+ border: solid 3px #000000;
+ border-radius: 30px;
+}
+
+.Newgame-start-button {
+  width: 70%;
+  text-align: center;
+  font-size: 30px;
+  border-radius: 2px;
+  padding : 10px 0px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: black;
+  background: white;
+  transition: .4s;
+  border-radius: 4px;
+  border-bottom: 4px solid #43413e;
+}
+.Newgame-start-button:hover {
+  background: black;
+  color: white;
 }
