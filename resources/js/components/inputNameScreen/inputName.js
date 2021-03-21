@@ -37,7 +37,6 @@ class InputName extends React.Component{
   render(){
     return (
       <div className="input-name-area">
-        プレイヤー名入力画面
         <div className="each-player">
           <div className="player-name-wind">
             東：<input name="East" value={this.state.value} onChange={this.handleChange} />

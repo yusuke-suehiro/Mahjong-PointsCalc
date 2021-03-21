@@ -109,7 +109,7 @@ class EachPlayerScore extends React.Component{
     else if (this.props.pointInfo.kind == "流局") {
       switch (this.props.pointInfo.tempaiNum) {
         case 0:
-          console.log("点棒やり取りなし");
+
           break;
         case 1:
           for (let player=0;player<this.props.pointInfo.tempaiNum;player++) {
@@ -162,7 +162,7 @@ class EachPlayerScore extends React.Component{
           }
           break;
         case 4:
-          console.log("点棒やり取りなし");
+
           break;
       }
     }
@@ -170,7 +170,6 @@ class EachPlayerScore extends React.Component{
 
     }
     this.setState({ updateFlag: true});
-    console.log(this.state.score);
   }
   //return this.props.havingPoint(this.state.score, this.state.name);
   };

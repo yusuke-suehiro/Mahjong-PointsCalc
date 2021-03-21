@@ -124,7 +124,7 @@ class ResultLayout extends React.Component{
         }
       }
       if (this.state.kind == "ロン") {
-        this.setState({ pointsParent: "親：" + ParentPoints[AnsNum][3]});
+        this.setState({ pointsParent: "親：" + ParentPoints[AnsNum][3] + "　/　"});
         this.setState({ pointsChild: "子：" + ChildPoints[AnsNum][3]});
         pointArray.kind=this.state.kind;
         pointArray.ronTo=this.state.playerTo;
@@ -133,7 +133,7 @@ class ResultLayout extends React.Component{
         pointArray.ronChild=ChildPoints[AnsNum][3];
       }
       else if (this.state.kind == "ツモ") {
-        this.setState({ pointsParent: "親：" + ParentPoints[AnsNum][4] + "ALL"});
+        this.setState({ pointsParent: "親：" + ParentPoints[AnsNum][4] + " オール　/　"});
         this.setState({ pointsChild: "子：" + ChildPoints[AnsNum][4] + "-" +ChildPoints[AnsNum][5]});
         pointArray.kind=this.state.kind;
         pointArray.tsumoWho=this.state.playerTsumo;
@@ -191,10 +191,10 @@ class ResultLayout extends React.Component{
     return (
       <div>
         <div className="FirstSelect">
-          {this.props.honnba}本場&emsp;供託{this.props.kyoutaku}本
+          <span className="FirstUnder">東{this.props.handNum}局&emsp;{this.props.honnba}本場&emsp;供託{this.props.kyoutaku}本</span>
         </div>
         <div className="FirstSelect">
-          局終了の種類
+          ◎局終了の種類
         </div>
         <div className="FirstInput">
           <input className="result-screen-button" type="button" onClick={ShowMessage.bind(this, "ロン")} value="ロン"></input>
@@ -204,7 +204,7 @@ class ResultLayout extends React.Component{
           <input className="result-screen-button" type="button" onClick={ShowMessage.bind(this, "流局")} value="流局"></input>
         </div>
         <div className="SelectResult" align="center">
-          {this.state.kind}
+        <span className="SelectResultUnder">{this.state.kind}</span>
         </div>
 
         <div className={this.state.kind + "FromTo"}>
@@ -236,7 +236,7 @@ class ResultLayout extends React.Component{
           <input type="button" onClick={PlayerTempai.bind(this, this.props.playerNames.South)} value={this.props.playerNames.South}></input>&nbsp;
           <input type="button" onClick={PlayerTempai.bind(this, this.props.playerNames.West)} value={this.props.playerNames.West}></input>&nbsp;
           <input type="button" onClick={PlayerTempai.bind(this, this.props.playerNames.North)} value={this.props.playerNames.North}></input>&emsp;
-          <input type="button" onClick={CalcPoints.bind(this)} value="計算"></input>
+          <button onClick={CalcPoints.bind(this)} >計算</button>
         </div>
         <div className={this.state.kind + "点数"}>
           <div className="PlusMinus">
@@ -252,7 +252,7 @@ class ResultLayout extends React.Component{
           &nbsp;
           <input type="button" onClick={CalcFu.bind(this, -10)} value="ー"></input>
           &emsp;
-          <input type="button" onClick={CalcPoints.bind(this)} value="計算"></input>
+          <button onClick={CalcPoints.bind(this)}>計算</button>
           </div>
         </div>
         <div className="FirstSelect">

@@ -19,29 +19,29 @@ class CurrentRound extends React.Component{
     super(props);
     this.state = {
       round : "東",
-      handNumber: 0,
+      handNumber: 1,
       honnba: 0,
       kyoutaku: 0
     };
   }
   upHonba() {
     this.setState({ honnba: this.state.honnba + 1 }, () => {
-      return this.props.honbaAndkyoutaku(this.state.honnba, this.state.kyoutaku);
+      return this.props.honbaAndkyoutaku(this.state.honnba, this.state.kyoutaku, this.state.handNumber);
     } );
   }
   downHonba() {
     this.setState({ honnba: this.state.honnba - 1 >= 0 ? this.state.honnba - 1 : 0}, () => {
-      return this.props.honbaAndkyoutaku(this.state.honnba, this.state.kyoutaku);
+      return this.props.honbaAndkyoutaku(this.state.honnba, this.state.kyoutaku, this.state.handNumber);
     } );
   }
   upKyoutaku() {
     this.setState({ kyoutaku: this.state.kyoutaku + 1 }, () => {
-      return this.props.honbaAndkyoutaku(this.state.honnba, this.state.kyoutaku);
+      return this.props.honbaAndkyoutaku(this.state.honnba, this.state.kyoutaku, this.state.handNumber);
     } );
   }
   downKyoutaku() {
     this.setState({ kyoutaku: this.state.kyoutaku - 1 >= 0 ? this.state.kyoutaku - 1 : 0 }, () => {
-      return this.props.honbaAndkyoutaku(this.state.honnba, this.state.kyoutaku);
+      return this.props.honbaAndkyoutaku(this.state.honnba, this.state.kyoutaku, this.state.handNumber);
     } );
   }
 
